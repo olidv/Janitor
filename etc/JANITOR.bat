@@ -85,6 +85,6 @@ echo.
 
 
 :endbat
-rem pausa final...
+rem Pausa final...
 echo.
 pause

@@ -1,2 +1,3 @@
 # Janitor
-Monitor de terminais para trading automatizado.
+
+Autômato monitor de terminais para trading automatizado.
