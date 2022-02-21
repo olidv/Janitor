@@ -1,4 +1,5 @@
 @echo off
+color F
 
 rem Printa as instrucoes de Backup Semanal.
 echo.
@@ -6,7 +7,6 @@ echo BACKUP SEMANAL  [ C:\APPS\B3\JANITOR\BIN\BACKUP_SEMANAL.BAT ]
 echo.
 echo.
 
-call C:\Apps\Command\branco.bat
 echo  *********************************************
 echo  **  ATENCAO:  LIMPAR  DESTINO  \DOWNLOADS  **
 echo  *********************************************

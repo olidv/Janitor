@@ -10,7 +10,7 @@ rem verifica se o flag indicativo de processamento existe:
 if exist D:\Publico\infinite\safeToDelete.tmp goto yesfile
 
 :nofile
-call C:\Apps\Command\vermelho.bat
+color C
 echo  ************************************************
 echo  ** ATENCAO: FLAG safeToDelete NAO ENCONTRADO! **
 echo  ************************************************
@@ -20,7 +20,7 @@ echo.
 goto endbat
 
 :yesfile
-call C:\Apps\Command\ciano.bat
+color B
 echo  ************************************************
 echo  **  FLAG OK: ARQUIVO safeToDelete ENCONTRADO. **
 echo  ************************************************
@@ -54,9 +54,9 @@ move /Y infinite\www\*.zip D:\B3\Data\B3\Cotacoes_TRADEINTRADAY\2022\%HOJE%
 echo.
 
 echo Copiando Arquivos de cotacoes e logging da corretora GENIAL...
-move /Y genial\mql5_files\*.* D:\B3\Data\Brasil\Clear_BookTick\mql5_files
-move /Y genial\mql5_logs\*.* D:\B3\Data\Brasil\Clear_BookTick\mql5_logs
-move /Y genial\terminal_logs\*.* D:\B3\Data\Brasil\Clear_BookTick\terminal_logs
+move /Y genial\mql5_files\*.* D:\B3\Data\Brasil\Genial_BookTick\mql5_files
+move /Y genial\mql5_logs\*.* D:\B3\Data\Brasil\Genial_BookTick\mql5_logs
+move /Y genial\terminal_logs\*.* D:\B3\Data\Brasil\Genial_BookTick\terminal_logs
 echo.
 
 echo Copiando Arquivos de cotacoes e logging da corretora MODAL...
