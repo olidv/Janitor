@@ -42,6 +42,11 @@ move /Y favoritos_*.html E:\Cloud\Softeca\Web\Chrome\favoritos\chrome_favoritos_
 move /Y bookmarks.html E:\Cloud\Softeca\Web\Firefox\favoritos\firefox_bookmarks_%HOJE%.html
 echo.
 
+echo Copiando arquivos de configuracao do PyCharm e IntelliJ...
+mkdir E:\Cloud\Softeca\Apps\JetBrains\%HOJE%
+move /Y *.zip E:\Cloud\Softeca\Apps\JetBrains\%HOJE%
+echo.
+
 rem mkdir E:\Cloud\OneNotes\%HOJE%
 rem move /Y *.7z E:\Cloud\OneNotes\%HOJE%\
 

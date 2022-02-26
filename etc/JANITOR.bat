@@ -14,7 +14,7 @@ color C
 echo  ************************************************
 echo  ** ATENCAO: FLAG safeToDelete NAO ENCONTRADO! **
 echo  ************************************************
-echo  **     ESTA  ROTINA  BATCH  SERA  ABOTADA.    **
+echo  **    ESTA  ROTINA  BATCH  SERA  ABORTADA.    **
 echo  ************************************************
 echo.
 goto endbat
@@ -39,6 +39,37 @@ cd /D D:\Publico
 rem Obtem a data/hora atuais no formato AAAA-MM-DD:
 set HOJE=%date:~-4%-%date:~3,2%
 echo Data de referencia para as movimentacoes:  %HOJE%
+echo.
+
+rem primeiro tem q verificar se houve avisos ou erros nos processamentos:
+echo Verificando se houve algum erro ou alerta nos processamentos:
+echo ********************  ALERTAS  ********************    > infinite\findWarnError.tmp 2>&1
+echo ***************************************************   >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" genial\mql5_logs\*.*       >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" genial\terminal_logs\*.*   >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" modal\mql5_logs\*.*        >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" modal\terminal_logs\*.*    >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" xm\mql5_logs\*.*           >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" xm\terminal_logs\*.*       >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" genial\mql5_logs\*.*       >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" genial\terminal_logs\*.*   >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" infinite\clock\*.*         >> infinite\findWarnError.tmp 2>&1
+find /N "WARN" infinite\logs\*.*          >> infinite\findWarnError.tmp 2>&1
+
+echo.                                                      >> infinite\findWarnError.tmp 2>&1
+echo.                                                      >> infinite\findWarnError.tmp 2>&1
+echo *********************  ERROS  *********************   >> infinite\findWarnError.tmp 2>&1
+echo ***************************************************   >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" genial\mql5_logs\*.*      >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" genial\terminal_logs\*.*  >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" modal\mql5_logs\*.*       >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" modal\terminal_logs\*.*   >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" xm\mql5_logs\*.*          >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" xm\terminal_logs\*.*      >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" genial\mql5_logs\*.*      >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" genial\terminal_logs\*.*  >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" infinite\clock\*.*        >> infinite\findWarnError.tmp 2>&1
+find /N "ERROR" infinite\logs\*.*         >> infinite\findWarnError.tmp 2>&1
 echo.
 
 echo Copiando Arquivos HTM contendo resultados das loterias da Caixa EF...
@@ -83,8 +114,16 @@ echo Removendo arquivo flag [safeToDelete.tmp]...
 del /F /Q infinite\safeToDelete.tmp
 echo.
 
+@echo on
+find /N "WARN"  infinite\findWarnError.tmp
+find /N "ERROR" infinite\findWarnError.tmp
+@echo off
+echo.
 
 :endbat
 rem Pausa final...
 echo.
 pause
+
+
+
