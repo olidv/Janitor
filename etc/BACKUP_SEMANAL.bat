@@ -13,7 +13,7 @@ echo  *********************************************
 echo.
 echo     PRINT DESKTOP  [ PRINTSCREEN ]  C/  POST-IT
 echo.
-echo     EXPORTAR FAVORITOS  CHROME,  EDGE E FIREFOX
+echo     FAVORITOS  CHROME,  BRAVE,   EDGE,  FIREFOX
 echo.
 echo     EXPORTAR SETTINGS DAS FERRAMENTAS JETBRAINS
 echo.
@@ -35,11 +35,11 @@ echo Data de referencia para as movimentacoes:  %HOJE%
 echo.
 
 rem copia os arquivos de backup para o HD externo:
-
-echo Copiando arquivos de favoritos dos browsers (Edge, Chrome, Firefox)...
-move /Y "favoritos_*. html.html" E:\Cloud\Softeca\Web\Edge\favoritos\edge_bookmarks_%HOJE%.html
-move /Y favoritos_*.html E:\Cloud\Softeca\Web\Chrome\favoritos\chrome_favoritos_%HOJE%.html
-move /Y bookmarks.html E:\Cloud\Softeca\Web\Firefox\favoritos\firefox_bookmarks_%HOJE%.html
+echo Copiando arquivos de favoritos dos browsers (Edge, Chrome, Firefox, Brave)...
+move /Y favoritos_*.html  E:\Cloud\Softeca\Web\Chrome\favoritos\chrome_favoritos_%HOJE%.html
+move /Y bookmarks_*.html  E:\Cloud\Softeca\Web\Brave\favoritos\brave_bookmarks_%HOJE%.html
+move /Y bookmarks.html    E:\Cloud\Softeca\Web\Firefox\favoritos\firefox_bookmarks_%HOJE%.html
+move /Y favorites_*.html  E:\Cloud\Softeca\Web\Edge\favoritos\edge_bookmarks_%HOJE%.html
 echo.
 
 echo Copiando arquivos de configuracao do PyCharm e IntelliJ...
