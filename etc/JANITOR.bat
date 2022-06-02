@@ -75,7 +75,7 @@ find /N "ERROR" infinite\logs\infinite.log                 >> infinite\findWarnE
 echo.
 
 echo Copiando Arquivos HTM contendo resultados das loterias da Caixa EF...
-move /Y caixa\*.htm D:\Workspace\Python\Lothon\data\
+move /Y caixa\*.htm D:\Workspace\Python\Lothon\data\caixa\
 echo.
 
 echo Copiando Arquivos CSV contendo a carteira do IBOVESP da bolsa B3...
