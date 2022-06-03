@@ -17,7 +17,7 @@ echo     FAVORITOS  CHROME,  BRAVE,   EDGE,  FIREFOX
 echo.
 echo     EXPORTAR SETTINGS DAS FERRAMENTAS JETBRAINS
 echo.
-echo     FECHAR  MS OUTLOOK,  NOTEPAD++,  ENCRYPTPAD
+echo     FECHAR  NOTEPAD++,  ENCRYPTPAD
 echo.
 echo.
 
@@ -60,10 +60,10 @@ xcopy C:\Users\qdev\Documents\Encryptpad\*.* E:\Cloud\Documentos\Encryptpad\  /E
 xcopy "C:\Users\qdev\Documents\My Kindle Content\*.*" E:\Cloud\eBooks\  /E /C /Q /H /R /Y
 echo.
 
-echo Copiando arquivos de email do MS Outlook...
-xcopy "C:\Users\qdev\Documents\Arquivos do Outlook\*.pst"       "E:\Cloud\Documentos\Arquivos do Outlook\bk\"             /E /C /Q /H /R /Y
-xcopy "C:\Users\qdev\AppData\Roaming\Microsoft\Assinaturas\*.*" "E:\Cloud\Documentos\Arquivos do Outlook\bk\Assinaturas"  /E /C /Q /H /R /Y
-echo.
+rem echo Copiando arquivos de email do MS Outlook...
+rem xcopy "C:\Users\qdev\Documents\Arquivos do Outlook\*.pst"       "E:\Cloud\Documentos\Arquivos do Outlook\bk\"             /E /C /Q /H /R /Y
+rem xcopy "C:\Users\qdev\AppData\Roaming\Microsoft\Assinaturas\*.*" "E:\Cloud\Documentos\Arquivos do Outlook\bk\Assinaturas"  /E /C /Q /H /R /Y
+rem echo.
 
 rem Exporta as variaveis de ambiente (system e user):
 echo Copiando arquivos de backup do registry...
