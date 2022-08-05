@@ -75,6 +75,7 @@ find /N "ERROR" infinite\logs\infinite.log                 >> infinite\findWarnE
 echo.
 
 echo Copiando Arquivos HTM contendo resultados das loterias da Caixa EF...
+copy /y caixa\*.htm C:\Apps\B3\Lothon\data\caixa
 move /Y caixa\*.htm D:\Workspace\Python\Lothon\data\caixa\
 echo.
 
@@ -105,11 +106,11 @@ move /Y xm\terminal_logs\*.* D:\B3\Data\Exterior\XM_Tick\terminal_logs
 echo.
 
 echo Copiando Arquivos LOG da aplicacao Infinite...
-move /Y infinite\logs\*.* D:\B3\Data\Infinite\logs
+move /Y infinite\logs\*.* C:\Apps\B3\Infinite\logs
 echo.
 
 echo Copiando Arquivos LOG da aplicacao D-Clock...
-move /Y infinite\clock\*.* D:\B3\Data\Infinite\clock
+move /Y infinite\clock\*.* C:\Apps\B3\Digital-Clock\logs
 echo.
 
 echo Removendo arquivo flag [safeToDelete.tmp]...
