@@ -75,16 +75,22 @@ find /N "ERROR" infinite\logs\infinite.log                 >> infinite\findWarnE
 echo.
 
 echo Copiando Arquivos HTM contendo resultados das loterias da Caixa EF...
-copy /y caixa\*.htm C:\Apps\B3\Lothon\data\caixa
-move /Y caixa\*.htm D:\Workspace\Python\Lothon\data\caixa\
+copy /y caixa\D_*.htm C:\Apps\B3\Lothon\data\caixa
+move /Y caixa\D_*.htm D:\Workspace\Python\Lothon\data\caixa\
+echo.
+copy /Y infinite\www\D_*.csv C:\Apps\B3\Lothon\data\cache\
+move /Y infinite\www\D_*.csv D:\Workspace\Python\Lothon\data\cache\
+echo.
+copy /Y infinite\www\JC_*.csv C:\Apps\B3\Lothon\data\cache\
+move /Y infinite\www\JC_*.csv D:\Workspace\Python\Lothon\data\cache\
 echo.
 
 echo Copiando Arquivos CSV contendo a carteira do IBOVESP da Bolsa B3...
-move /Y infinite\www\*.csv D:\B3\Data\B3\Carteira_IBOV\2022_Mai-Ago\%HOJE%
+move /Y infinite\www\IBOVDia_*.csv D:\B3\Data\B3\Carteira_IBOV\2022_Mai-Ago\%HOJE%
 echo.
 
 echo Copiando Arquivos ZIP contendo cotacoes intraday da Bolsa B3...
-move /Y infinite\www\*.zip D:\B3\Data\B3\Cotacoes_TRADEINTRADAY\2022\%HOJE%
+move /Y infinite\www\TradeIntraday_*.zip D:\B3\Data\B3\Cotacoes_TRADEINTRADAY\2022\%HOJE%
 echo.
 
 echo Copiando Arquivos de cotacoes e logging da corretora GENIAL...
