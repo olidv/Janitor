@@ -79,6 +79,7 @@ copy /y caixa\D_*.htm C:\Apps\B3\Lothon\data\caixa
 move /Y caixa\D_*.htm D:\Workspace\Python\Lothon\data\caixa\
 echo.
 copy /Y infinite\www\D_*.csv C:\Apps\B3\Lothon\data\cache\
+copy /Y infinite\www\D_*.csv D:\Workspace\Java\jLothon\data\cache\
 move /Y infinite\www\D_*.csv D:\Workspace\Python\Lothon\data\cache\
 echo.
 copy /Y infinite\www\JC_*.csv C:\Apps\B3\Lothon\data\cache\
