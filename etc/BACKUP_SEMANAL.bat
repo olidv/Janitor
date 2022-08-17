@@ -61,9 +61,10 @@ xcopy "C:\Users\qdev\Documents\My Kindle Content\*.*" E:\Cloud\eBooks\  /E /C /Q
 echo.
 
 rem echo Copiando arquivos de email do MS Outlook...
-rem xcopy "C:\Users\qdev\Documents\Arquivos do Outlook\*.pst"       "E:\Cloud\Documentos\Arquivos do Outlook\bk\"             /E /C /Q /H /R /Y
-rem xcopy "C:\Users\qdev\AppData\Roaming\Microsoft\Assinaturas\*.*" "E:\Cloud\Documentos\Arquivos do Outlook\bk\Assinaturas"  /E /C /Q /H /R /Y
-rem echo.
+xcopy "C:\Users\qdev\Documents\Arquivos do Outlook\*.pst"       "E:\Cloud\Documentos\Arquivos do Outlook - Localweb\bk\"             /E /C /Q /H /R /Y
+xcopy "C:\Users\qdev\AppData\Roaming\Microsoft\Assinaturas\*.*" "E:\Cloud\Documentos\Arquivos do Outlook - Localweb\bk\Assinaturas"  /E /C /Q /H /R /Y
+xcopy "C:\Users\qdev\AppData\Roaming\Microsoft\Modelos\*.*"     "E:\Cloud\Documentos\Arquivos do Outlook - Localweb\bk\Modelos"      /E /C /Q /H /R /Y
+echo.
 
 rem Exporta as variaveis de ambiente (system e user):
 echo Copiando arquivos de backup do registry...
