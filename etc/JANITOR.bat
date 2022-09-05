@@ -130,10 +130,16 @@ find /N "ERROR" infinite\findWarnError.tmp
 @echo off
 echo.
 
+rem Pausa antes de gerar os palpites do Lothon...
+pause
+echo.
+
+echo Posicionando no diretorio da aplicacao Lothon:
+cd /D C:\Apps\B3\Lothon\bin
+call startup.bat
+
+
 :endbat
 rem Pausa final...
 echo.
 pause
-
-
-
