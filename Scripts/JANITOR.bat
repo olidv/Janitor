@@ -136,7 +136,7 @@ echo.
 
 echo Posicionando no diretorio da aplicacao Lothon:
 cd /D C:\Apps\B3\Lothon\bin
-call startup.bat
+call palpites.bat
 
 
 :endbat
