@@ -137,6 +137,12 @@ echo.
 echo Posicionando no diretorio da aplicacao Lothon:
 cd /D C:\Apps\B3\Lothon\bin
 call palpites.bat
+echo.
+
+echo Copiando Arquivos CSV de papites para projeto WWW-Lothon...
+cd ..
+copy /Y data\palpites\*.csv D:\Workspace\Loto365\www-lothon\data
+echo.
 
 
 :endbat
