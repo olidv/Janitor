@@ -141,6 +141,7 @@ echo.
 
 echo Copiando Arquivos CSV de papites para projeto WWW-Lothon...
 cd /D C:\Apps\B3\Lothon\data\palpite
+copy /Y *.csv C:\Users\qdev\Downloads
 copy /Y *.csv D:\Workspace\Loto365\cdn-lothon\data\palpites
 echo.
 
@@ -148,6 +149,11 @@ echo Efetuando commit do projeto cdn-lothon no repositorio GitHub...
 cd /D D:\Workspace\Loto365\cdn-lothon
 git commit -am "Novos palpites gerados diariamente pelo Lothon."
 git push origin main
+echo.
+
+echo Executando Firefox para verificar Loto365.com.br e atualizar G-Drive...
+cd /D C:\Users\qdev\Downloads
+start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://www.bit.ly/Loto365-Palpites"
 echo.
 
 
