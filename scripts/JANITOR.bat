@@ -140,7 +140,7 @@ call palpites.bat
 echo.
 
 echo Copiando Arquivos CSV de papites para projeto WWW-Lothon...
-cd /D C:\Apps\B3\Lothon\bin\data\palpites
+cd /D C:\Apps\B3\Lothon\data\palpite
 copy /Y *.csv D:\Workspace\Loto365\www-lothon\data
 copy /Y *.csv D:\Workspace\Loto365\cdn.lothon\data\palpites
 echo.
