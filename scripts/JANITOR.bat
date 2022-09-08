@@ -141,8 +141,13 @@ echo.
 
 echo Copiando Arquivos CSV de papites para projeto WWW-Lothon...
 cd /D C:\Apps\B3\Lothon\data\palpite
-copy /Y *.csv D:\Workspace\Loto365\www-lothon\data
-copy /Y *.csv D:\Workspace\Loto365\cdn.lothon\data\palpites
+copy /Y *.csv D:\Workspace\Loto365\cdn-lothon\data\palpites
+echo.
+
+echo Efetuando commit do projeto cdn-lothon no repositorio GitHub...
+cd /D D:\Workspace\Loto365\cdn-lothon
+git commit -am "Novos palpites gerados diariamente pelo Lothon."
+git push origin main
 echo.
 
 
