@@ -18,7 +18,7 @@ mkdir Janitor
 echo.
 
 echo Instalando ambiente virtual no projeto
-python -m venv Janitor\venv
+python -m venv venv
 echo.
 
 echo Posicionando no diretorio raiz do projeto

@@ -22,16 +22,16 @@ rmdir /s /q dist  1>nul  2>&1
 echo.
 
 echo Criando nova estrutura para distribuir o pacote do executavel
-mkdir dist       1>nul  2>&1
-mkdir dist\bin   1>nul  2>&1
-mkdir dist\bat   1>nul  2>&1
-mkdir dist\lib   1>nul  2>&1
-mkdir dist\logs  1>nul  2>&1
+mkdir dist          1>nul  2>&1
+mkdir dist\bin      1>nul  2>&1
+mkdir dist\lib      1>nul  2>&1
+mkdir dist\logs     1>nul  2>&1
+mkdir dist\scripts  1>nul  2>&1
 echo.
 
 echo Copiando para distribuicao os arquivos de resources e executaveis
 copy bin\Release\*.*     dist\bin
-copy scripts\batch\*.*   dist\bat
+copy src\scripts\*.*     dist\bat
 copy scripts\python\*.*  dist\lib
 echo.
 
