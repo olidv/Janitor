@@ -31,8 +31,8 @@ echo.
 
 echo Copiando para distribuicao os arquivos de resources e executaveis
 copy bin\Release\*.*     dist\bin
-copy src\scripts\*.*     dist\bat
-copy scripts\python\*.*  dist\lib
+copy src\batches\*.*     dist\bin
+copy src\scripts\*.*     dist\scripts
 echo.
 
 echo Compactando o build e gerando pacote de distribuicao da release [ ZIP ]
