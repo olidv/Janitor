@@ -37,6 +37,7 @@ echo Posicionando no diretorio D:\Publico
 cd /D D:\Publico
 
 rem Obtem a data/hora atuais no formato AAAA-MM-DD:
+set YYYY=%date:~-4%
 set HOJE=%date:~-4%-%date:~3,2%
 echo Data de referencia para as movimentacoes:  %HOJE%
 echo.
@@ -87,11 +88,11 @@ move /Y infinite\www\JC_*.csv D:\Workspace\Python\Lothon\data\cache\
 echo.
 
 echo Copiando Arquivos CSV contendo a carteira do IBOVESP da Bolsa B3...
-move /Y infinite\www\IBOVDia_*.csv D:\B3\Data\B3\Carteira_IBOV\2022_Mai-Ago\%HOJE%
+move /Y infinite\www\IBOVDia_*.csv D:\B3\Data\B3\Carteira_IBOV\%YYYY%\%HOJE%
 echo.
 
 echo Copiando Arquivos ZIP contendo cotacoes intraday da Bolsa B3...
-move /Y infinite\www\TradeIntraday_*.zip D:\B3\Data\B3\Cotacoes_TRADEINTRADAY\2022\%HOJE%
+move /Y infinite\www\TradeIntraday_*.zip D:\B3\Data\B3\Cotacoes_TRADEINTRADAY\%YYYY%\%HOJE%
 echo.
 
 echo Copiando Arquivos de cotacoes e logging da corretora GENIAL...
@@ -146,17 +147,12 @@ echo.
 
 echo Capturando as telas de consulta dos palpites da Web...
 cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-start "" shot_palpites.py
+shot_palpites.py
 echo.
 
-echo Redimensionando as imagens capturadas para tamanho de mobile...
-rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-start "" resize_palpites.py
-echo.
-
-echo Efetuando upload dos arquivos de palpites para o Google Drive...
-rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-start "" upload_palpites.py
+echo Reduzindo as imagens capturadas para tamanho de mobile...
+cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+reduce_palpites.py
 echo.
 
 echo Efetuando commit do projeto CDN-Lothon no repositorio GitHub...
@@ -165,14 +161,28 @@ git commit -am "Novos palpites gerados diariamente pelo Lothon."
 git push origin main
 echo.
 
-echo Preparando recursos para criacao de video e publicacao nas redes sociais...
-cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-start "" social_palpites.py
-echo.
+rem TODO: A lib pydrive2 nao esta conseguindo acessar arquivos dentro de folders...
+rem echo Efetuando upload dos arquivos de palpites para o Google Drive...
+rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+rem upload_palpites.py
+rem echo.
 
 echo Cortando as imagens capturadas para o tamanho do video mobile...
 cd /D D:\Workspace\Loto365\docs-templates\Video
-start "" crop_palpites.py
+del /F /Q *.txt *.png *.mp3 *.mp4
+copy /Y D:\Workspace\Loto365\cdn-lothon\data\palpites\*.png .
+crop_palpites.py
+resize_palpites.py
+echo.
+
+echo Preparando recursos para criacao de video e publicacao nas redes sociais...
+cd /D D:\Workspace\Loto365\docs-templates\Video
+social_palpites.py
+echo.
+
+echo Executando Firefox para verificar Loto365.com.br e atualizar Redes Sociais...
+cd /D D:\Workspace\Loto365\docs-templates\Video
+start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.tiktok.com/upload" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/85606564/admin/"
 echo.
 
 

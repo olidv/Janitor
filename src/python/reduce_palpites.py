@@ -1,8 +1,8 @@
 """
    Package /scripts/.
-   Module  resize_palpites.py
+   Module  reduce_palpites.py
 
-   Utilitario para redimensionamento de imagens de palpites.
+   Utilitario para reducao do tamanho de imagens de palpites.
 """
 
 # ----------------------------------------------------------------------------
@@ -54,16 +54,17 @@ for file in list_files:
     iw, ih = img.size
     print(f"\n{file}: Dimensao original da imagem: {iw} x {ih}")
 
-    # efetua o resize para o comprimento padrao 1080x1920, se for diferente:
-    if iw != 1080 or ih != 1920:
+    # efetua a reducao da imagem para o comprimento padrao 1080, se for maior:
+    if iw > 1080:
+        ratio = iw / 1080
         iw = 1080
-        ih = 1920
-        print(f"{file}: Vai redimensionar a imagem para: {iw} x {ih}")
-        img = img.resize((iw, ih))
+        ih = int(ih / ratio)
+        print(f"{file}: Vai reduzir a imagem para: {iw} x {ih}")
+        img.thumbnail((iw, ih))
         iw, ih = img.size
-        print(f"{file}: Nova dimensao da imagem redimensionada: {iw} x {ih}")
+        print(f"{file}: Nova dimensao da imagem reduzida: {iw} x {ih}")
 
         # salva a imagem no mesmo arquivo original:
         img.save(file, 'PNG')
     else:
-        print(f"{file}: Nao ha necessidade de redimensionar a imagem")
+        print(f"{file}: Nao ha necessidade de reduzir a imagem")

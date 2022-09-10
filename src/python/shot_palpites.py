@@ -10,6 +10,7 @@
 # ----------------------------------------------------------------------------
 
 # Built-in/Generic modules
+import os
 import sys
 import time
 
@@ -24,6 +25,8 @@ from selenium.common.exceptions import WebDriverException
 # ----------------------------------------------------------------------------
 # CONSTANTES GLOBAIS
 # ----------------------------------------------------------------------------
+
+MODULE_PY = os.path.basename(__file__)
 
 LOTERIAS = ["dia-de-sorte", "dupla-sena", "lotofacil", "lotomania", "mega-sena",
             "quina", "super-sete", "timemania", "mais-milionaria"]
@@ -70,7 +73,7 @@ def open_webdriver_firefox() -> webdriver.Firefox:
 
 # Este modulo nao pode ser carregado por outro modulo
 if __name__ != '__main__':
-    sys.exit("Este modulo 'shot_palpites.py' nao pode ser carregado por outro modulo!")
+    sys.exit(f"{MODULE_PY}: Este modulo nao pode ser carregado por outro modulo!")
 # prossegue somente se este programa foi executado como entry-point...
 
 # abre o Firefox pelo selenium web driver:
