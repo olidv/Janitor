@@ -1,0 +1,22 @@
+# Acesso ao Google Drive de Loto365:
+
+client_config_backend: settings
+client_config:
+  client_id: 1057246612902-9e3oirorek3ul12kkopnc4cvr3lac2d7.apps.googleusercontent.com
+  client_secret: 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
+  auth_uri: https://accounts.google.com/o/oauth2/auth
+#  token_uri: https://accounts.google.com/o/oauth2/token
+  token_uri: https://oauth2.googleapis.com/token
+#  redirect_uri: urn:ietf:wg:oauth:2.0:oob
+  redirect_uri: http://localhost:8080/
+  revoke_uri:
+
+save_credentials: True
+save_credentials_backend: file
+save_credentials_file: C:/Apps/B3/Janitor/scripts/credentials.json
+
+get_refresh_token: True
+
+oauth_scope:
+  - https://www.googleapis.com/auth/drive.file
+  - https://www.googleapis.com/auth/drive.install

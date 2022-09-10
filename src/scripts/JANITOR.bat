@@ -134,26 +134,45 @@ rem Pausa antes de gerar os palpites do Lothon...
 pause
 echo.
 
-echo Posicionando no diretorio da aplicacao Lothon:
+echo Posicionando no diretorio da aplicacao Lothon para geracao de palpites:
 cd /D C:\Apps\B3\Lothon\bin
 call palpites.bat
 echo.
 
-echo Copiando Arquivos CSV de papites para projeto WWW-Lothon...
+echo Copiando Arquivos CSV de papites para projeto CDN-Lothon...
 cd /D C:\Apps\B3\Lothon\data\palpite
-copy /Y *.csv C:\Users\qdev\Downloads
 copy /Y *.csv D:\Workspace\Loto365\cdn-lothon\data\palpites
 echo.
 
-echo Efetuando commit do projeto cdn-lothon no repositorio GitHub...
+echo Capturando as telas de consulta dos palpites da Web...
+cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+start "" shot_palpites.py
+echo.
+
+echo Redimensionando as imagens capturadas para tamanho de mobile...
+rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+start "" resize_palpites.py
+echo.
+
+echo Efetuando upload dos arquivos de palpites para o Google Drive...
+rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+start "" upload_palpites.py
+echo.
+
+echo Efetuando commit do projeto CDN-Lothon no repositorio GitHub...
 cd /D D:\Workspace\Loto365\cdn-lothon
 git commit -am "Novos palpites gerados diariamente pelo Lothon."
 git push origin main
 echo.
 
-echo Executando Firefox para verificar Loto365.com.br e atualizar G-Drive...
-cd /D C:\Users\qdev\Downloads
-start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://www.bit.ly/Loto365-Palpites"
+echo Preparando recursos para criacao de video e publicacao nas redes sociais...
+cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+start "" social_palpites.py
+echo.
+
+echo Cortando as imagens capturadas para o tamanho do video mobile...
+cd /D D:\Workspace\Loto365\docs-templates\Video
+start "" crop_palpites.py
 echo.
 
 
