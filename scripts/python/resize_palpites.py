@@ -1,8 +1,8 @@
 """
    Package /scripts/.
-   Module  crop_palpites.py
+   Module  resize_palpites.py
 
-   Utilitario para corte de imagens de palpites.
+   Utilitario para redimensionamento de imagens de palpites.
 """
 
 # ----------------------------------------------------------------------------
@@ -24,7 +24,7 @@ from PIL import Image
 
 # Este modulo nao pode ser carregado por outro modulo
 if __name__ != '__main__':
-    sys.exit("Este modulo 'crop_palpites.py' nao pode ser carregado por outro modulo!")
+    sys.exit("Este modulo 'resize_palpites.py' nao pode ser carregado por outro modulo!")
 # prossegue somente se este programa foi executado como entry-point...
 
 # identifica o diretorio corrente e a relacao de arquivos neste:
@@ -47,26 +47,13 @@ for file in list_files:
     iw, ih = img.size
     print(f"\n{file}: Dimensao original da imagem: {iw} x {ih}")
 
-    # se o comprimento esta acima de 1080, entao eh preciso fazer o resize:
-    if iw > 1080:
-        ratio = iw / 1080
-        iw = 1080
-        ih = int(ih / ratio)
-        print(f"{file}: Vai redimensionar a imagem para : {iw} x {ih}")
-        img.thumbnail((iw, ih))
-        iw, ih = img.size
-        print(f"{file}: Nova dimensao da imagem redimensionada: {iw} x {ih}")
-
-    # se ja foi feito crop antes, entao ignora
-    if ih <= 1920:
-        print(f"{file}: A imagem ja esta com altura menor ou igual a 1920.")
-        continue
-
-    # efetua o crop da imagem e salva no mesmo arquivo:
+    # apenas efetua o resize para o tamanho padrao 1080 x 1920:
+    iw = 1080
     ih = 1920
-    img = img.crop((0, 0, iw, ih))
+    print(f"{file}: Vai redimensionar a imagem para : {iw} x {ih}")
+    img = img.resize((iw, ih))
     iw, ih = img.size
-    print(f"{file}: Nova dimensao da imagem cortada: {iw} x {ih}")
+    print(f"{file}: Nova dimensao da imagem redimensionada: {iw} x {ih}")
 
     # salva a imagem no mesmo arquivo original:
     img.save(file, 'PNG')
