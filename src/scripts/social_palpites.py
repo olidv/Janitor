@@ -42,13 +42,13 @@ MESES_ANO = [
 ]
 
 DIAS_SEMANA = [
-    'Segunda-feira',
-    'Terça-feira',
-    'Quarta-feira',
-    'Quinta-Feira',
-    'Sexta-feira',
-    'Sábado',
-    'Segunda-feira'  # como nao tem sorteio no domingo, processa como se fosse segunda-feira...
+    'segunda-feira',
+    'terça-feira',
+    'quarta-feira',
+    'quinta-Feira',
+    'sexta-feira',
+    'sábado',
+    'segunda-feira'  # como nao tem sorteio no domingo, processa como se fosse segunda-feira...
 ]
 
 DIAS_DIR = [
