@@ -30,7 +30,7 @@ mkdir dist\scripts  1>nul  2>&1
 echo.
 
 echo Copiando para distribuicao os arquivos de resources e executaveis
-copy bin\Release\*.*         dist\bin
+rem copy bin\Release\*.*         dist\bin
 copy src\batches\*.*         dist\bin
 copy src\scripts\*.*         dist\scripts
 rem copy src\resources\prod\*.*  dist\scripts

@@ -14,7 +14,7 @@ import os
 import sys
 import glob
 import shutil
-from datetime import date
+from datetime import date, timedelta
 
 # Libs/Frameworks modules
 import send2trash
@@ -186,8 +186,12 @@ if __name__ != '__main__':
 
 # identifica o dia da semana, para obter os recursos proprios para a data:
 hoje = date.today()
-# qual o dia da semana:
 int_dia = hoje.weekday()
+# se for domingo, pula para a segunda-feira seguinte:
+if int_dia == 6:  # 6 == domingo
+    hoje += timedelta(days=1)
+    int_dia = 0   # 0 == segunda-feira
+# qual o dia da semana:
 str_dia = DIAS_SEMANA[int_dia]
 dir_dia = DIAS_DIR[int_dia]
 # qual a data corrente:
@@ -233,8 +237,8 @@ with open(path_desc_file, "rt") as f:
 # efetua as substituicoes de interpolacao:
 ddmmmaaaa = f"{str_dd}/{str_mmm}/{int_aaaa}"
 data_extenso = f"{str_dia}, {int_dd} de {str_mes} de {int_aaaa}"
-list_loterias = ', '.join([LOTERIAS[n] for n in loterias_hoje])
 hash_loterias = ', '.join([hashtag_loteria(n) for n in loterias_hoje])
+list_loterias = ', '.join([LOTERIAS[n] for n in loterias_hoje]).upper()
 nome_cantor = CANTORES[int_dia]
 desc_content = desc_content.format(ddmmmaaaa=ddmmmaaaa, data_extenso=data_extenso,
                                    hash_loterias=hash_loterias, list_loterias=list_loterias,

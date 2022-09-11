@@ -167,22 +167,29 @@ rem cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
 rem upload_palpites.py
 rem echo.
 
-echo Cortando as imagens capturadas para o tamanho do video mobile...
-cd /D D:\Workspace\Loto365\docs-templates\Video
-del /F /Q *.txt *.png *.mp3 *.mp4
-copy /Y D:\Workspace\Loto365\cdn-lothon\data\palpites\*.png .
-crop_palpites.py
-resize_palpites.py
-echo.
-
 echo Preparando recursos para criacao de video e publicacao nas redes sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Video
 social_palpites.py
 echo.
 
-echo Executando Firefox para verificar Loto365.com.br e atualizar Redes Sociais...
+echo Cortando as imagens capturadas para o tamanho do video mobile...
+cd /D D:\Workspace\Loto365\docs-templates\Video
+crop_palpites.py
+echo.
+
+echo Executando Explorer na pasta de recursos para gravação de video pelo OBS Studio...
+cd /D D:\Workspace\Loto365\docs-templates\Video
+start .
+echo.
+
+echo Executando Firefox para verificar Loto365.com.br e atualizar Google Drive e Redes Sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Video
 start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.tiktok.com/upload" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/85606564/admin/"
+echo.
+
+echo Executando Explorer na pasta de upload dos arquivos de palpites no Google Drive...
+cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
+start .
 echo.
 
 
