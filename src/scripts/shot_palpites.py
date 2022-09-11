@@ -77,6 +77,12 @@ if __name__ != '__main__':
     sys.exit(f"{MODULE_PY}: Este modulo nao pode ser carregado por outro modulo!")
 # prossegue somente se este programa foi executado como entry-point...
 
+# verifica se solicitou aguardar alguns segundos ate o repositorio GITHUB atualizar apos commit:
+if len(sys.argv) > 1:
+    wait_seconds = int(sys.argv[1])
+    print(f"* Vai aguardar {wait_seconds} segundos ate o GitHub atualizar a API apos commit...")
+    time.sleep(wait_seconds)
+
 # abre o Firefox pelo selenium web driver:
 browser = open_webdriver_firefox()
 

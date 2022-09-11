@@ -145,17 +145,24 @@ cd /D C:\Apps\B3\Lothon\data\palpite
 copy /Y *.csv D:\Workspace\Loto365\cdn-lothon\data\palpites
 echo.
 
+echo Efetuando commit dos arqivos CSV no repositorio GitHub...
+cd /D D:\Workspace\Loto365\cdn-lothon
+git commit -am "Novos palpites gerados diariamente pelo Lothon."
+git push origin main
+echo.
+
 echo Capturando as telas de consulta dos palpites da Web...
 cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-shot_palpites.py
+shot_palpites.py 100
 echo.
 
 echo Reduzindo as imagens capturadas para tamanho de mobile...
 cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
 reduce_palpites.py
+start .
 echo.
 
-echo Efetuando commit do projeto CDN-Lothon no repositorio GitHub...
+echo Efetuando commit dos arquivos PNG e PDF no repositorio GitHub...
 cd /D D:\Workspace\Loto365\cdn-lothon
 git commit -am "Novos palpites gerados diariamente pelo Lothon."
 git push origin main
@@ -170,28 +177,12 @@ rem echo.
 echo Preparando recursos para criacao de video e publicacao nas redes sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Social
 social_palpites.py
-echo.
-
-echo Cortando as imagens capturadas para o tamanho do video mobile...
-cd /D D:\Workspace\Loto365\docs-templates\Social
-crop_palpites.py
-echo.
-
-echo Abrindo Explorer na pasta de recursos para gravacao de video pelo OBS Studio...
-cd /D C:\Program Files\obs-studio\bin\64bit
-start "" "C:\Program Files\obs-studio\bin\64bit\obs64.exe"
-cd /D D:\Workspace\Loto365\docs-templates\Social
 start .
 echo.
 
 echo Executando Firefox para verificar Loto365.com.br e atualizar Google Drive e Redes Sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Social
 start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.tiktok.com/upload" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/loto365br/?share=true"
-echo.
-
-echo Executando Explorer na pasta de upload dos arquivos de palpites no Google Drive...
-cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
-start .
 echo.
 
 
