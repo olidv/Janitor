@@ -15,6 +15,7 @@ import sys
 import time
 
 # Libs/Frameworks modules
+from PIL import Image
 from selenium import webdriver
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.service import Service
@@ -81,14 +82,24 @@ browser = open_webdriver_firefox()
 
 # salva as telas de todas as loterias:
 for loteria in LOTERIAS:
-    print(f"\n{loteria}: Capturando tela da loteria...")
     loteria_url = PALPITES_URL + loteria
     loteria_png = loteria + ".png"
+    loteria_pdf = loteria + ".pdf"
 
     # acessa a pagina de palpites da loteria:
+    print(f"\n\t{loteria_png}: Capturando tela da loteria em imagem PNG...")
     browser.get(loteria_url)
     time.sleep(5)  # aguarda 5 segundos para a pagina carregar totalmente antes do screenshot
+
+    # efetua a captura da tela e salva o arquivo no formato PNG:
     browser.save_full_page_screenshot(loteria_png)  # salva o arquivo (imagem) no diretorio corrente
+    time.sleep(5)  # aguarda 5 segundos para finalizar a captura totalmente
+
+    # tambem aproveita para gerar um PDF utilizando a imagem PNG:
+    print(f"\t{loteria_pdf}: Salvando imagem da loteria em arquivo PDF...")
+    loteria_img = Image.open(loteria_png)
+    loteria_img = loteria_img.convert('RGB')
+    loteria_img.save(loteria_pdf)
 
 # ao final, fecha o browser:
 browser.quit()

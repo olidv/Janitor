@@ -244,8 +244,9 @@ desc_content = desc_content.format(ddmmmaaaa=ddmmmaaaa, data_extenso=data_extens
                                    hash_loterias=hash_loterias, list_loterias=list_loterias,
                                    nome_cantor=nome_cantor)
 
-print(desc_content)
-
 # regrava o arquivo no diretorio base, sem alterar o original no diretorio _daily:
 with open(path_desc_file, "wt") as f:
     f.write(desc_content)
+
+# printa o texto para simples conferencia:
+print(desc_content)
