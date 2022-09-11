@@ -105,8 +105,9 @@ CANTORES = [
 ]
 
 REPO_DIR = r"D:\Workspace\Loto365\cdn-lothon\data\palpites"
-BASE_DIR = r"D:\Workspace\Loto365\docs-templates\Video"
-DAILY_DIR = r"D:\Workspace\Loto365\docs-templates\Video\_daily"
+VIDEOS_DIR = r"D:\Workspace\Loto365\docs-templates\Videos"
+TEMPLATES_DIR = r"D:\Workspace\Loto365\docs-templates\Videos\Templates"
+SOCIAL_DIR = r"D:\Workspace\Loto365\docs-templates\Social"
 
 
 # ----------------------------------------------------------------------------
@@ -138,39 +139,39 @@ def delete_file(file_name: str) -> bool:
         return False
 
 
-# deleta os arquivos anteriores no diretorio base:
-def delete_base_dir_file() -> bool:
-    # identifica no diretorio corrente (BASE_DIR) a relacao de arquivos ainda presentes:
+# deleta os arquivos anteriores no diretorio social:
+def delete_social_dir_file() -> bool:
+    # identifica no diretorio corrente (SOCIAL_DIR) a relacao de arquivos ainda presentes:
     list_files = glob.glob("*.*")
     len_files = len(list_files)
 
-    # qualquer arquivo anterior no diretorio base deve ser apagado:
+    # qualquer arquivo anterior no diretorio social deve ser apagado:
     if len_files > 0:
         nro_arquivos = "um arquivo" if len_files == 1 else f"os {len_files} arquivos"
-        print(f"{BASE_DIR}: Movendo para lixeira {nro_arquivos} no diretorio base...")
+        print(f"{SOCIAL_DIR}: Movendo para lixeira {nro_arquivos} no diretorio social...")
         for file in list_files:
             print(f"\t{file}: Movendo arquivo para lixeira...")
-            path_file = os.path.join(BASE_DIR, file)
+            path_file = os.path.join(SOCIAL_DIR, file)
             delete_file(path_file)
         return True
 
     else:
-        print(f"{BASE_DIR}: Nenhum arquivo encontrado no diretorio base...")
+        print(f"{SOCIAL_DIR}: Nenhum arquivo encontrado no diretorio social...")
         return False
 
 
-# copia os arquivos do diretorio para o diretorio base:
-def copy_to_base_dir(from_dir):
+# copia os arquivos do diretorio para o diretorio social:
+def copy_to_social_dir(from_dir):
     files_from_dir = glob.glob('*.*', root_dir=from_dir)
     size_from_dir = len(files_from_dir)
     # qualquer arquivo dentro do diretorio sera copiado:
     if size_from_dir > 0:
         nro_arquivos = "um arquivo" if size_from_dir == 1 else f"{size_from_dir} arquivos"
-        print(f"{from_dir}: Copiando {nro_arquivos} para o diretorio base...")
+        print(f"{from_dir}: Copiando {nro_arquivos} para o diretorio social...")
         for file_from_dir in files_from_dir:
-            print(f"\t{file_from_dir}: Copiando arquivo para o diretorio base...")
+            print(f"\t{file_from_dir}: Copiando arquivo para o diretorio social...")
             from_dir_file = os.path.join(from_dir, file_from_dir)
-            shutil.copy(from_dir_file, BASE_DIR)
+            shutil.copy(from_dir_file, SOCIAL_DIR)
     else:
         print(f"{from_dir}: Nenhum arquivo encontrado no diretorio...")
 
@@ -203,34 +204,34 @@ int_aaaa = hoje.year
 print(f"{str_dd}/{str_mmm}/{int_aaaa}: {str_dia}, {int_dd} de {str_mes} de {int_aaaa}. "
       f"Diretorio do Dia = /{dir_dia}")
 
-# posiciona no diretorio base usado para gravacao de videos:
-os.chdir(BASE_DIR)
+# posiciona no diretorio social usado para gravacao de videos:
+os.chdir(SOCIAL_DIR)
 
-# qualquer arquivo anterior no diretorio base deve ser apagado:
-delete_base_dir_file()
+# qualquer arquivo anterior no diretorio social deve ser apagado:
+delete_social_dir_file()
 
 # verifica quais as loterias que terao sorteio hoje:
 loterias_hoje = LOTERIAS_SEMANA[int_dia]
 len_loterias_hoje = len(loterias_hoje)
 
-# copia para o diretorio base as imagens das loterias de hoje:
-print(f"{REPO_DIR}: Copiando {len_loterias_hoje} imagens de loterias para o diretorio base...")
+# copia para o diretorio social as imagens das loterias de hoje:
+print(f"{REPO_DIR}: Copiando {len_loterias_hoje} imagens de loterias para o diretorio social...")
 for id_loteria in loterias_hoje:
     file_img = file_loteria(id_loteria, "png")
     print(f"\t{file_img}: Copiando arquivo de imagem...")
     from_file_img = os.path.join(REPO_DIR, file_img)
-    shutil.copy(from_file_img, BASE_DIR)
+    shutil.copy(from_file_img, SOCIAL_DIR)
 
 # obtem os arquivos que sao comuns a todos os dias, usados diariamente (daily):
-copy_to_base_dir(DAILY_DIR)
+copy_to_social_dir(TEMPLATES_DIR)
 
 # busca os demais arquivos do diretorio correspondente ao dia de hoje:
-from_dir_dia = os.path.join(BASE_DIR, dir_dia)
-copy_to_base_dir(from_dir_dia)
+from_dir_dia = os.path.join(VIDEOS_DIR, dir_dia)
+copy_to_social_dir(from_dir_dia)
 
 # processa o descritivo do video, substituindo a data do dia e as loterias que tem sorteio:
-path_desc_file = os.path.join(BASE_DIR, "_descricao.txt")
-# esta lendo o arquivo TXT no diretorio base, para nao alterar o original:
+path_desc_file = os.path.join(SOCIAL_DIR, "_descricao.txt")
+# esta lendo o arquivo TXT no diretorio social, para nao alterar o original:
 with open(path_desc_file, "rt") as f:
     desc_content = f.read()
 
@@ -244,7 +245,7 @@ desc_content = desc_content.format(ddmmmaaaa=ddmmmaaaa, data_extenso=data_extens
                                    hash_loterias=hash_loterias, list_loterias=list_loterias,
                                    nome_cantor=nome_cantor)
 
-# regrava o arquivo no diretorio base, sem alterar o original no diretorio _daily:
+# regrava o arquivo no diretorio social, sem alterar o original no diretorio _daily:
 with open(path_desc_file, "wt") as f:
     f.write(desc_content)
 
