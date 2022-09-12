@@ -171,6 +171,17 @@ def delete_social_dir_file(social_dir) -> bool:
         return False
 
 
+# copia para o diretorio social as imagens das loterias de hoje:
+def copy_images_from_repo(list_loterias_hoje, to_dir):
+    nr_loterias = len(list_loterias_hoje)
+    print(f"{REPO_DIR}: Copiando {nr_loterias} imagens de loterias para o diretorio social...")
+    for id_loteria in loterias_hoje:
+        file_img = file_loteria(id_loteria, "png")
+        print(f"\t{file_img}: Copiando arquivo de imagem...")
+        from_file_img = os.path.join(REPO_DIR, file_img)
+        shutil.copy(from_file_img, to_dir)
+
+
 # copia os arquivos do diretorio para o diretorio social:
 def copy_to_social_dir(from_dir, to_dir, pathnames):
     files_from_dir = glob.glob(pathnames, root_dir=from_dir)
@@ -273,15 +284,10 @@ delete_social_dir_file(SLIDES_DIR)
 
 # verifica quais as loterias que terao sorteio hoje:
 loterias_hoje = LOTERIAS_SEMANA[int_dia]
-len_loterias_hoje = len(loterias_hoje)
 
 # copia para o diretorio social as imagens das loterias de hoje:
-print(f"{REPO_DIR}: Copiando {len_loterias_hoje} imagens de loterias para o diretorio social...")
-for id_loteria in loterias_hoje:
-    file_img = file_loteria(id_loteria, "png")
-    print(f"\t{file_img}: Copiando arquivo de imagem...")
-    from_file_img = os.path.join(REPO_DIR, file_img)
-    shutil.copy(from_file_img, SLIDES_DIR)
+copy_images_from_repo(loterias_hoje, SOCIAL_DIR)  # estas serao usadas no WhatsApp e Telegram
+copy_images_from_repo(loterias_hoje, SLIDES_DIR)  # estas serao usadas para gravar o video
 
 # obtem os arquivos que sao comuns a todos os dias, usados diariamente (daily):
 copy_to_social_dir(TEMPLATES_DIR, SOCIAL_DIR, "*.txt")
