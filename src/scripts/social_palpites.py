@@ -16,12 +16,11 @@ import glob
 import shutil
 import subprocess
 import webbrowser
-import time
 from datetime import date, timedelta
 
 # Libs/Frameworks modules
 import send2trash
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 
 # ----------------------------------------------------------------------------
@@ -115,6 +114,13 @@ TEMPLATES_DIR = r"D:\Workspace\Loto365\docs-templates\Videos\Templates"
 
 SOCIAL_DIR = r"D:\Workspace\Loto365\docs-templates\Social"
 SLIDES_DIR = r"D:\Workspace\Loto365\docs-templates\Social\slides"
+
+TEXTO_VIDEO_FILE = os.path.join(SOCIAL_DIR, "descricao.txt")
+BEGIN_VIDEO_FILE = os.path.join(SLIDES_DIR, "begin-video.jpg")
+FONT_TTF_FILE = os.path.join(TEMPLATES_DIR, "FuturaLT_Bold.ttf")
+FONT_TTF_SIZE = 42
+TEXT_COLOR_RGB = (255, 255, 0)
+TEXT_LOCAL_X_Y = (285, 946)
 
 OBS_HOME = r"C:\Program Files\obs-studio\bin\64bit"
 OBS_STUDIO = "obs64.exe"
@@ -247,6 +253,22 @@ def crop_images_dir(dir_images):
             img.save(crop_file_img, 'PNG')
 
 
+# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.jpg
+def write_today_image(begin_file_img, texto):
+    # carrega a imagem e a fonte a ser usada na escrita:
+    begin_image = Image.open(begin_file_img)
+    futura_font = ImageFont.truetype(font=FONT_TTF_FILE, size=FONT_TTF_SIZE)
+
+    # Ref: texto "22 / FEVEREIRO / 2022" possui 21 chr, 510 pix e centraliza no X = 285.
+    offset_x = (21 - len(texto)) * (510/21) // 2
+    pos_xy = (TEXT_LOCAL_X_Y[0] + offset_x, TEXT_LOCAL_X_Y[1])
+
+    # escreve o texto na imagem e salva sobre o arquivo original:
+    draw_image = ImageDraw.Draw(begin_image)
+    draw_image.text(pos_xy, texto, fill=TEXT_COLOR_RGB, font=futura_font)
+    begin_image.save(begin_file_img)
+
+
 # ----------------------------------------------------------------------------
 # MAIN ENTRY-POINT
 # ----------------------------------------------------------------------------
@@ -300,12 +322,16 @@ copy_to_social_dir(from_dir_dia, SLIDES_DIR, "*.jpg")
 # efetua crop das imagens/slides antes da gravacao:
 crop_images_dir(SLIDES_DIR)
 
+
+# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.jpg
+data_texto = f"{int_dd} / {str_mes.upper()} / {int_aaaa}"
+write_today_image(BEGIN_VIDEO_FILE, data_texto)
+
 # processa o descritivo do video, substituindo a data do dia e as loterias que tem sorteio:
-path_desc_file = os.path.join(SOCIAL_DIR, "descricao.txt")
-print(f"{path_desc_file}: Formatando a descricao para postagem em redes sociais...")
+print(f"{TEXTO_VIDEO_FILE}: Formatando a descricao para postagem em redes sociais...")
 
 # esta lendo o arquivo TXT no diretorio social, para nao alterar o original:
-with open(path_desc_file, "rt") as f:
+with open(TEXTO_VIDEO_FILE, "rt") as f:
     desc_content = f.read()
 
 # efetua as substituicoes de interpolacao:
@@ -319,11 +345,11 @@ desc_content = desc_content.format(ddmmmaaaa=ddmmmaaaa, data_extenso=data_extens
                                    nome_cantor=nome_cantor)
 
 # regrava o arquivo no diretorio social, sem alterar o original no diretorio _daily:
-with open(path_desc_file, "wt") as f:
+with open(TEXTO_VIDEO_FILE, "wt") as f:
     f.write(desc_content)
 
 # exibe o texto em editor proprio, para simples conferencia e copy/paste:
-webbrowser.open(path_desc_file)
+webbrowser.open(TEXTO_VIDEO_FILE)
 
 # executa o OBS Studio para gravacao de video com slides do dia:
 cena_dir = f"Cena_{dir_dia}"
