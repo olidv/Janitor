@@ -151,6 +151,11 @@ git commit -am "Novos palpites gerados diariamente pelo Lothon."
 git push origin main
 echo.
 
+echo Executando Firefox para verificar Loto365.com.br e atualizar Google Drive e Redes Sociais...
+cd /D D:\Workspace\Loto365\docs-templates\Social
+start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.tiktok.com/upload" "https://www.instagram.com/loto365br/" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/loto365br/?share=true" "https://br.pinterest.com/pin-builder/"
+echo.
+
 echo Capturando as telas de consulta dos palpites da Web...
 cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
 shot_palpites.py 100
@@ -177,12 +182,6 @@ rem echo.
 echo Preparando recursos para criacao de video e publicacao nas redes sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Social
 social_palpites.py
-start .
-echo.
-
-echo Executando Firefox para verificar Loto365.com.br e atualizar Google Drive e Redes Sociais...
-cd /D D:\Workspace\Loto365\docs-templates\Social
-start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.tiktok.com/upload" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/loto365br/?share=true" "https://www.instagram.com/loto365br/" "https://br.pinterest.com/pin-builder/"
 echo.
 
 
