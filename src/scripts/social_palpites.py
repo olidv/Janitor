@@ -116,7 +116,7 @@ SOCIAL_DIR = r"D:\Workspace\Loto365\docs-templates\Social"
 SLIDES_DIR = r"D:\Workspace\Loto365\docs-templates\Social\slides"
 
 TEXTO_VIDEO_FILE = os.path.join(SOCIAL_DIR, "descricao.txt")
-BEGIN_VIDEO_FILE = os.path.join(SLIDES_DIR, "begin-video.jpg")
+BEGIN_VIDEO_FILE = os.path.join(SLIDES_DIR, "begin-video.png")
 FONT_TTF_FILE = os.path.join(TEMPLATES_DIR, "FuturaLT_Bold.ttf")
 FONT_TTF_SIZE = 42
 TEXT_COLOR_RGB = (255, 255, 0)
@@ -206,7 +206,6 @@ def copy_to_social_dir(from_dir, to_dir, pathnames):
 
 def crop_images_dir(dir_images):
     list_files = glob.glob("*.png", root_dir=dir_images)
-    list_files.extend(glob.glob("*.jpg", root_dir=dir_images))
     len_files = len(list_files)
     if len_files <= 0:
         sys.exit(f"{dir_images}: Nao ha imagens de palpites no diretorio!")
@@ -253,7 +252,7 @@ def crop_images_dir(dir_images):
             img.save(crop_file_img, 'PNG')
 
 
-# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.jpg
+# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.png
 def write_today_image(begin_file_img, texto):
     # carrega a imagem e a fonte a ser usada na escrita:
     begin_image = Image.open(begin_file_img)
@@ -313,17 +312,17 @@ copy_images_from_repo(loterias_hoje, SLIDES_DIR)  # estas serao usadas para grav
 
 # obtem os arquivos que sao comuns a todos os dias, usados diariamente (daily):
 copy_to_social_dir(TEMPLATES_DIR, SOCIAL_DIR, "*.txt")
-copy_to_social_dir(TEMPLATES_DIR, SLIDES_DIR, "*.jpg")
+copy_to_social_dir(TEMPLATES_DIR, SLIDES_DIR, "*.png")
 
 # busca os demais arquivos do diretorio correspondente ao dia de hoje:
 from_dir_dia = os.path.join(VIDEOS_DIR, dir_dia)
-copy_to_social_dir(from_dir_dia, SLIDES_DIR, "*.jpg")
+copy_to_social_dir(from_dir_dia, SLIDES_DIR, "*.png")
 
 # efetua crop das imagens/slides antes da gravacao:
 crop_images_dir(SLIDES_DIR)
 
 
-# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.jpg
+# grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.png
 data_texto = f"{int_dd} / {str_mes.upper()} / {int_aaaa}"
 write_today_image(BEGIN_VIDEO_FILE, data_texto)
 
