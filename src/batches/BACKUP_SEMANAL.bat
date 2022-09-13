@@ -15,9 +15,13 @@ echo     PRINT DESKTOP  [ PRINTSCREEN ]  C/  POST-IT
 echo.
 echo     FAVORITOS  CHROME,  BRAVE,   EDGE,  FIREFOX
 echo.
+echo     EXPORTAR SETTINGS DAS IDEs JETBRAINS EM ZIP
+echo.
+echo     COMPACTAR  NOTAS DO  JOPLIN EM  ARQUIVOS 7Z
+echo.
 echo     EXPORTAR SETTINGS DAS FERRAMENTAS JETBRAINS
 echo.
-echo     FECHAR  NOTEPAD++,  ENCRYPTPAD
+echo     FECHAR: OUTLOOK NOTEPAD++ JOPLIN ENCRYPTPAD
 echo.
 echo.
 
@@ -47,8 +51,8 @@ mkdir E:\Cloud\Softeca\Apps\JetBrains\%HOJE%
 move /Y *.zip E:\Cloud\Softeca\Apps\JetBrains\%HOJE%
 echo.
 
-rem mkdir E:\Cloud\OneNotes\%HOJE%
-rem move /Y *.7z E:\Cloud\OneNotes\%HOJE%\
+ mkdir E:\Cloud\Notes\Joplin\%HOJE%
+ move /Y *.7z E:\Cloud\Notes\Joplin\%HOJE%\
 
 echo Copiando imagens de screenshot...
 mkdir E:\Cloud\Softeca\Windows\Desktop\Screenshot_%HOJE%
@@ -78,7 +82,7 @@ mkdir E:\Cloud\Softeca\3M\PSNotes_%HOJE%
 xcopy C:\Users\qdev\AppData\Roaming\3M\PSNotes\*.* E:\Cloud\Softeca\3M\PSNotes_%HOJE%  /E /C /Q /H /R /Y
 echo.
 
-echo Copiando arquivos de configuração do MS Visual Studio Code...
+echo Copiando arquivos de configuracao do MS Visual Studio Code...
 xcopy C:\Users\qdev\AppData\Roaming\Code\User\*.* E:\Cloud\Softeca\Windows\VS-Code\User\  /E /C /Q /H /R /Y
 echo.
 
