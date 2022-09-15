@@ -15,6 +15,7 @@ import sys
 import glob
 import shutil
 import subprocess
+import time
 import webbrowser
 from datetime import date, timedelta
 
@@ -125,6 +126,8 @@ TEXT_LOCAL_X_Y = (285, 946)
 OBS_HOME = r"C:\Program Files\obs-studio\bin\64bit"
 OBS_STUDIO = "obs64.exe"
 OBS_PARMS = " --scene {cena} --startrecording"
+OBS_KILL_EXE = f"TASKKILL /F /IM {OBS_STUDIO} /T"
+OBS_WAIT_SECS = 100  # 1min40seg eh o suficiente para gravar um video de 56 segundos...
 
 
 # ----------------------------------------------------------------------------
@@ -354,4 +357,9 @@ webbrowser.open(TEXTO_VIDEO_FILE)
 cena_dir = f"Cena_{dir_dia}"
 obs_exe = OBS_STUDIO + OBS_PARMS.format(cena=cena_dir)
 print(f"{OBS_HOME}: Executando o programa do OBS Studio: {obs_exe}")
-subprocess.Popen(obs_exe, cwd=OBS_HOME, shell=True)
+obs_proc = subprocess.Popen(obs_exe, cwd=OBS_HOME, shell=True)
+
+# aguarda um tempo para que o OBS grave o video e encerra o programa:
+print(f"{OBS_STUDIO}: Aguardando {OBS_WAIT_SECS} segundos para cancelar o OBS STUDIO...")
+time.sleep(OBS_WAIT_SECS)
+subprocess.call(OBS_KILL_EXE, shell=True)

@@ -164,7 +164,7 @@ echo.
 echo Reduzindo as imagens capturadas para tamanho de mobile...
 cd /D D:\Workspace\Loto365\cdn-lothon\data\palpites
 reduce_palpites.py
-start .
+rem start .
 echo.
 
 echo Efetuando commit dos arquivos PNG e PDF no repositorio GitHub...
@@ -182,6 +182,7 @@ rem echo.
 echo Preparando recursos para criacao de video e publicacao nas redes sociais...
 cd /D D:\Workspace\Loto365\docs-templates\Social
 social_palpites.py
+start .
 echo.
 
 
