@@ -127,7 +127,7 @@ OBS_HOME = r"C:\Program Files\obs-studio\bin\64bit"
 OBS_STUDIO = "obs64.exe"
 OBS_PARMS = " --scene {cena} --startrecording"
 OBS_KILL_EXE = f"TASKKILL /F /IM {OBS_STUDIO} /T"
-OBS_WAIT_SECS = 100  # 1min40seg eh o suficiente para gravar um video de 56 segundos...
+OBS_WAIT_SECS = 66  # 01min:06seg eh o suficiente para gravar um video de 56 segundos...
 
 
 # ----------------------------------------------------------------------------
@@ -320,6 +320,9 @@ copy_to_social_dir(TEMPLATES_DIR, SLIDES_DIR, "*.png")
 # busca os demais arquivos do diretorio correspondente ao dia de hoje:
 from_dir_dia = os.path.join(VIDEOS_DIR, dir_dia)
 copy_to_social_dir(from_dir_dia, SLIDES_DIR, "*.png")
+
+# deixa uma copia da capa no diretorio social, para facilitar o post nas redes sociais:
+copy_to_social_dir(SLIDES_DIR, SOCIAL_DIR, "begin-video.png")
 
 # efetua crop das imagens/slides antes da gravacao:
 crop_images_dir(SLIDES_DIR)
