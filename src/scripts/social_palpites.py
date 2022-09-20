@@ -109,6 +109,7 @@ CANTORES = [
 ]
 
 REPO_DIR = r"D:\Workspace\Loto365\cdn-lothon\data\palpites"
+DIADESORTE_CSV_FILE = os.path.join(REPO_DIR, "dia-de-sorte.csv")
 
 VIDEOS_DIR = r"D:\Workspace\Loto365\docs-templates\Videos"
 TEMPLATES_DIR = r"D:\Workspace\Loto365\docs-templates\Videos\Templates"
@@ -327,7 +328,6 @@ copy_to_social_dir(SLIDES_DIR, SOCIAL_DIR, "begin-video.png")
 # efetua crop das imagens/slides antes da gravacao:
 crop_images_dir(SLIDES_DIR)
 
-
 # grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.png
 data_texto = f"{int_dd} / {str_mes.upper()} / {int_aaaa}"
 write_today_image(BEGIN_VIDEO_FILE, data_texto)
@@ -355,6 +355,8 @@ with open(TEXTO_VIDEO_FILE, "wt") as f:
 
 # exibe o texto em editor proprio, para simples conferencia e copy/paste:
 webbrowser.open(TEXTO_VIDEO_FILE)
+# exibe os palpites da loteria DIA DE SORTE para conferir a consulta do site:
+webbrowser.open(DIADESORTE_CSV_FILE)
 
 # executa o OBS Studio para gravacao de video com slides do dia:
 cena_dir = f"Cena_{dir_dia}"
