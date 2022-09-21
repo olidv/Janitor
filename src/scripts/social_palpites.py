@@ -322,15 +322,15 @@ copy_to_social_dir(TEMPLATES_DIR, SLIDES_DIR, "*.png")
 from_dir_dia = os.path.join(VIDEOS_DIR, dir_dia)
 copy_to_social_dir(from_dir_dia, SLIDES_DIR, "*.png")
 
-# deixa uma copia da capa no diretorio social, para facilitar o post nas redes sociais:
-copy_to_social_dir(SLIDES_DIR, SOCIAL_DIR, "begin-video.png")
-
 # efetua crop das imagens/slides antes da gravacao:
 crop_images_dir(SLIDES_DIR)
 
 # grava a data corrente na imagem introdutoria do video: /Social/slides/begin-video.png
 data_texto = f"{int_dd} / {str_mes.upper()} / {int_aaaa}"
 write_today_image(BEGIN_VIDEO_FILE, data_texto)
+
+# deixa uma copia da capa no diretorio social, para facilitar o post nas redes sociais:
+copy_to_social_dir(SLIDES_DIR, SOCIAL_DIR, "begin-video.png")
 
 # processa o descritivo do video, substituindo a data do dia e as loterias que tem sorteio:
 print(f"{TEXTO_VIDEO_FILE}: Formatando a descricao para postagem em redes sociais...")
