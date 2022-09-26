@@ -14,8 +14,6 @@ namespace Janitor
         // utilitario para atualizacao do horario do windows:
         private static readonly String W32TM = @"C:\Windows\System32\w32tm.exe";
 
-        private static Janitor.frm_config frmConfig = null;
-
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -57,8 +55,12 @@ namespace Janitor
             }
         }
 
-        private static void ResyncSystemTime()
+        public static void ResyncSystemTime()
         {
+            // verifica se esta configurado para acertar o relogio periodicamente:
+            if (! Properties.Settings.Default.GeralFlagClock) return;
+
+            // se estiver configurado ok, segue com o acerto do relogio local:
             logger.Trace("Vai acertar a hora do computador com servidores do MS Windows...");
             try
             {

@@ -29,7 +29,6 @@ namespace Janitor
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_config));
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -37,7 +36,7 @@ namespace Janitor
             this.tbp_geral = new System.Windows.Forms.TabPage();
             this.grb_geral_agendador = new System.Windows.Forms.GroupBox();
             this.ckb_ga_acertar = new System.Windows.Forms.CheckBox();
-            this.ckb_ga_encerrar = new System.Windows.Forms.CheckBox();
+            this.ckb_ga_nao_encerrar = new System.Windows.Forms.CheckBox();
             this.ckb_ga_habilitar = new System.Windows.Forms.CheckBox();
             this.tbp_metatrader = new System.Windows.Forms.TabPage();
             this.grp_metatrader_coleta = new System.Windows.Forms.GroupBox();
@@ -62,7 +61,6 @@ namespace Janitor
             this.txb_qm_programa = new System.Windows.Forms.TextBox();
             this.lbl_qm_programa = new System.Windows.Forms.Label();
             this.chb_qm_executar = new System.Windows.Forms.CheckBox();
-            this.tmr_clock = new System.Windows.Forms.Timer(this.components);
             this.tbp_infinite = new System.Windows.Forms.TabPage();
             this.grb_infinite_manutencao = new System.Windows.Forms.GroupBox();
             this.txb_im_execucao = new System.Windows.Forms.TextBox();
@@ -136,7 +134,7 @@ namespace Janitor
             this.grb_geral_agendador.Controls.Add(this.btn_ga_feriados);
             this.grb_geral_agendador.Controls.Add(this.btn_ga_encerrar);
             this.grb_geral_agendador.Controls.Add(this.ckb_ga_acertar);
-            this.grb_geral_agendador.Controls.Add(this.ckb_ga_encerrar);
+            this.grb_geral_agendador.Controls.Add(this.ckb_ga_nao_encerrar);
             this.grb_geral_agendador.Controls.Add(this.ckb_ga_habilitar);
             this.grb_geral_agendador.Location = new System.Drawing.Point(7, 9);
             this.grb_geral_agendador.Name = "grb_geral_agendador";
@@ -155,15 +153,15 @@ namespace Janitor
             this.ckb_ga_acertar.Text = "Acertar as horas do computador periodicamente";
             this.ckb_ga_acertar.UseVisualStyleBackColor = true;
             // 
-            // ckb_ga_encerrar
+            // ckb_ga_nao_encerrar
             // 
-            this.ckb_ga_encerrar.AutoSize = true;
-            this.ckb_ga_encerrar.Location = new System.Drawing.Point(11, 74);
-            this.ckb_ga_encerrar.Name = "ckb_ga_encerrar";
-            this.ckb_ga_encerrar.Size = new System.Drawing.Size(240, 17);
-            this.ckb_ga_encerrar.TabIndex = 4;
-            this.ckb_ga_encerrar.Text = "NÃO encerrar aplicativos ainda em execução";
-            this.ckb_ga_encerrar.UseVisualStyleBackColor = true;
+            this.ckb_ga_nao_encerrar.AutoSize = true;
+            this.ckb_ga_nao_encerrar.Location = new System.Drawing.Point(11, 74);
+            this.ckb_ga_nao_encerrar.Name = "ckb_ga_nao_encerrar";
+            this.ckb_ga_nao_encerrar.Size = new System.Drawing.Size(240, 17);
+            this.ckb_ga_nao_encerrar.TabIndex = 4;
+            this.ckb_ga_nao_encerrar.Text = "NÃO encerrar aplicativos ainda em execução";
+            this.ckb_ga_nao_encerrar.UseVisualStyleBackColor = true;
             // 
             // ckb_ga_habilitar
             // 
@@ -402,10 +400,6 @@ namespace Janitor
             this.chb_qm_executar.Text = "Executar programa de manutenção diária";
             this.chb_qm_executar.UseVisualStyleBackColor = true;
             // 
-            // tmr_clock
-            // 
-            this.tmr_clock.Tick += new System.EventHandler(this.tmr_clock_Tick);
-            // 
             // tbp_infinite
             // 
             this.tbp_infinite.Controls.Add(this.grb_infinite_manutencao);
@@ -537,7 +531,6 @@ namespace Janitor
         private System.Windows.Forms.TabControl tbc_panel;
         private System.Windows.Forms.TabPage tbp_geral;
         private System.Windows.Forms.TabPage tbp_loto365;
-        private System.Windows.Forms.Timer tmr_clock;
         private System.Windows.Forms.TabPage tbp_metatrader;
         private System.Windows.Forms.TabPage tbp_quanthon;
         private System.Windows.Forms.GroupBox grb_geral_agendador;
@@ -561,7 +554,7 @@ namespace Janitor
         private System.Windows.Forms.Label lbl_qm_programa;
         private System.Windows.Forms.CheckBox chb_qm_executar;
         private System.Windows.Forms.CheckBox ckb_ga_acertar;
-        private System.Windows.Forms.CheckBox ckb_ga_encerrar;
+        private System.Windows.Forms.CheckBox ckb_ga_nao_encerrar;
         private System.Windows.Forms.Label lbl_mc_modal;
         private System.Windows.Forms.TextBox txb_mc_modal;
         private System.Windows.Forms.TabPage tbp_infinite;

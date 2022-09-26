@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Janitor
@@ -23,7 +17,7 @@ namespace Janitor
             // Aba Geral
             ckb_ga_habilitar.Checked = Properties.Settings.Default.GeralFlagTasks;
             ckb_ga_acertar.Checked = Properties.Settings.Default.GeralFlagClock;
-            ckb_ga_encerrar.Checked = Properties.Settings.Default.GeralFlagClose;
+            ckb_ga_nao_encerrar.Checked = Properties.Settings.Default.GeralFlagNotClose;
 
             // Aba MetaTrader
             ckb_mc_executar.Checked = Properties.Settings.Default.MT5FlagProgram;
@@ -62,7 +56,7 @@ namespace Janitor
             // Aba Geral
             Properties.Settings.Default.GeralFlagTasks = ckb_ga_habilitar.Checked;
             Properties.Settings.Default.GeralFlagClock = ckb_ga_acertar.Checked;
-            Properties.Settings.Default.GeralFlagClose = ckb_ga_encerrar.Checked;
+            Properties.Settings.Default.GeralFlagNotClose = ckb_ga_nao_encerrar.Checked;
 
             // Aba MetaTrader
             Properties.Settings.Default.MT5FlagProgram = ckb_mc_executar.Checked;

@@ -50,12 +50,12 @@ namespace Janitor.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool GeralFlagClose {
+        public bool GeralFlagNotClose {
             get {
-                return ((bool)(this["GeralFlagClose"]));
+                return ((bool)(this["GeralFlagNotClose"]));
             }
             set {
-                this["GeralFlagClose"] = value;
+                this["GeralFlagNotClose"] = value;
             }
         }
         

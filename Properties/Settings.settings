@@ -8,7 +8,7 @@
     <Setting Name="GeralFlagClock" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="GeralFlagClose" Type="System.Boolean" Scope="User">
+    <Setting Name="GeralFlagNotClose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MT5FlagProgram" Type="System.Boolean" Scope="User">
