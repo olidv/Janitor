@@ -128,7 +128,7 @@ OBS_HOME = r"C:\Program Files\obs-studio\bin\64bit"
 OBS_STUDIO = "obs64.exe"
 OBS_PARMS = " --scene {cena} --startrecording"
 OBS_KILL_EXE = f"TASKKILL /F /IM {OBS_STUDIO} /T"
-OBS_WAIT_SECS = 66  # 01min:06seg eh o suficiente para gravar um video de 56 segundos...
+OBS_WAIT_SECS = 80  # 01min:20seg eh o suficiente para gravar um video de 56 segundos...
 
 
 # ----------------------------------------------------------------------------
