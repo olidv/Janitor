@@ -8,21 +8,210 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace Janitor.Properties
-{
+namespace Janitor.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GeralFlagTasks {
+            get {
+                return ((bool)(this["GeralFlagTasks"]));
+            }
+            set {
+                this["GeralFlagTasks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GeralFlagClock {
+            get {
+                return ((bool)(this["GeralFlagClock"]));
+            }
+            set {
+                this["GeralFlagClock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GeralFlagClose {
+            get {
+                return ((bool)(this["GeralFlagClose"]));
+            }
+            set {
+                this["GeralFlagClose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MT5FlagProgram {
+            get {
+                return ((bool)(this["MT5FlagProgram"]));
+            }
+            set {
+                this["MT5FlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MT5PathGenial {
+            get {
+                return ((string)(this["MT5PathGenial"]));
+            }
+            set {
+                this["MT5PathGenial"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MT5PathModal {
+            get {
+                return ((string)(this["MT5PathModal"]));
+            }
+            set {
+                this["MT5PathModal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MT5PathXmglob {
+            get {
+                return ((string)(this["MT5PathXmglob"]));
+            }
+            set {
+                this["MT5PathXmglob"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool InfiFlagProgram {
+            get {
+                return ((bool)(this["InfiFlagProgram"]));
+            }
+            set {
+                this["InfiFlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InfiPathProgram {
+            get {
+                return ((string)(this["InfiPathProgram"]));
+            }
+            set {
+                this["InfiPathProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InfiLastExecute {
+            get {
+                return ((string)(this["InfiLastExecute"]));
+            }
+            set {
+                this["InfiLastExecute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool QuantFlagProgram {
+            get {
+                return ((bool)(this["QuantFlagProgram"]));
+            }
+            set {
+                this["QuantFlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QuantPathProgram {
+            get {
+                return ((string)(this["QuantPathProgram"]));
+            }
+            set {
+                this["QuantPathProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string QuantLastExecute {
+            get {
+                return ((string)(this["QuantLastExecute"]));
+            }
+            set {
+                this["QuantLastExecute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LotoFlagProgram {
+            get {
+                return ((bool)(this["LotoFlagProgram"]));
+            }
+            set {
+                this["LotoFlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LotoPathProgram {
+            get {
+                return ((string)(this["LotoPathProgram"]));
+            }
+            set {
+                this["LotoPathProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LotoLastExecute {
+            get {
+                return ((string)(this["LotoLastExecute"]));
+            }
+            set {
+                this["LotoLastExecute"] = value;
             }
         }
     }

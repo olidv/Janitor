@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using NLog;
@@ -25,23 +22,29 @@ namespace Janitor
         [STAThread]
         static void Main()
         {
-            logger.Info("Iniciando aplicacao Clock.exe.");
-            // captura evento do sistema para identificar retorno (resume) da hibernacao/suspensao do computador:
-            SystemEvents.PowerModeChanged += OnPowerModeChange;
+            try
+            {
+                logger.Info("Iniciando aplicacao Clock.exe.");
+                // captura evento do sistema para identificar retorno (resume) da hibernacao/suspensao do computador:
+                SystemEvents.PowerModeChanged += OnPowerModeChange;
 
-            // aproveita para sincronizar o relogio do sistema na carga deste aplicativo:
-            logger.Trace("Ao iniciar, atualiza o relogio do sistema.");
-            ResyncSystemTime();
+                // aproveita para sincronizar o relogio do sistema na carga deste aplicativo:
+                logger.Trace("Ao iniciar, atualiza o relogio do sistema.");
+                ResyncSystemTime();
 
-            // Carga da aplicacao e apresentacao da tela inicial:
-            logger.Trace("Configuracao inicial para apresentacao da tela de configuração.");
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+                // Carga da aplicacao e apresentacao da tela inicial de configuracao:
+                logger.Trace("Preparando para apresentacao da tela de configuracao.");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
 
-            logger.Trace("Abrindo tela de configuração do Janitor.exe.");
-            frmConfig = new frm_config();
-            frmConfig.Show();
-            Application.Run();
+                logger.Trace("Abrindo tela de configuracao do Janitor.");
+                var applicationContext = new CustomApplicationContext();
+                Application.Run(applicationContext);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aplicação Encerrada de Forma Inesperada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private static void OnPowerModeChange(object s, PowerModeChangedEventArgs e)

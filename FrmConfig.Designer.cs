@@ -35,45 +35,54 @@ namespace Janitor
             this.btn_cancel = new System.Windows.Forms.Button();
             this.tbc_panel = new System.Windows.Forms.TabControl();
             this.tbp_geral = new System.Windows.Forms.TabPage();
-            this.tbp_loto365 = new System.Windows.Forms.TabPage();
-            this.tmr_clock = new System.Windows.Forms.Timer(this.components);
-            this.tbp_infinite = new System.Windows.Forms.TabPage();
-            this.tbp_quanthon = new System.Windows.Forms.TabPage();
             this.grb_geral_agendador = new System.Windows.Forms.GroupBox();
+            this.ckb_ga_acertar = new System.Windows.Forms.CheckBox();
+            this.ckb_ga_encerrar = new System.Windows.Forms.CheckBox();
             this.ckb_ga_habilitar = new System.Windows.Forms.CheckBox();
-            this.lbl_ga_estacao = new System.Windows.Forms.Label();
-            this.cmb_ga_estacao = new System.Windows.Forms.ComboBox();
-            this.lbl_im_genial = new System.Windows.Forms.Label();
-            this.ckb_im_executar = new System.Windows.Forms.CheckBox();
-            this.grp_infinite_metatrader = new System.Windows.Forms.GroupBox();
-            this.txb_im_genial = new System.Windows.Forms.TextBox();
-            this.lbl_im_xmg = new System.Windows.Forms.Label();
-            this.txb_im_xmg = new System.Windows.Forms.TextBox();
+            this.tbp_metatrader = new System.Windows.Forms.TabPage();
+            this.grp_metatrader_coleta = new System.Windows.Forms.GroupBox();
+            this.lbl_mc_modal = new System.Windows.Forms.Label();
+            this.txb_mc_modal = new System.Windows.Forms.TextBox();
+            this.txb_mc_xmg = new System.Windows.Forms.TextBox();
+            this.lbl_mc_xmg = new System.Windows.Forms.Label();
+            this.txb_mc_genial = new System.Windows.Forms.TextBox();
+            this.lbl_mc_genial = new System.Windows.Forms.Label();
+            this.ckb_mc_executar = new System.Windows.Forms.CheckBox();
+            this.tbp_loto365 = new System.Windows.Forms.TabPage();
             this.grb_loto365_palpites = new System.Windows.Forms.GroupBox();
             this.txb_lp_execucao = new System.Windows.Forms.TextBox();
             this.lbl_lp_execucao = new System.Windows.Forms.Label();
             this.txb_lp_programa = new System.Windows.Forms.TextBox();
             this.lbl_lp_programa = new System.Windows.Forms.Label();
             this.ckb_lp_executar = new System.Windows.Forms.CheckBox();
+            this.tbp_quanthon = new System.Windows.Forms.TabPage();
             this.grb_quanthon_manutencao = new System.Windows.Forms.GroupBox();
             this.txb_qm_execucao = new System.Windows.Forms.TextBox();
             this.lbl_qm_execucao = new System.Windows.Forms.Label();
             this.txb_qm_programa = new System.Windows.Forms.TextBox();
             this.lbl_qm_programa = new System.Windows.Forms.Label();
             this.chb_qm_executar = new System.Windows.Forms.CheckBox();
-            this.ckb_ga_encerrar = new System.Windows.Forms.CheckBox();
-            this.ckb_ga_acertar = new System.Windows.Forms.CheckBox();
-            this.txb_im_modal = new System.Windows.Forms.TextBox();
-            this.lbl_im_modal = new System.Windows.Forms.Label();
+            this.tmr_clock = new System.Windows.Forms.Timer(this.components);
+            this.tbp_infinite = new System.Windows.Forms.TabPage();
+            this.grb_infinite_manutencao = new System.Windows.Forms.GroupBox();
+            this.txb_im_execucao = new System.Windows.Forms.TextBox();
+            this.lbl_im_execucao = new System.Windows.Forms.Label();
+            this.txb_im_programa = new System.Windows.Forms.TextBox();
+            this.lbl_im_programa = new System.Windows.Forms.Label();
+            this.chb_im_executar = new System.Windows.Forms.CheckBox();
+            this.btn_ga_feriados = new System.Windows.Forms.Button();
+            this.btn_ga_encerrar = new System.Windows.Forms.Button();
             this.tbc_panel.SuspendLayout();
             this.tbp_geral.SuspendLayout();
-            this.tbp_loto365.SuspendLayout();
-            this.tbp_infinite.SuspendLayout();
-            this.tbp_quanthon.SuspendLayout();
             this.grb_geral_agendador.SuspendLayout();
-            this.grp_infinite_metatrader.SuspendLayout();
+            this.tbp_metatrader.SuspendLayout();
+            this.grp_metatrader_coleta.SuspendLayout();
+            this.tbp_loto365.SuspendLayout();
             this.grb_loto365_palpites.SuspendLayout();
+            this.tbp_quanthon.SuspendLayout();
             this.grb_quanthon_manutencao.SuspendLayout();
+            this.tbp_infinite.SuspendLayout();
+            this.grb_infinite_manutencao.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ok
@@ -101,9 +110,10 @@ namespace Janitor
             // tbc_panel
             // 
             this.tbc_panel.Controls.Add(this.tbp_geral);
+            this.tbc_panel.Controls.Add(this.tbp_metatrader);
             this.tbc_panel.Controls.Add(this.tbp_infinite);
-            this.tbc_panel.Controls.Add(this.tbp_loto365);
             this.tbc_panel.Controls.Add(this.tbp_quanthon);
+            this.tbc_panel.Controls.Add(this.tbp_loto365);
             this.tbc_panel.Location = new System.Drawing.Point(10, 10);
             this.tbc_panel.Name = "tbc_panel";
             this.tbc_panel.SelectedIndex = 0;
@@ -121,6 +131,139 @@ namespace Janitor
             this.tbp_geral.Text = "Geral";
             this.tbp_geral.UseVisualStyleBackColor = true;
             // 
+            // grb_geral_agendador
+            // 
+            this.grb_geral_agendador.Controls.Add(this.btn_ga_feriados);
+            this.grb_geral_agendador.Controls.Add(this.btn_ga_encerrar);
+            this.grb_geral_agendador.Controls.Add(this.ckb_ga_acertar);
+            this.grb_geral_agendador.Controls.Add(this.ckb_ga_encerrar);
+            this.grb_geral_agendador.Controls.Add(this.ckb_ga_habilitar);
+            this.grb_geral_agendador.Location = new System.Drawing.Point(7, 9);
+            this.grb_geral_agendador.Name = "grb_geral_agendador";
+            this.grb_geral_agendador.Size = new System.Drawing.Size(319, 140);
+            this.grb_geral_agendador.TabIndex = 0;
+            this.grb_geral_agendador.TabStop = false;
+            this.grb_geral_agendador.Text = "Agendador de Tarefas";
+            // 
+            // ckb_ga_acertar
+            // 
+            this.ckb_ga_acertar.AutoSize = true;
+            this.ckb_ga_acertar.Location = new System.Drawing.Point(11, 48);
+            this.ckb_ga_acertar.Name = "ckb_ga_acertar";
+            this.ckb_ga_acertar.Size = new System.Drawing.Size(252, 17);
+            this.ckb_ga_acertar.TabIndex = 3;
+            this.ckb_ga_acertar.Text = "Acertar as horas do computador periodicamente";
+            this.ckb_ga_acertar.UseVisualStyleBackColor = true;
+            // 
+            // ckb_ga_encerrar
+            // 
+            this.ckb_ga_encerrar.AutoSize = true;
+            this.ckb_ga_encerrar.Location = new System.Drawing.Point(11, 74);
+            this.ckb_ga_encerrar.Name = "ckb_ga_encerrar";
+            this.ckb_ga_encerrar.Size = new System.Drawing.Size(240, 17);
+            this.ckb_ga_encerrar.TabIndex = 4;
+            this.ckb_ga_encerrar.Text = "NÃO encerrar aplicativos ainda em execução";
+            this.ckb_ga_encerrar.UseVisualStyleBackColor = true;
+            // 
+            // ckb_ga_habilitar
+            // 
+            this.ckb_ga_habilitar.AutoSize = true;
+            this.ckb_ga_habilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckb_ga_habilitar.Location = new System.Drawing.Point(11, 22);
+            this.ckb_ga_habilitar.Name = "ckb_ga_habilitar";
+            this.ckb_ga_habilitar.Size = new System.Drawing.Size(249, 17);
+            this.ckb_ga_habilitar.TabIndex = 2;
+            this.ckb_ga_habilitar.Text = "Habilitar agendamento diário de tarefas";
+            this.ckb_ga_habilitar.UseVisualStyleBackColor = true;
+            this.ckb_ga_habilitar.CheckedChanged += new System.EventHandler(this.ckb_ga_habilitar_CheckedChanged);
+            // 
+            // tbp_metatrader
+            // 
+            this.tbp_metatrader.Controls.Add(this.grp_metatrader_coleta);
+            this.tbp_metatrader.Location = new System.Drawing.Point(4, 22);
+            this.tbp_metatrader.Name = "tbp_metatrader";
+            this.tbp_metatrader.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_metatrader.Size = new System.Drawing.Size(335, 157);
+            this.tbp_metatrader.TabIndex = 2;
+            this.tbp_metatrader.Text = "MetaTrader";
+            this.tbp_metatrader.UseVisualStyleBackColor = true;
+            // 
+            // grp_metatrader_coleta
+            // 
+            this.grp_metatrader_coleta.Controls.Add(this.lbl_mc_modal);
+            this.grp_metatrader_coleta.Controls.Add(this.txb_mc_modal);
+            this.grp_metatrader_coleta.Controls.Add(this.txb_mc_xmg);
+            this.grp_metatrader_coleta.Controls.Add(this.lbl_mc_xmg);
+            this.grp_metatrader_coleta.Controls.Add(this.txb_mc_genial);
+            this.grp_metatrader_coleta.Controls.Add(this.lbl_mc_genial);
+            this.grp_metatrader_coleta.Controls.Add(this.ckb_mc_executar);
+            this.grp_metatrader_coleta.Location = new System.Drawing.Point(7, 9);
+            this.grp_metatrader_coleta.Name = "grp_metatrader_coleta";
+            this.grp_metatrader_coleta.Size = new System.Drawing.Size(319, 140);
+            this.grp_metatrader_coleta.TabIndex = 0;
+            this.grp_metatrader_coleta.TabStop = false;
+            this.grp_metatrader_coleta.Text = "Coleta de Dados";
+            // 
+            // lbl_mc_modal
+            // 
+            this.lbl_mc_modal.AutoSize = true;
+            this.lbl_mc_modal.Location = new System.Drawing.Point(7, 79);
+            this.lbl_mc_modal.Name = "lbl_mc_modal";
+            this.lbl_mc_modal.Size = new System.Drawing.Size(107, 13);
+            this.lbl_mc_modal.TabIndex = 0;
+            this.lbl_mc_modal.Text = "Corretora ModalMais:";
+            this.lbl_mc_modal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txb_mc_modal
+            // 
+            this.txb_mc_modal.Location = new System.Drawing.Point(115, 76);
+            this.txb_mc_modal.Name = "txb_mc_modal";
+            this.txb_mc_modal.Size = new System.Drawing.Size(193, 20);
+            this.txb_mc_modal.TabIndex = 3;
+            // 
+            // txb_mc_xmg
+            // 
+            this.txb_mc_xmg.Location = new System.Drawing.Point(115, 103);
+            this.txb_mc_xmg.Name = "txb_mc_xmg";
+            this.txb_mc_xmg.Size = new System.Drawing.Size(193, 20);
+            this.txb_mc_xmg.TabIndex = 4;
+            // 
+            // lbl_mc_xmg
+            // 
+            this.lbl_mc_xmg.AutoSize = true;
+            this.lbl_mc_xmg.Location = new System.Drawing.Point(7, 106);
+            this.lbl_mc_xmg.Name = "lbl_mc_xmg";
+            this.lbl_mc_xmg.Size = new System.Drawing.Size(105, 13);
+            this.lbl_mc_xmg.TabIndex = 0;
+            this.lbl_mc_xmg.Text = "Corretora XM Global:";
+            // 
+            // txb_mc_genial
+            // 
+            this.txb_mc_genial.Location = new System.Drawing.Point(115, 49);
+            this.txb_mc_genial.Name = "txb_mc_genial";
+            this.txb_mc_genial.Size = new System.Drawing.Size(193, 20);
+            this.txb_mc_genial.TabIndex = 2;
+            // 
+            // lbl_mc_genial
+            // 
+            this.lbl_mc_genial.AutoSize = true;
+            this.lbl_mc_genial.Location = new System.Drawing.Point(7, 52);
+            this.lbl_mc_genial.Name = "lbl_mc_genial";
+            this.lbl_mc_genial.Size = new System.Drawing.Size(86, 13);
+            this.lbl_mc_genial.TabIndex = 0;
+            this.lbl_mc_genial.Text = "Corretora Genial:";
+            this.lbl_mc_genial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ckb_mc_executar
+            // 
+            this.ckb_mc_executar.AutoSize = true;
+            this.ckb_mc_executar.Location = new System.Drawing.Point(11, 22);
+            this.ckb_mc_executar.Name = "ckb_mc_executar";
+            this.ckb_mc_executar.Size = new System.Drawing.Size(217, 17);
+            this.ckb_mc_executar.TabIndex = 1;
+            this.ckb_mc_executar.Text = "Executar MetaTrader para coletar dados";
+            this.ckb_mc_executar.UseVisualStyleBackColor = true;
+            // 
             // tbp_loto365
             // 
             this.tbp_loto365.Controls.Add(this.grb_loto365_palpites);
@@ -131,134 +274,6 @@ namespace Janitor
             this.tbp_loto365.TabIndex = 1;
             this.tbp_loto365.Text = "Loto365";
             this.tbp_loto365.UseVisualStyleBackColor = true;
-            // 
-            // tmr_clock
-            // 
-            this.tmr_clock.Tick += new System.EventHandler(this.tmr_clock_Tick);
-            // 
-            // tbp_infinite
-            // 
-            this.tbp_infinite.Controls.Add(this.grp_infinite_metatrader);
-            this.tbp_infinite.Location = new System.Drawing.Point(4, 22);
-            this.tbp_infinite.Name = "tbp_infinite";
-            this.tbp_infinite.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_infinite.Size = new System.Drawing.Size(335, 157);
-            this.tbp_infinite.TabIndex = 2;
-            this.tbp_infinite.Text = "Infinite";
-            this.tbp_infinite.UseVisualStyleBackColor = true;
-            // 
-            // tbp_quanthon
-            // 
-            this.tbp_quanthon.Controls.Add(this.grb_quanthon_manutencao);
-            this.tbp_quanthon.Location = new System.Drawing.Point(4, 22);
-            this.tbp_quanthon.Name = "tbp_quanthon";
-            this.tbp_quanthon.Padding = new System.Windows.Forms.Padding(3);
-            this.tbp_quanthon.Size = new System.Drawing.Size(335, 157);
-            this.tbp_quanthon.TabIndex = 3;
-            this.tbp_quanthon.Text = "Quanthon";
-            this.tbp_quanthon.UseVisualStyleBackColor = true;
-            // 
-            // grb_geral_agendador
-            // 
-            this.grb_geral_agendador.Controls.Add(this.ckb_ga_acertar);
-            this.grb_geral_agendador.Controls.Add(this.ckb_ga_encerrar);
-            this.grb_geral_agendador.Controls.Add(this.cmb_ga_estacao);
-            this.grb_geral_agendador.Controls.Add(this.lbl_ga_estacao);
-            this.grb_geral_agendador.Controls.Add(this.ckb_ga_habilitar);
-            this.grb_geral_agendador.Location = new System.Drawing.Point(7, 9);
-            this.grb_geral_agendador.Name = "grb_geral_agendador";
-            this.grb_geral_agendador.Size = new System.Drawing.Size(319, 140);
-            this.grb_geral_agendador.TabIndex = 0;
-            this.grb_geral_agendador.TabStop = false;
-            this.grb_geral_agendador.Text = "Agendador de Tarefas";
-            // 
-            // ckb_ga_habilitar
-            // 
-            this.ckb_ga_habilitar.AutoSize = true;
-            this.ckb_ga_habilitar.Location = new System.Drawing.Point(11, 22);
-            this.ckb_ga_habilitar.Name = "ckb_ga_habilitar";
-            this.ckb_ga_habilitar.Size = new System.Drawing.Size(210, 17);
-            this.ckb_ga_habilitar.TabIndex = 2;
-            this.ckb_ga_habilitar.Text = "Habilitar agendamento diário de tarefas";
-            this.ckb_ga_habilitar.UseVisualStyleBackColor = true;
-            // 
-            // lbl_ga_estacao
-            // 
-            this.lbl_ga_estacao.AutoSize = true;
-            this.lbl_ga_estacao.Location = new System.Drawing.Point(7, 105);
-            this.lbl_ga_estacao.Name = "lbl_ga_estacao";
-            this.lbl_ga_estacao.Size = new System.Drawing.Size(109, 13);
-            this.lbl_ga_estacao.TabIndex = 0;
-            this.lbl_ga_estacao.Text = "Estação de Trabalho:";
-            this.lbl_ga_estacao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmb_ga_estacao
-            // 
-            this.cmb_ga_estacao.FormattingEnabled = true;
-            this.cmb_ga_estacao.Location = new System.Drawing.Point(126, 102);
-            this.cmb_ga_estacao.Name = "cmb_ga_estacao";
-            this.cmb_ga_estacao.Size = new System.Drawing.Size(182, 21);
-            this.cmb_ga_estacao.Sorted = true;
-            this.cmb_ga_estacao.TabIndex = 5;
-            // 
-            // lbl_im_genial
-            // 
-            this.lbl_im_genial.AutoSize = true;
-            this.lbl_im_genial.Location = new System.Drawing.Point(7, 52);
-            this.lbl_im_genial.Name = "lbl_im_genial";
-            this.lbl_im_genial.Size = new System.Drawing.Size(86, 13);
-            this.lbl_im_genial.TabIndex = 0;
-            this.lbl_im_genial.Text = "Corretora Genial:";
-            this.lbl_im_genial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ckb_im_executar
-            // 
-            this.ckb_im_executar.AutoSize = true;
-            this.ckb_im_executar.Location = new System.Drawing.Point(11, 22);
-            this.ckb_im_executar.Name = "ckb_im_executar";
-            this.ckb_im_executar.Size = new System.Drawing.Size(217, 17);
-            this.ckb_im_executar.TabIndex = 1;
-            this.ckb_im_executar.Text = "Executar MetaTrader para coletar dados";
-            this.ckb_im_executar.UseVisualStyleBackColor = true;
-            // 
-            // grp_infinite_metatrader
-            // 
-            this.grp_infinite_metatrader.Controls.Add(this.lbl_im_modal);
-            this.grp_infinite_metatrader.Controls.Add(this.txb_im_modal);
-            this.grp_infinite_metatrader.Controls.Add(this.txb_im_xmg);
-            this.grp_infinite_metatrader.Controls.Add(this.lbl_im_xmg);
-            this.grp_infinite_metatrader.Controls.Add(this.txb_im_genial);
-            this.grp_infinite_metatrader.Controls.Add(this.lbl_im_genial);
-            this.grp_infinite_metatrader.Controls.Add(this.ckb_im_executar);
-            this.grp_infinite_metatrader.Location = new System.Drawing.Point(7, 9);
-            this.grp_infinite_metatrader.Name = "grp_infinite_metatrader";
-            this.grp_infinite_metatrader.Size = new System.Drawing.Size(319, 140);
-            this.grp_infinite_metatrader.TabIndex = 0;
-            this.grp_infinite_metatrader.TabStop = false;
-            this.grp_infinite_metatrader.Text = "Coleta de Dados";
-            // 
-            // txb_im_genial
-            // 
-            this.txb_im_genial.Location = new System.Drawing.Point(115, 49);
-            this.txb_im_genial.Name = "txb_im_genial";
-            this.txb_im_genial.Size = new System.Drawing.Size(193, 20);
-            this.txb_im_genial.TabIndex = 2;
-            // 
-            // lbl_im_xmg
-            // 
-            this.lbl_im_xmg.AutoSize = true;
-            this.lbl_im_xmg.Location = new System.Drawing.Point(7, 106);
-            this.lbl_im_xmg.Name = "lbl_im_xmg";
-            this.lbl_im_xmg.Size = new System.Drawing.Size(105, 13);
-            this.lbl_im_xmg.TabIndex = 0;
-            this.lbl_im_xmg.Text = "Corretora XM Global:";
-            // 
-            // txb_im_xmg
-            // 
-            this.txb_im_xmg.Location = new System.Drawing.Point(115, 103);
-            this.txb_im_xmg.Name = "txb_im_xmg";
-            this.txb_im_xmg.Size = new System.Drawing.Size(193, 20);
-            this.txb_im_xmg.TabIndex = 4;
             // 
             // grb_loto365_palpites
             // 
@@ -318,6 +333,17 @@ namespace Janitor
             this.ckb_lp_executar.Text = "Executar programa para gerar palpites diariamente";
             this.ckb_lp_executar.UseVisualStyleBackColor = true;
             // 
+            // tbp_quanthon
+            // 
+            this.tbp_quanthon.Controls.Add(this.grb_quanthon_manutencao);
+            this.tbp_quanthon.Location = new System.Drawing.Point(4, 22);
+            this.tbp_quanthon.Name = "tbp_quanthon";
+            this.tbp_quanthon.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_quanthon.Size = new System.Drawing.Size(335, 157);
+            this.tbp_quanthon.TabIndex = 3;
+            this.tbp_quanthon.Text = "Quanthon";
+            this.tbp_quanthon.UseVisualStyleBackColor = true;
+            // 
             // grb_quanthon_manutencao
             // 
             this.grb_quanthon_manutencao.Controls.Add(this.txb_qm_execucao);
@@ -376,42 +402,98 @@ namespace Janitor
             this.chb_qm_executar.Text = "Executar programa de manutenção diária";
             this.chb_qm_executar.UseVisualStyleBackColor = true;
             // 
-            // ckb_ga_encerrar
+            // tmr_clock
             // 
-            this.ckb_ga_encerrar.AutoSize = true;
-            this.ckb_ga_encerrar.Location = new System.Drawing.Point(11, 48);
-            this.ckb_ga_encerrar.Name = "ckb_ga_encerrar";
-            this.ckb_ga_encerrar.Size = new System.Drawing.Size(240, 17);
-            this.ckb_ga_encerrar.TabIndex = 3;
-            this.ckb_ga_encerrar.Text = "NÃO encerrar aplicativos ainda em execução";
-            this.ckb_ga_encerrar.UseVisualStyleBackColor = true;
+            this.tmr_clock.Tick += new System.EventHandler(this.tmr_clock_Tick);
             // 
-            // ckb_ga_acertar
+            // tbp_infinite
             // 
-            this.ckb_ga_acertar.AutoSize = true;
-            this.ckb_ga_acertar.Location = new System.Drawing.Point(11, 74);
-            this.ckb_ga_acertar.Name = "ckb_ga_acertar";
-            this.ckb_ga_acertar.Size = new System.Drawing.Size(252, 17);
-            this.ckb_ga_acertar.TabIndex = 4;
-            this.ckb_ga_acertar.Text = "Acertar as horas do computador periodicamente";
-            this.ckb_ga_acertar.UseVisualStyleBackColor = true;
+            this.tbp_infinite.Controls.Add(this.grb_infinite_manutencao);
+            this.tbp_infinite.Location = new System.Drawing.Point(4, 22);
+            this.tbp_infinite.Name = "tbp_infinite";
+            this.tbp_infinite.Padding = new System.Windows.Forms.Padding(3);
+            this.tbp_infinite.Size = new System.Drawing.Size(335, 157);
+            this.tbp_infinite.TabIndex = 4;
+            this.tbp_infinite.Text = "Infinite";
+            this.tbp_infinite.UseVisualStyleBackColor = true;
             // 
-            // txb_im_modal
+            // grb_infinite_manutencao
             // 
-            this.txb_im_modal.Location = new System.Drawing.Point(115, 76);
-            this.txb_im_modal.Name = "txb_im_modal";
-            this.txb_im_modal.Size = new System.Drawing.Size(193, 20);
-            this.txb_im_modal.TabIndex = 3;
+            this.grb_infinite_manutencao.Controls.Add(this.txb_im_execucao);
+            this.grb_infinite_manutencao.Controls.Add(this.lbl_im_execucao);
+            this.grb_infinite_manutencao.Controls.Add(this.txb_im_programa);
+            this.grb_infinite_manutencao.Controls.Add(this.lbl_im_programa);
+            this.grb_infinite_manutencao.Controls.Add(this.chb_im_executar);
+            this.grb_infinite_manutencao.Location = new System.Drawing.Point(7, 9);
+            this.grb_infinite_manutencao.Name = "grb_infinite_manutencao";
+            this.grb_infinite_manutencao.Size = new System.Drawing.Size(319, 140);
+            this.grb_infinite_manutencao.TabIndex = 1;
+            this.grb_infinite_manutencao.TabStop = false;
+            this.grb_infinite_manutencao.Text = "Coleta Diária de Dados";
             // 
-            // lbl_im_modal
+            // txb_im_execucao
             // 
-            this.lbl_im_modal.AutoSize = true;
-            this.lbl_im_modal.Location = new System.Drawing.Point(7, 79);
-            this.lbl_im_modal.Name = "lbl_im_modal";
-            this.lbl_im_modal.Size = new System.Drawing.Size(107, 13);
-            this.lbl_im_modal.TabIndex = 0;
-            this.lbl_im_modal.Text = "Corretora ModalMais:";
-            this.lbl_im_modal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txb_im_execucao.Enabled = false;
+            this.txb_im_execucao.Location = new System.Drawing.Point(128, 103);
+            this.txb_im_execucao.Name = "txb_im_execucao";
+            this.txb_im_execucao.Size = new System.Drawing.Size(180, 20);
+            this.txb_im_execucao.TabIndex = 0;
+            // 
+            // lbl_im_execucao
+            // 
+            this.lbl_im_execucao.AutoSize = true;
+            this.lbl_im_execucao.Location = new System.Drawing.Point(7, 106);
+            this.lbl_im_execucao.Name = "lbl_im_execucao";
+            this.lbl_im_execucao.Size = new System.Drawing.Size(90, 13);
+            this.lbl_im_execucao.TabIndex = 0;
+            this.lbl_im_execucao.Text = "Última Execução:";
+            // 
+            // txb_im_programa
+            // 
+            this.txb_im_programa.Location = new System.Drawing.Point(11, 70);
+            this.txb_im_programa.Name = "txb_im_programa";
+            this.txb_im_programa.Size = new System.Drawing.Size(297, 20);
+            this.txb_im_programa.TabIndex = 3;
+            // 
+            // lbl_im_programa
+            // 
+            this.lbl_im_programa.AutoSize = true;
+            this.lbl_im_programa.Location = new System.Drawing.Point(7, 52);
+            this.lbl_im_programa.Name = "lbl_im_programa";
+            this.lbl_im_programa.Size = new System.Drawing.Size(99, 13);
+            this.lbl_im_programa.TabIndex = 0;
+            this.lbl_im_programa.Text = "Local do Programa:";
+            this.lbl_im_programa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chb_im_executar
+            // 
+            this.chb_im_executar.AutoSize = true;
+            this.chb_im_executar.Location = new System.Drawing.Point(11, 22);
+            this.chb_im_executar.Name = "chb_im_executar";
+            this.chb_im_executar.Size = new System.Drawing.Size(247, 17);
+            this.chb_im_executar.TabIndex = 2;
+            this.chb_im_executar.Text = "Executar programa para coletar dados da Web";
+            this.chb_im_executar.UseVisualStyleBackColor = true;
+            // 
+            // btn_ga_feriados
+            // 
+            this.btn_ga_feriados.Location = new System.Drawing.Point(164, 101);
+            this.btn_ga_feriados.Name = "btn_ga_feriados";
+            this.btn_ga_feriados.Size = new System.Drawing.Size(145, 23);
+            this.btn_ga_feriados.TabIndex = 6;
+            this.btn_ga_feriados.Text = "Exibir Feriados 2022...";
+            this.btn_ga_feriados.UseVisualStyleBackColor = true;
+            this.btn_ga_feriados.Click += new System.EventHandler(this.btn_ga_feriados_Click);
+            // 
+            // btn_ga_encerrar
+            // 
+            this.btn_ga_encerrar.Location = new System.Drawing.Point(10, 101);
+            this.btn_ga_encerrar.Name = "btn_ga_encerrar";
+            this.btn_ga_encerrar.Size = new System.Drawing.Size(145, 23);
+            this.btn_ga_encerrar.TabIndex = 5;
+            this.btn_ga_encerrar.Text = "Encerrar Todas Tarefas...";
+            this.btn_ga_encerrar.UseVisualStyleBackColor = true;
+            this.btn_ga_encerrar.Click += new System.EventHandler(this.btn_ga_encerrar_Click);
             // 
             // frm_config
             // 
@@ -426,21 +508,24 @@ namespace Janitor
             this.MaximizeBox = false;
             this.Name = "frm_config";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Janitor  •  Configuração";
+            this.Text = "Janitor  •  Configurações";
             this.Load += new System.EventHandler(this.frm_config_Load);
             this.tbc_panel.ResumeLayout(false);
             this.tbp_geral.ResumeLayout(false);
-            this.tbp_loto365.ResumeLayout(false);
-            this.tbp_infinite.ResumeLayout(false);
-            this.tbp_quanthon.ResumeLayout(false);
             this.grb_geral_agendador.ResumeLayout(false);
             this.grb_geral_agendador.PerformLayout();
-            this.grp_infinite_metatrader.ResumeLayout(false);
-            this.grp_infinite_metatrader.PerformLayout();
+            this.tbp_metatrader.ResumeLayout(false);
+            this.grp_metatrader_coleta.ResumeLayout(false);
+            this.grp_metatrader_coleta.PerformLayout();
+            this.tbp_loto365.ResumeLayout(false);
             this.grb_loto365_palpites.ResumeLayout(false);
             this.grb_loto365_palpites.PerformLayout();
+            this.tbp_quanthon.ResumeLayout(false);
             this.grb_quanthon_manutencao.ResumeLayout(false);
             this.grb_quanthon_manutencao.PerformLayout();
+            this.tbp_infinite.ResumeLayout(false);
+            this.grb_infinite_manutencao.ResumeLayout(false);
+            this.grb_infinite_manutencao.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -453,18 +538,16 @@ namespace Janitor
         private System.Windows.Forms.TabPage tbp_geral;
         private System.Windows.Forms.TabPage tbp_loto365;
         private System.Windows.Forms.Timer tmr_clock;
-        private System.Windows.Forms.TabPage tbp_infinite;
+        private System.Windows.Forms.TabPage tbp_metatrader;
         private System.Windows.Forms.TabPage tbp_quanthon;
         private System.Windows.Forms.GroupBox grb_geral_agendador;
         private System.Windows.Forms.CheckBox ckb_ga_habilitar;
-        private System.Windows.Forms.ComboBox cmb_ga_estacao;
-        private System.Windows.Forms.Label lbl_ga_estacao;
-        private System.Windows.Forms.GroupBox grp_infinite_metatrader;
-        private System.Windows.Forms.Label lbl_im_genial;
-        private System.Windows.Forms.CheckBox ckb_im_executar;
-        private System.Windows.Forms.TextBox txb_im_genial;
-        private System.Windows.Forms.TextBox txb_im_xmg;
-        private System.Windows.Forms.Label lbl_im_xmg;
+        private System.Windows.Forms.GroupBox grp_metatrader_coleta;
+        private System.Windows.Forms.Label lbl_mc_genial;
+        private System.Windows.Forms.CheckBox ckb_mc_executar;
+        private System.Windows.Forms.TextBox txb_mc_genial;
+        private System.Windows.Forms.TextBox txb_mc_xmg;
+        private System.Windows.Forms.Label lbl_mc_xmg;
         private System.Windows.Forms.GroupBox grb_loto365_palpites;
         private System.Windows.Forms.TextBox txb_lp_execucao;
         private System.Windows.Forms.Label lbl_lp_execucao;
@@ -479,8 +562,17 @@ namespace Janitor
         private System.Windows.Forms.CheckBox chb_qm_executar;
         private System.Windows.Forms.CheckBox ckb_ga_acertar;
         private System.Windows.Forms.CheckBox ckb_ga_encerrar;
-        private System.Windows.Forms.Label lbl_im_modal;
-        private System.Windows.Forms.TextBox txb_im_modal;
+        private System.Windows.Forms.Label lbl_mc_modal;
+        private System.Windows.Forms.TextBox txb_mc_modal;
+        private System.Windows.Forms.TabPage tbp_infinite;
+        private System.Windows.Forms.GroupBox grb_infinite_manutencao;
+        private System.Windows.Forms.TextBox txb_im_execucao;
+        private System.Windows.Forms.Label lbl_im_execucao;
+        private System.Windows.Forms.TextBox txb_im_programa;
+        private System.Windows.Forms.Label lbl_im_programa;
+        private System.Windows.Forms.CheckBox chb_im_executar;
+        private System.Windows.Forms.Button btn_ga_feriados;
+        private System.Windows.Forms.Button btn_ga_encerrar;
     }
 }
 
