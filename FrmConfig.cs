@@ -4,77 +4,69 @@ using System.Windows.Forms;
 
 namespace Janitor
 {
-    public partial class frm_config : Form
+    public partial class FrmConfig : Form
     {
-        public frm_config()
+        public FrmConfig()
         {
             InitializeComponent();
         }
 
         private void frm_config_Load(object sender, EventArgs e)
-        {
-            // coleta as propriedades atuais para exibir na janela:
+        { // coleta as propriedades atuais para exibir na janela:
             // Aba Geral
-            ckb_ga_habilitar.Checked = Properties.Settings.Default.GeralFlagTasks;
-            ckb_ga_acertar.Checked = Properties.Settings.Default.GeralFlagClock;
-            ckb_ga_nao_encerrar.Checked = Properties.Settings.Default.GeralFlagNotClose;
+            ckbGeralFlagTasks.Checked = Properties.Settings.Default.GeralFlagTasks;
+            ckbGeralFlagClocker.Checked = Properties.Settings.Default.GeralFlagClocker;
+            ckbGeralFlagNotClose.Checked = Properties.Settings.Default.GeralFlagNotClose;
 
             // Aba MetaTrader
-            ckb_mc_executar.Checked = Properties.Settings.Default.MT5FlagProgram;
-            txb_mc_genial.Text = Properties.Settings.Default.MT5PathGenial;
-            txb_mc_modal.Text = Properties.Settings.Default.MT5PathModal;
-            txb_mc_xmg.Text = Properties.Settings.Default.MT5PathXmglob;
+            ckbMT5FlagProgram.Checked = Properties.Settings.Default.MT5FlagProgram;
+            txbMT5PathGenial.Text = Properties.Settings.Default.MT5PathGenial;
+            txbMT5PathModal.Text = Properties.Settings.Default.MT5PathModal;
+            txbMT5PathXmglob.Text = Properties.Settings.Default.MT5PathXmglob;
 
-            // Aba Infinite
-            chb_im_executar.Checked = Properties.Settings.Default.InfiFlagProgram;
-            txb_im_programa.Text = Properties.Settings.Default.InfiPathProgram;
-            txb_im_execucao.Text = Properties.Settings.Default.InfiLastExecute;
+            // Aba Colethon
+            chbColetFlagProgram.Checked = Properties.Settings.Default.ColetFlagProgram;
+            txbColetPathProgram.Text = Properties.Settings.Default.ColetPathProgram;
+            txbColetLastExecute.Text = Properties.Settings.Default.ColetLastExecute;
 
             // Aba Quanthon
-            chb_qm_executar.Checked = Properties.Settings.Default.QuantFlagProgram;
-            txb_qm_programa.Text = Properties.Settings.Default.QuantPathProgram;
-            txb_qm_execucao.Text = Properties.Settings.Default.QuantLastExecute;
+            chbQuantFlagProgram.Checked = Properties.Settings.Default.QuantFlagProgram;
+            txbQuantPathProgram.Text = Properties.Settings.Default.QuantPathProgram;
+            txbQuantLastExecute.Text = Properties.Settings.Default.QuantLastExecute;
 
             // Aba Loto365
-            ckb_lp_executar.Checked = Properties.Settings.Default.LotoFlagProgram;
-            txb_lp_programa.Text = Properties.Settings.Default.LotoPathProgram;
-            txb_lp_execucao.Text = Properties.Settings.Default.LotoLastExecute;
+            ckbLotoFlagProgram.Checked = Properties.Settings.Default.LotoFlagProgram;
+            txbLotoPathProgram.Text = Properties.Settings.Default.LotoPathProgram;
+            txbLotoLastExecute.Text = Properties.Settings.Default.LotoLastExecute;
 
-            // Aplica cor no checkbox principal conforme configuracao atual:
-            ckb_ga_habilitar.ForeColor = ckb_ga_habilitar.Checked ? Color.Green : Color.Red;
-        }
-
-        private void tmr_clock_Tick(object sender, EventArgs e)
-        {
-            // a cada minuto, executa a varredura do scheduler:
-            // if (DateTime.Now.Second == 0) checkScheduler();
+            // atualiza a aparencia da tela conforme as propriedades:
+            FrmConfig_Refresh(null, null);
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
-        {
-            // coleta as propriedades modificadas e salva:
+        {  // coleta as propriedades modificadas e salva:
             // Aba Geral
-            Properties.Settings.Default.GeralFlagTasks = ckb_ga_habilitar.Checked;
-            Properties.Settings.Default.GeralFlagClock = ckb_ga_acertar.Checked;
-            Properties.Settings.Default.GeralFlagNotClose = ckb_ga_nao_encerrar.Checked;
+            Properties.Settings.Default.GeralFlagTasks = ckbGeralFlagTasks.Checked;
+            Properties.Settings.Default.GeralFlagClocker = ckbGeralFlagClocker.Checked;
+            Properties.Settings.Default.GeralFlagNotClose = ckbGeralFlagNotClose.Checked;
 
             // Aba MetaTrader
-            Properties.Settings.Default.MT5FlagProgram = ckb_mc_executar.Checked;
-            Properties.Settings.Default.MT5PathGenial = txb_mc_genial.Text;
-            Properties.Settings.Default.MT5PathModal = txb_mc_modal.Text;
-            Properties.Settings.Default.MT5PathXmglob = txb_mc_xmg.Text;
+            Properties.Settings.Default.MT5FlagProgram = ckbMT5FlagProgram.Checked;
+            Properties.Settings.Default.MT5PathGenial = txbMT5PathGenial.Text;
+            Properties.Settings.Default.MT5PathModal = txbMT5PathModal.Text;
+            Properties.Settings.Default.MT5PathXmglob = txbMT5PathXmglob.Text;
 
-            // Aba Infinite
-            Properties.Settings.Default.InfiFlagProgram = chb_im_executar.Checked;
-            Properties.Settings.Default.InfiPathProgram = txb_im_programa.Text;
+            // Aba Colethon
+            Properties.Settings.Default.ColetFlagProgram = chbColetFlagProgram.Checked;
+            Properties.Settings.Default.ColetPathProgram = txbColetPathProgram.Text;
 
             // Aba Quanthon
-            Properties.Settings.Default.QuantFlagProgram = chb_qm_executar.Checked;
-            Properties.Settings.Default.QuantPathProgram = txb_qm_programa.Text;
+            Properties.Settings.Default.QuantFlagProgram = chbQuantFlagProgram.Checked;
+            Properties.Settings.Default.QuantPathProgram = txbQuantPathProgram.Text;
 
             // Aba Loto365
-            Properties.Settings.Default.LotoFlagProgram = ckb_lp_executar.Checked;
-            Properties.Settings.Default.LotoPathProgram = txb_lp_programa.Text;
+            Properties.Settings.Default.LotoFlagProgram = ckbLotoFlagProgram.Checked;
+            Properties.Settings.Default.LotoPathProgram = txbLotoPathProgram.Text;
 
             // Salva as propriedades.
             Properties.Settings.Default.Save();
@@ -87,11 +79,6 @@ namespace Janitor
         {
             // fecha o formulario:
             this.Close();
-        }
-
-        private void ckb_ga_habilitar_CheckedChanged(object sender, EventArgs e)
-        {
-            ckb_ga_habilitar.ForeColor = ckb_ga_habilitar.Checked ? Color.Green : Color.Red;
         }
 
         private void btn_ga_encerrar_Click(object sender, EventArgs e)
@@ -119,6 +106,85 @@ namespace Janitor
                             "Relação de Feriados 2022 (Dia/Mês)",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
+        }
+
+        /// atualiza a aparencia da tela conforme as propriedades:
+        private void FrmConfig_Refresh(object sender, EventArgs e)
+        {  
+            // Aba Geral
+            ckbGeralFlagTasks.ForeColor = ckbGeralFlagTasks.Checked ? Color.Blue : Color.DarkGray;
+            ckbGeralFlagNotClose.ForeColor = ckbGeralFlagNotClose.Checked ? Color.Red : Color.Black;
+
+            // Aba MetaTrader
+            txbMT5PathGenial.Enabled = ckbMT5FlagProgram.Checked;
+            txbMT5PathModal.Enabled = ckbMT5FlagProgram.Checked;
+            txbMT5PathXmglob.Enabled = ckbMT5FlagProgram.Checked;
+
+            // Aba Colethon
+            txbColetPathProgram.Enabled = chbColetFlagProgram.Checked;
+            btnColetReexecutar.Enabled = chbColetFlagProgram.Checked;
+
+            // Aba Quanthon
+            txbQuantPathProgram.Enabled = chbQuantFlagProgram.Checked;
+            btnQuantReexecutar.Enabled = chbQuantFlagProgram.Checked;
+
+            // Aba Loto365
+            txbLotoPathProgram.Enabled = ckbLotoFlagProgram.Checked;
+            btnLotoReexecutar.Enabled = ckbLotoFlagProgram.Checked;
+        }
+
+        private void btnColetReexecutar_Click(object sender, EventArgs e)
+        {
+            // limpa a ultima execucao para executar novamente o programa de manutencao:
+            DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Colethon para coletar dados?",
+                                                        "Colethon: Limpar Última Execução",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
+            // Limpa o texto do input-text e tambem diretamente da propriedade:
+            if (dialogResult == DialogResult.Yes)
+            {
+                txbColetLastExecute.Text = "";
+                Properties.Settings.Default.ColetLastExecute = null;
+
+                // Salva as propriedades.
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void btnQuantReexecutar_Click(object sender, EventArgs e)
+        {
+            // limpa a ultima execucao para executar novamente o programa de manutencao:
+            DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Quanthon para analisar dados?",
+                                                        "Quanthon: Limpar Última Execução",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
+            // Limpa o texto do input-text e tambem diretamente da propriedade:
+            if (dialogResult == DialogResult.Yes)
+            {
+                txbQuantLastExecute.Text = "";
+                Properties.Settings.Default.QuantLastExecute = null;
+
+                // Salva as propriedades.
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void btnLotoReexecutar_Click(object sender, EventArgs e)
+        {
+            // limpa a ultima execucao para executar novamente o programa de manutencao:
+            DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Lothon para gerar palpites?",
+                                                        "Lothon: Limpar Última Execução",
+                                                        MessageBoxButtons.YesNo,
+                                                        MessageBoxIcon.Question);
+            // Limpa o texto do input-text e tambem diretamente da propriedade:
+            if (dialogResult == DialogResult.Yes)
+            {
+                txbLotoLastExecute.Text = "";
+                Properties.Settings.Default.LotoLastExecute = null;
+
+                // Salva as propriedades.
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Janitor
         public static void ResyncSystemTime()
         {
             // verifica se esta configurado para acertar o relogio periodicamente:
-            if (! Properties.Settings.Default.GeralFlagClock) return;
+            if (! Properties.Settings.Default.GeralFlagClocker) return;
 
             // se estiver configurado ok, segue com o acerto do relogio local:
             logger.Trace("Vai acertar a hora do computador com servidores do MS Windows...");

@@ -38,12 +38,12 @@ namespace Janitor.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool GeralFlagClock {
+        public bool GeralFlagClocker {
             get {
-                return ((bool)(this["GeralFlagClock"]));
+                return ((bool)(this["GeralFlagClocker"]));
             }
             set {
-                this["GeralFlagClock"] = value;
+                this["GeralFlagClocker"] = value;
             }
         }
         
@@ -73,7 +73,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\B3\\MetaTrader 5\\terminal64.exe")]
         public string MT5PathGenial {
             get {
                 return ((string)(this["MT5PathGenial"]));
@@ -85,7 +85,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\B3\\ModalMais MetaTrader 5\\terminal64.exe")]
         public string MT5PathModal {
             get {
                 return ((string)(this["MT5PathModal"]));
@@ -97,7 +97,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\B3\\XM Global MT5\\terminal64.exe")]
         public string MT5PathXmglob {
             get {
                 return ((string)(this["MT5PathXmglob"]));
@@ -110,36 +110,36 @@ namespace Janitor.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool InfiFlagProgram {
+        public bool ColetFlagProgram {
             get {
-                return ((bool)(this["InfiFlagProgram"]));
+                return ((bool)(this["ColetFlagProgram"]));
             }
             set {
-                this["InfiFlagProgram"] = value;
+                this["ColetFlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Colethon\\bin\\startup.bat")]
+        public string ColetPathProgram {
+            get {
+                return ((string)(this["ColetPathProgram"]));
+            }
+            set {
+                this["ColetPathProgram"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string InfiPathProgram {
+        public string ColetLastExecute {
             get {
-                return ((string)(this["InfiPathProgram"]));
+                return ((string)(this["ColetLastExecute"]));
             }
             set {
-                this["InfiPathProgram"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string InfiLastExecute {
-            get {
-                return ((string)(this["InfiLastExecute"]));
-            }
-            set {
-                this["InfiLastExecute"] = value;
+                this["ColetLastExecute"] = value;
             }
         }
         
@@ -157,7 +157,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Quanthon\\bin\\startup.bat")]
         public string QuantPathProgram {
             get {
                 return ((string)(this["QuantPathProgram"]));
@@ -193,7 +193,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Lothon\\bin\\palpites.bat")]
         public string LotoPathProgram {
             get {
                 return ((string)(this["LotoPathProgram"]));

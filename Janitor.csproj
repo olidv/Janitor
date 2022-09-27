@@ -51,8 +51,7 @@
     <StartupObject>Janitor.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Janitor_32.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
@@ -134,9 +133,6 @@
     <None Include="Resources\Janitor_32.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\configuration_32.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\configuration_32.png" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Janitor_off_32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Janitor_32.ico" />
+    <None Include="Resources\clear_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

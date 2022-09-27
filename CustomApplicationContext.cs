@@ -17,7 +17,7 @@ namespace Janitor
         private readonly JanitorManager janitorManager;
         private System.ComponentModel.IContainer components;	// a list of components to dispose when the context is disposed
         private NotifyIcon notifyIcon;				            // the icon that sits in the system tray
-        private frm_config frmConfig;
+        private FrmConfig frmConfig;
 
         /// <summary>
 		/// This class should be created and passed into Application.Run( ... )
@@ -52,7 +52,7 @@ namespace Janitor
         {
             if (frmConfig == null)
             {
-                frmConfig = new frm_config();
+                frmConfig = new FrmConfig();
                 frmConfig.Closed += frmConfig_Closed; // avoid reshowing a disposed form
                 frmConfig.Show();
             }
