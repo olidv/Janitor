@@ -29,6 +29,7 @@ namespace Janitor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConfig));
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -59,6 +60,7 @@ namespace Janitor
             this.chbColetFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpQuanthon = new System.Windows.Forms.TabPage();
             this.grbQuanthonManutencao = new System.Windows.Forms.GroupBox();
+            this.btnQuantReexecutar = new System.Windows.Forms.Button();
             this.txbQuantLastExecute = new System.Windows.Forms.TextBox();
             this.lblQuantLastExecute = new System.Windows.Forms.Label();
             this.txbQuantPathProgram = new System.Windows.Forms.TextBox();
@@ -66,13 +68,13 @@ namespace Janitor
             this.chbQuantFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpLoto365 = new System.Windows.Forms.TabPage();
             this.grbLoto365Manutencao = new System.Windows.Forms.GroupBox();
+            this.btnLotoReexecutar = new System.Windows.Forms.Button();
             this.txbLotoLastExecute = new System.Windows.Forms.TextBox();
             this.lblLotoLastExecute = new System.Windows.Forms.Label();
             this.txbLotoPathProgram = new System.Windows.Forms.TextBox();
             this.lblLotoPathProgram = new System.Windows.Forms.Label();
             this.ckbLotoFlagProgram = new System.Windows.Forms.CheckBox();
-            this.btnQuantReexecutar = new System.Windows.Forms.Button();
-            this.btnLotoReexecutar = new System.Windows.Forms.Button();
+            this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.tbcPanel.SuspendLayout();
             this.tbpGeral.SuspendLayout();
             this.grbGeralAgendador.SuspendLayout();
@@ -395,6 +397,17 @@ namespace Janitor
             this.grbQuanthonManutencao.TabStop = false;
             this.grbQuanthonManutencao.Text = "Análise de Dados Coletados";
             // 
+            // btnQuantReexecutar
+            // 
+            this.btnQuantReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
+            this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
+            this.btnQuantReexecutar.Name = "btnQuantReexecutar";
+            this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
+            this.btnQuantReexecutar.TabIndex = 4;
+            this.btnQuantReexecutar.UseVisualStyleBackColor = true;
+            this.btnQuantReexecutar.Click += new System.EventHandler(this.btnQuantReexecutar_Click);
+            // 
             // txbQuantLastExecute
             // 
             this.txbQuantLastExecute.Enabled = false;
@@ -466,6 +479,17 @@ namespace Janitor
             this.grbLoto365Manutencao.TabStop = false;
             this.grbLoto365Manutencao.Text = "Publicação de Palpites";
             // 
+            // btnLotoReexecutar
+            // 
+            this.btnLotoReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
+            this.btnLotoReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 102);
+            this.btnLotoReexecutar.Name = "btnLotoReexecutar";
+            this.btnLotoReexecutar.Size = new System.Drawing.Size(22, 22);
+            this.btnLotoReexecutar.TabIndex = 4;
+            this.btnLotoReexecutar.UseVisualStyleBackColor = true;
+            this.btnLotoReexecutar.Click += new System.EventHandler(this.btnLotoReexecutar_Click);
+            // 
             // txbLotoLastExecute
             // 
             this.txbLotoLastExecute.Enabled = false;
@@ -510,28 +534,6 @@ namespace Janitor
             this.ckbLotoFlagProgram.Text = "Executar programa diariamente para gerar palpites";
             this.ckbLotoFlagProgram.UseVisualStyleBackColor = true;
             this.ckbLotoFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
-            // 
-            // btnQuantReexecutar
-            // 
-            this.btnQuantReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
-            this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
-            this.btnQuantReexecutar.Name = "btnQuantReexecutar";
-            this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnQuantReexecutar.TabIndex = 4;
-            this.btnQuantReexecutar.UseVisualStyleBackColor = true;
-            this.btnQuantReexecutar.Click += new System.EventHandler(this.btnQuantReexecutar_Click);
-            // 
-            // btnLotoReexecutar
-            // 
-            this.btnLotoReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
-            this.btnLotoReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 102);
-            this.btnLotoReexecutar.Name = "btnLotoReexecutar";
-            this.btnLotoReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnLotoReexecutar.TabIndex = 4;
-            this.btnLotoReexecutar.UseVisualStyleBackColor = true;
-            this.btnLotoReexecutar.Click += new System.EventHandler(this.btnLotoReexecutar_Click);
             // 
             // FrmConfig
             // 
@@ -613,6 +615,7 @@ namespace Janitor
         private System.Windows.Forms.Button btnColetReexecutar;
         private System.Windows.Forms.Button btnQuantReexecutar;
         private System.Windows.Forms.Button btnLotoReexecutar;
+        private System.Windows.Forms.ToolTip toolTips;
     }
 }
 

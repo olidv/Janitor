@@ -17,27 +17,61 @@ namespace Janitor
             ckbGeralFlagTasks.Checked = Properties.Settings.Default.GeralFlagTasks;
             ckbGeralFlagClocker.Checked = Properties.Settings.Default.GeralFlagClocker;
             ckbGeralFlagNotClose.Checked = Properties.Settings.Default.GeralFlagNotClose;
+            toolTips.SetToolTip(ckbGeralFlagTasks, "Clique para habilitar ou desabilitar o agendamento das tarefas.");
+            toolTips.SetToolTip(ckbGeralFlagClocker, "Clique para habilitar ou desabilitar a correção do relógio interno.");
+            toolTips.SetToolTip(ckbGeralFlagNotClose, "Clique para ignorar ou não o encerramento das tarefas.");
+            toolTips.SetToolTip(btnGeralEncerrarTarefas, "Clique para encerrar todas as tarefas em execução.");
+            toolTips.SetToolTip(btnGeralExibirFeriados, "Clique para exibir os feriados nacionais (B3) e internacionais (FOREX).");
 
             // Aba MetaTrader
             ckbMT5FlagProgram.Checked = Properties.Settings.Default.MT5FlagProgram;
             txbMT5PathGenial.Text = Properties.Settings.Default.MT5PathGenial;
             txbMT5PathModal.Text = Properties.Settings.Default.MT5PathModal;
             txbMT5PathXmglob.Text = Properties.Settings.Default.MT5PathXmglob;
+            toolTips.SetToolTip(ckbMT5FlagProgram, "Clique para habilitar ou desabilitar a execução do MetaTrader.");
+            toolTips.SetToolTip(txbMT5PathGenial, "Caminho completo do MetaTrader da corretora Genial.");
+            toolTips.SetToolTip(lblMT5PathGenial, "Caminho completo do MetaTrader da corretora Genial.");
+            toolTips.SetToolTip(txbMT5PathModal, "Caminho completo do MetaTrader da corretora ModalMais.");
+            toolTips.SetToolTip(lblMT5PathModal, "Caminho completo do MetaTrader da corretora ModalMais.");
+            toolTips.SetToolTip(txbMT5PathXmglob, "Caminho completo do MetaTrader da corretora XM Global.");
+            toolTips.SetToolTip(lblMT5PathXmglob, "Caminho completo do MetaTrader da corretora XM Global.");
 
             // Aba Colethon
             chbColetFlagProgram.Checked = Properties.Settings.Default.ColetFlagProgram;
             txbColetPathProgram.Text = Properties.Settings.Default.ColetPathProgram;
             txbColetLastExecute.Text = Properties.Settings.Default.ColetLastExecute;
+            toolTips.SetToolTip(chbColetFlagProgram, "Clique para habilitar ou desabilitar a execução do Colethon.");
+            toolTips.SetToolTip(txbColetPathProgram, "Caminho completo do executável Colethon.");
+            toolTips.SetToolTip(lblColetPathProgram, "Caminho completo do executável Colethon.");
+            toolTips.SetToolTip(txbColetLastExecute, "Última data/hora de execução do Colethon.");
+            toolTips.SetToolTip(lblColetLastExecute, "Última data/hora de execução do Colethon.");
+            toolTips.SetToolTip(btnColetReexecutar, "Clique para executar novamente o Colethon.");
 
             // Aba Quanthon
             chbQuantFlagProgram.Checked = Properties.Settings.Default.QuantFlagProgram;
             txbQuantPathProgram.Text = Properties.Settings.Default.QuantPathProgram;
             txbQuantLastExecute.Text = Properties.Settings.Default.QuantLastExecute;
+            toolTips.SetToolTip(chbQuantFlagProgram, "Clique para habilitar ou desabilitar a execução do Quanthon.");
+            toolTips.SetToolTip(txbQuantPathProgram, "Caminho completo do executável Quanthon.");
+            toolTips.SetToolTip(lblQuantPathProgram, "Caminho completo do executável Quanthon.");
+            toolTips.SetToolTip(txbQuantLastExecute, "Última data/hora de execução do Quanthon.");
+            toolTips.SetToolTip(lblQuantLastExecute, "Última data/hora de execução do Quanthon.");
+            toolTips.SetToolTip(btnQuantReexecutar, "Clique para executar novamente o Quanthon.");
 
             // Aba Loto365
             ckbLotoFlagProgram.Checked = Properties.Settings.Default.LotoFlagProgram;
             txbLotoPathProgram.Text = Properties.Settings.Default.LotoPathProgram;
             txbLotoLastExecute.Text = Properties.Settings.Default.LotoLastExecute;
+            toolTips.SetToolTip(ckbLotoFlagProgram, "Clique para habilitar ou desabilitar a execução do Lothon.");
+            toolTips.SetToolTip(txbLotoPathProgram, "Caminho completo do executável Lothon.");
+            toolTips.SetToolTip(lblLotoPathProgram, "Caminho completo do executável Lothon.");
+            toolTips.SetToolTip(txbLotoLastExecute, "Última data/hora de execução do Lothon.");
+            toolTips.SetToolTip(lblLotoLastExecute, "Última data/hora de execução do Lothon.");
+            toolTips.SetToolTip(btnLotoReexecutar, "Clique para executar novamente o Lothon.");
+
+            //
+            toolTips.SetToolTip(btnOk, "Clique para aplicar as alterações nas configurações e fechar a janela.");
+            toolTips.SetToolTip(btnCancel, "Clique para ignorar as alterações e fechar a janela.");
 
             // atualiza a aparencia da tela conforme as propriedades:
             FrmConfig_Refresh(null, null);
