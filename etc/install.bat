@@ -24,7 +24,7 @@ mkdir dist\scripts  1>nul  2>&1
 echo.
 
 echo Copiando para distribuicao os arquivos de resources e executaveis
-rem copy bin\Release\*.*         dist\bin
+copy bin\Release\*.*         dist\bin
 copy src\batches\*.*         dist\bin
 copy src\scripts\*.*         dist\scripts
 rem copy src\resources\prod\*.*  dist\scripts
@@ -43,7 +43,7 @@ echo  ********************************************
 echo.
 
 echo Posicionando no diretorio raiz da aplicacao
-cd /d C:\Apps\B3\Janitor
+cd /d C:\Apps\Infinite\Janitor
 echo.
 
 echo Limpando as pastas temporarias da aplicacao
@@ -55,5 +55,5 @@ cd /d D:\Workspace\C#\Janitor
 echo.
 
 echo Copiando os arquivos do projeto
-xcopy dist\*.* C:\Apps\B3\Janitor  /E /C /Q /H /R /Y
+xcopy dist\*.* C:\Apps\Infinite\Janitor  /E /C /Q /H /R /Y
 echo.
