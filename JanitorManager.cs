@@ -5,6 +5,7 @@ using System.Linq;
 using System.Timers;
 using System.Windows.Forms;
 using NLog;
+using Janitor.Properties;
 
 
 namespace Janitor
@@ -17,51 +18,9 @@ namespace Janitor
         // objeto timer para disparo de eventos e execucao de tarefas:
         private static System.Timers.Timer sTimer;
 
-        // referencia ao icone na sys-tray:
-        private readonly NotifyIcon notifyIcon;
+        /*** FERIADOS CONSIDERADOS PARA O AGENDAMENTO DE TAREFAS ***/
 
-        public JanitorManager(NotifyIcon notifyIcon)
-        {
-            this.notifyIcon = notifyIcon;
-            InitializeTimer();
-        }
-
-        private void InitializeTimer()
-        {
-            // Create a timer with a two second interval.
-            sTimer = new System.Timers.Timer(1000);
-
-            // Hook up the Elapsed event for the timer. 
-            sTimer.Elapsed += OnTimedEvent;
-            sTimer.AutoReset = true;
-            sTimer.Enabled = true;
-        }
-
-        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
-            DateTime agora = DateTime.Now;
-
-            // a cada minuto, executa o scheduler:
-            if (agora.Second == 0)
-            {
-                // checkScheduler();
-            }
-
-            // se for 12:00:00, acerta o relogio (ao menos 1x por dia):
-            if (agora.Second == 0 && agora.Minute == 0 && agora.Hour == 12)
-            {
-                Program.ResyncSystemTime();
-            }
-        }
-
-        /*** SERVICO DE MONITORAMENTO DOS APLICATIVOS ***/
-
-        /*** COTACOES DO FOREX INTERROMPIDAS PARA MEDIR CHECK DA PERFORMANCE DAS COTACOES DE MINI CONTRATOS ***/
-        static readonly String MT5_XM = @"C:\Apps\B3\XM Global MT5\terminal64.exe";
-        static readonly String MT5_MODAL = @"C:\Apps\B3\ModalMais MetaTrader 5\terminal64.exe";
-        static readonly String MT5_GENIAL = @"C:\Apps\B3\MetaTrader 5\terminal64.exe";
-        // TODO static readonly String TRYD_MODAL = @"C:\Apps\B3\Tryd6\trader.exe";
-        static readonly String PYTHON_INFINITE = @"C:\Apps\B3\InFiniTe\bin\startup.bat";
+        static readonly string[] MESES = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
 
         static readonly (int dia, int mes)[] FERIADOS_FOREX = {( 1, 1),  // Ano Novo: Confraternizacao Universal
                                                                (25,12)}; // Natal
@@ -86,8 +45,130 @@ namespace Janitor
                                                                (30,12) // Vespera de Ano Novo
                                                               };
 
-        public void checkScheduler()
+        // referencia ao icone na sys-tray:
+        private readonly NotifyIcon notifyIcon;
+
+        public JanitorManager(NotifyIcon notifyIcon)
         {
+            this.notifyIcon = notifyIcon;
+            InitializeTimer();
+        }
+
+        private void InitializeTimer()
+        {
+            // Create a timer with a two second interval.
+            sTimer = new System.Timers.Timer(1000);
+
+            // Hook up the Elapsed event for the timer. 
+            //sTimer.Elapsed += OnTimedEvent;
+            sTimer.AutoReset = true;
+            sTimer.Enabled = true;
+        }
+
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            Settings config = Properties.Settings.Default;
+
+            // verifica se o agendamento esta habilitado nas configuracoes:
+            if (config.GeralFlagTasks)
+            {
+                // a cada minuto, executa o check-scheduler para todas as tarefas:
+                if (now.Second == 0)
+                {
+                    // verifica se a execucao do MetaTrader esta habilitada nas configuracoes:
+                    if (config.MT5FlagProgram) checkMetaTrader(now);
+
+                    // verifica se a execucao do Colethon esta habilitada nas configuracoes:
+                    if (config.ColetFlagProgram) checkColethon(now);
+
+                    // verifica se a execucao do Quanthon esta habilitada nas configuracoes:
+                    if (config.QuantFlagProgram) checkQuanthon(now);
+
+                    // verifica se a execucao do Lothon esta habilitada nas configuracoes:
+                    if (config.LotoFlagProgram) checkLothon(now);
+
+                }
+            }
+
+            // verifica se o acerto das horas esta habilitado nas configuracoes:
+            if (config.GeralFlagClocker)
+            {
+                // se for 12:00:00, acerta o relogio (ao menos 1x por dia):
+                if (now.Second == 0 && now.Minute == 0 && now.Hour == 12)
+                {
+                    Program.ResyncSystemTime();
+                }
+            }
+        }
+
+        /*** SERVICO DE MONITORAMENTO DOS APLICATIVOS ***/
+
+        public void checkMetaTrader(DateTime now)
+        {
+            // identifica informacoes sobre a data/dia corrente:
+            var agora = (dia: now.Day,
+                         mes: now.Month,
+                         hor: now.Hour,
+                         min: now.Minute,
+                         dow: now.DayOfWeek,  // dia da semana
+                         fb3: false,          // feriado B3
+                         ob3: false,          // mercado B3 aberto (open B3)
+                         ffx: false,          // feriado FOREX
+                         ofx: false);         // mercado FOREX aberto (open FOREX)
+
+            // verifica se o dia corrente eh feriado no mercado forex e no mercado b3:
+            foreach ((int dia, int mes) feriado in FERIADOS_FOREX)
+            {
+                if (agora.dia == feriado.dia && agora.mes == feriado.mes)
+                {
+                    agora.ffx = true;
+                }
+            }
+            foreach ((int dia, int mes) feriado in FERIADOS_BR_B3)
+            {
+                if (agora.dia == feriado.dia && agora.mes == feriado.mes)
+                {
+                    agora.fb3 = true;
+                }
+            }
+            logger.Debug("Verificando calendario em checkMetaTrader() | isFeriadoForex={} | isFeriadoB3={}", agora.ffx, agora.fb3);
+
+            // verifica se os mercados estao abertos ou fechados:
+            switch (agora.dow)
+            {
+                case DayOfWeek.Monday:
+                    agora.ofx = !agora.ffx;  // mercado forex esta aberto se nao for feriado internacional.
+                    agora.ob3 = !agora.fb3 && ((agora.hor == 8 && agora.min >= 40) || (agora.hor >= 9 && agora.hor <= 17) || (agora.hor == 18 && agora.min <= 10));
+                    break;
+                case DayOfWeek.Tuesday:
+                    agora.ofx = !agora.ffx;
+                    agora.ob3 = !agora.fb3 && ((agora.hor == 8 && agora.min >= 40) || (agora.hor >= 9 && agora.hor <= 17) || (agora.hor == 18 && agora.min <= 10));
+                    break;
+                case DayOfWeek.Wednesday:
+                    agora.ofx = !agora.ffx;
+                    agora.ob3 = !agora.fb3 && ((agora.hor == 8 && agora.min >= 40) || (agora.hor >= 9 && agora.hor <= 17) || (agora.hor == 18 && agora.min <= 10));
+                    break;
+                case DayOfWeek.Thursday:
+                    agora.ofx = !agora.ffx;
+                    agora.ob3 = !agora.fb3 && ((agora.hor == 8 && agora.min >= 40) || (agora.hor >= 9 && agora.hor <= 17) || (agora.hor == 18 && agora.min <= 10));
+                    break;
+                case DayOfWeek.Friday:
+                    agora.ofx = !agora.ffx && (agora.hor < 19);
+                    agora.ob3 = !agora.fb3 && ((agora.hor == 8 && agora.min >= 40) || (agora.hor >= 9 && agora.hor <= 17) || (agora.hor == 18 && agora.min <= 10));
+                    break;
+                case DayOfWeek.Saturday:
+                    agora.ofx = false;
+                    agora.ob3 = false;
+                    break;
+                case DayOfWeek.Sunday:
+                    agora.ofx = !agora.ffx && (agora.hor >= 18);
+                    agora.ob3 = false;
+                    break;
+            }
+            logger.Debug("Verificando mercados em checkMetaTrader() | isForexOpen={} | isB3Open={}", agora.ofx, agora.ob3);
+
+            // busca o estado das instancias do MetaTrader (corretoras) em execucao:
             bool isMT5XmOn = false;
             Process procMT5Xm = null;
 
@@ -97,15 +178,8 @@ namespace Janitor
             bool isMT5GenialOn = false;
             Process procMT5Genial = null;
 
-            //bool isTrydModalOn = false;
-            //Process procTrydModal = null;
-
-            bool isPythonOn = false;
-            Process procPython = null;
-
-            // busca o estado das instancias do MetaTrader (corretoras) em execucao:
             Process[] processes = Process.GetProcessesByName("terminal64");
-            logger.Debug("Verificando processos em checkScheduler() | processes = Process[{}]", processes.Length);
+            logger.Debug("Verificando processos em checkMetaTrader() | processes = Process[{}]", processes.Length);
             foreach (Process proc in processes)
             {
                 // Alterado para verificar pelo full-path pois o titulo as vezes vem em branco ""...
@@ -128,117 +202,22 @@ namespace Janitor
                     isMT5GenialOn = true;
                 }
             }
+            logger.Debug("Verificando processos em checkMetaTrader() | isMT5GenialOn={} | isMT5ModalOn={} | isMT5XmOn={}", isMT5GenialOn, isMT5ModalOn, isMT5XmOn);
 
-            // busca o estado das instancias do Tryd (modalmais) em execucao:
-            //processes = Process.GetProcessesByName("trader");
-            //foreach (Process proc in processes)
-            //{
-            //    String title = proc.MainWindowTitle.ToUpper();
-            //    if (title.Contains("TRYD"))
-            //    {
-            //        procPython = proc;
-            //        isTrydModalOn = true;
-            //    }
-            //}
-
-            // busca o estado das instancias do Python (scripts) em execucao:
-            processes = Process.GetProcessesByName("python");
-            if (processes.Any())
-            { // referencia o primeiro script python em execucao:
-                procPython = processes[0];
-                isPythonOn = true;
-            }
-            logger.Debug("Verificando processos em checkScheduler() | isMT5GenialOn={} | isMT5ModalOn={} | isMT5XmOn={} | isPythonOn={}", isMT5GenialOn, isMT5ModalOn, isMT5XmOn, isPythonOn);
-
-            // identifica o dia corrente para verificar os mercados:
-            bool isB3Open = false,
-                 isFeriadoB3 = false;
-            bool isForexOpen = false,
-                 isFeriadoForex = false;
-            bool isInfiniteOk = false;
-            DateTime now = DateTime.Now;
-            int dia = now.Day,
-                mes = now.Month,
-                hor = now.Hour,
-                min = now.Minute;
-            DayOfWeek dow = now.DayOfWeek;
-
-            // verifica se o dia corrente eh feriado no mercado forex e no mercado b3:
-            foreach ((int dia, int mes) feriado in FERIADOS_FOREX)
-            {
-                if (dia == feriado.dia && mes == feriado.mes)
-                {
-                    isFeriadoForex = true;
-                }
-            }
-            foreach ((int dia, int mes) feriado in FERIADOS_BR_B3)
-            {
-                if (dia == feriado.dia && mes == feriado.mes)
-                {
-                    isFeriadoB3 = true;
-                }
-            }
-
-            // verifica se os mercados estao abertos ou fechados:
-            switch (dow)
-            {
-                case DayOfWeek.Monday:
-                    isForexOpen = !isFeriadoForex; // && (hor < 21);
-                    isB3Open = !isFeriadoB3 && ((hor == 8 && min >= 40) || (hor >= 9 && hor <= 17) || (hor == 18 && min <= 10));
-                    isInfiniteOk = (hor >= 4 && hor <= 7) || (hor == 8 && min < 40);
-                    break;
-                case DayOfWeek.Tuesday:
-                    isForexOpen = !isFeriadoForex; // && (hor < 21);
-                    isB3Open = !isFeriadoB3 && ((hor == 8 && min >= 40) || (hor >= 9 && hor <= 17) || (hor == 18 && min <= 10));
-                    isInfiniteOk = (hor >= 4 && hor <= 7) || (hor == 8 && min < 40);
-                    break;
-                case DayOfWeek.Wednesday:
-                    isForexOpen = !isFeriadoForex; // && (hor < 21);
-                    isB3Open = !isFeriadoB3 && ((hor == 8 && min >= 40) || (hor >= 9 && hor <= 17) || (hor == 18 && min <= 10));
-                    isInfiniteOk = (hor >= 4 && hor <= 7) || (hor == 8 && min < 40);
-                    break;
-                case DayOfWeek.Thursday:
-                    isForexOpen = !isFeriadoForex; // && (hor < 21);
-                    isB3Open = !isFeriadoB3 && ((hor == 8 && min >= 40) || (hor >= 9 && hor <= 17) || (hor == 18 && min <= 10));
-                    isInfiniteOk = (hor >= 4 && hor <= 7) || (hor == 8 && min < 40);
-                    break;
-                case DayOfWeek.Friday:
-                    isForexOpen = !isFeriadoForex && (hor < 19);
-                    isB3Open = !isFeriadoB3 && ((hor == 8 && min >= 40) || (hor >= 9 && hor <= 17) || (hor == 18 && min <= 10));
-                    isInfiniteOk = (hor >= 4 && hor <= 7) || (hor == 8 && min < 40);
-                    break;
-                case DayOfWeek.Saturday:
-                    isForexOpen = false;
-                    isB3Open = false;
-                    isInfiniteOk = (hor >= 4 && hor <= 8);
-                    break;
-                case DayOfWeek.Sunday:
-                    isForexOpen = !isFeriadoForex && (hor >= 18);
-                    isB3Open = false;
-                    // eh necessario executar para ao menos baixar os sorteios do sabado
-                    isInfiniteOk = (hor >= 4 && hor <= 8);
-                    break;
-            }
-            logger.Debug("Verificando calendario em checkScheduler() | isFeriadoForex={} | isForexOpen={} | isFeriadoB3={} | isB3Open={} | isInfiniteOk={}", isFeriadoForex, isForexOpen, isFeriadoB3, isB3Open, isInfiniteOk);
-
-            // ativacao ou suspensao do MT para Genial e ModalMais (B3):
-            if (isB3Open)
-            { // Bolsa do brasil aberta, executar MT5 e TRYD se nao estiverem em execucao:
+            // ativacao ou suspensao do MT5 para Genial e ModalMais (B3):
+            if (agora.ob3)
+            { // Bolsa do brasil B3 aberta, executar MT5 se nao estiverem em execucao:
                 if (!isMT5GenialOn)
                 {
-                    procMT5Genial = openProgram(MT5_GENIAL);
+                    procMT5Genial = openProgram(Properties.Settings.Default.MT5PathGenial);
                 }
                 if (!isMT5ModalOn)
                 {
-                    procMT5Modal = openProgram(MT5_MODAL);
+                    procMT5Modal = openProgram(Properties.Settings.Default.MT5PathModal);
                 }
-                //if (!isTrydModalOn)
-                //{
-                //    // TODO procTrydModal = Process.Start(TRYD_MODAL);
-                //}
             }
             else
-            { // Bolsa do brasil fechada, encerrar MT5 e TRYD se estiverem em execucao (e check-close ativo):
+            { // Bolsa do brasil fechada, encerrar MT5 se estiverem em execucao (e not-close desabilitado):
                 if (isMT5GenialOn && ! Properties.Settings.Default.GeralFlagNotClose)
                 {
                     closeProgram(procMT5Genial);
@@ -247,18 +226,14 @@ namespace Janitor
                 {
                     closeProgram(procMT5Modal);
                 }
-                //if (isTrydModalOn && ckbClose.Checked)
-                //{
-                //    // TODO closeProgram(procTrydModal);
-                //}
             }
 
-            // ativacao ou suspensao do MT para XM (Forex):
-            if (isForexOpen)
+            // ativacao ou suspensao do MT5 para XM (Forex):
+            if (agora.ofx)
             { // Mercado Forex aberto, executar MT5 se nao estiver em execucao (e check-close ativo):
                 if (!isMT5XmOn)
                 {
-                    procMT5Xm = openProgram(MT5_XM);
+                    procMT5Xm = openProgram(Properties.Settings.Default.MT5PathXmglob);
                 }
             }
             else
@@ -268,21 +243,65 @@ namespace Janitor
                     closeProgram(procMT5Xm);
                 }
             }
+        }
 
-            // ativacao ou suspensao do Infinite em Python (scripts):
-            if (isInfiniteOk)
-            { // Mercados estao fechados, pode executar scripts python de manutencao se ja nao estiverem executando:
-                if (!isPythonOn)
+        /// o programa de coleta diario eh executado diariamente, mas apenas uma vez por dia:
+        public void checkColethon(DateTime now)
+        {
+            Settings config = Properties.Settings.Default;
+
+            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            if (config.ColetLastExecute == null || config.ColetLastExecute.Date < now.Date)
+            {
+                // salva a ultima data de execucao como agora:
+                config.ColetLastExecute = now;
+                config.Save();
+
+                // executa o batch do colethon:
+                openBatch(config.ColetPathProgram);
+            }
+        }
+
+        /// o programa de analise de dados eh executado diariamente, mas apenas uma vez por dia:
+        public void checkQuanthon(DateTime now)
+        {
+            Settings config = Properties.Settings.Default;
+
+            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            if (config.QuantLastExecute == null || config.QuantLastExecute.Date < now.Date)
+            {
+                // para executar o quanthon, eh preciso verificar se o colethon ja foi executado:
+                string flagFile = @"C:\Apps\Infinite\Quanthon\data\safeToDelete.tmp";
+                if (File.Exists(flagFile))
                 {
-                    procPython = openBatch(PYTHON_INFINITE);
+                    // salva a ultima data de execucao como agora:
+                    config.QuantLastExecute = now;
+                    config.Save();
+
+                    // executa o batch do quanthon:
+                    openBatch(config.QuantPathProgram);
                 }
             }
-            else
-            { // Mercados estao abertos, evita executar os scripts de manutencao
-              // para nao sobrecarregar o computador e consumir muitos recursos:
-                if (isPythonOn && ! Properties.Settings.Default.GeralFlagNotClose)
+        }
+
+        /// o programa de geracao de palpites eh executado diariamente, mas apenas uma vez por dia:
+        public void checkLothon(DateTime now)
+        {
+            Settings config = Properties.Settings.Default;
+
+            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            if (config.LotoLastExecute == null || config.LotoLastExecute.Date < now.Date)
+            {
+                // para executar o lothon, eh preciso verificar se o colethon ja foi executado:
+                string flagFile = @"C:\Apps\Infinite\Lothon\data\safeToDelete.tmp";
+                if (File.Exists(flagFile))
                 {
-                    closeProgram(procPython);
+                    // salva a ultima data de execucao como agora:
+                    config.LotoLastExecute = now;
+                    config.Save();
+
+                    // executa o batch do lothon:
+                    openBatch(config.LotoPathProgram);
                 }
             }
         }
@@ -312,7 +331,7 @@ namespace Janitor
             try
             {
                 logger.Debug("Vai encerrar processo {} | Flag HasExited={}", proc.ProcessName, proc.HasExited);
-                if (proc == null || proc.HasExited)
+                if (proc.HasExited)
                 {
                     result = true; // indica que o programa foi encerrado (nao importa se foi antes).
                 }
@@ -364,5 +383,38 @@ namespace Janitor
             return proc;
         }
 
+        public static string ListFeriados()
+        {
+            string listaFeriados = "FERIADOS NACIONAIS (B3):\n";
+            foreach ((int dia, int mes) in FERIADOS_BR_B3)
+            {
+                listaFeriados += "        " + dia.ToString("0#") + " / " + MESES[mes - 1] + "\n";
+            }
+
+            listaFeriados += "\nFERIADOS INTERNACIONAIS (FOREX):\n";
+            foreach ((int dia, int mes) in FERIADOS_FOREX)
+            {
+                listaFeriados += "        " + dia.ToString("0#") + " / " + MESES[mes - 1] + "\n";
+            }
+
+            return listaFeriados;
+        }
+
+        public static void StopAllTaks()
+        {
+            // identifica os processos de  todas as instancias do MetaTrader e scripts Python:
+            Process[] processesMt = Process.GetProcessesByName("terminal64");
+            Process[] processesPy = Process.GetProcessesByName("python");
+            Process[] processes = processesMt.Concat(processesPy).ToArray();
+            logger.Debug("Verificando processos em StopAllTaks() | processes = Process[{}]", processes.Length);
+
+            foreach (Process proc in processes)
+            {
+                // Alterado para verificar pelo full-path pois o titulo as vezes vem em branco ""...
+                string fullPath = proc.MainModule.FileName;
+                logger.Debug("Vai finalizar task em execucao: {}", fullPath);
+                closeProgram(proc);
+            }
+        }
     }
 }

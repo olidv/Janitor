@@ -133,10 +133,9 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ColetLastExecute {
+        public global::System.DateTime ColetLastExecute {
             get {
-                return ((string)(this["ColetLastExecute"]));
+                return ((global::System.DateTime)(this["ColetLastExecute"]));
             }
             set {
                 this["ColetLastExecute"] = value;
@@ -169,10 +168,9 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string QuantLastExecute {
+        public global::System.DateTime QuantLastExecute {
             get {
-                return ((string)(this["QuantLastExecute"]));
+                return ((global::System.DateTime)(this["QuantLastExecute"]));
             }
             set {
                 this["QuantLastExecute"] = value;
@@ -205,10 +203,9 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LotoLastExecute {
+        public global::System.DateTime LotoLastExecute {
             get {
-                return ((string)(this["LotoLastExecute"]));
+                return ((global::System.DateTime)(this["LotoLastExecute"]));
             }
             set {
                 this["LotoLastExecute"] = value;

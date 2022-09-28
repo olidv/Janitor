@@ -29,7 +29,7 @@
     <Setting Name="ColetPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Colethon\bin\startup.bat</Value>
     </Setting>
-    <Setting Name="ColetLastExecute" Type="System.String" Scope="User">
+    <Setting Name="ColetLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="QuantFlagProgram" Type="System.Boolean" Scope="User">
@@ -38,7 +38,7 @@
     <Setting Name="QuantPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Quanthon\bin\startup.bat</Value>
     </Setting>
-    <Setting Name="QuantLastExecute" Type="System.String" Scope="User">
+    <Setting Name="QuantLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LotoFlagProgram" Type="System.Boolean" Scope="User">
@@ -47,7 +47,7 @@
     <Setting Name="LotoPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Lothon\bin\palpites.bat</Value>
     </Setting>
-    <Setting Name="LotoLastExecute" Type="System.String" Scope="User">
+    <Setting Name="LotoLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

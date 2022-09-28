@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Janitor.Properties;
 
 namespace Janitor
 {
@@ -12,11 +13,14 @@ namespace Janitor
         }
 
         private void frm_config_Load(object sender, EventArgs e)
-        { // coleta as propriedades atuais para exibir na janela:
+        { 
+            // coleta as propriedades atuais para exibir na janela:
+            Settings config = Properties.Settings.Default;
+
             // Aba Geral
-            ckbGeralFlagTasks.Checked = Properties.Settings.Default.GeralFlagTasks;
-            ckbGeralFlagClocker.Checked = Properties.Settings.Default.GeralFlagClocker;
-            ckbGeralFlagNotClose.Checked = Properties.Settings.Default.GeralFlagNotClose;
+            ckbGeralFlagTasks.Checked = config.GeralFlagTasks;
+            ckbGeralFlagClocker.Checked = config.GeralFlagClocker;
+            ckbGeralFlagNotClose.Checked = config.GeralFlagNotClose;
             toolTips.SetToolTip(ckbGeralFlagTasks, "Clique para habilitar ou desabilitar o agendamento das tarefas.");
             toolTips.SetToolTip(ckbGeralFlagClocker, "Clique para habilitar ou desabilitar a correção do relógio interno.");
             toolTips.SetToolTip(ckbGeralFlagNotClose, "Clique para ignorar ou não o encerramento das tarefas.");
@@ -24,10 +28,10 @@ namespace Janitor
             toolTips.SetToolTip(btnGeralExibirFeriados, "Clique para exibir os feriados nacionais (B3) e internacionais (FOREX).");
 
             // Aba MetaTrader
-            ckbMT5FlagProgram.Checked = Properties.Settings.Default.MT5FlagProgram;
-            txbMT5PathGenial.Text = Properties.Settings.Default.MT5PathGenial;
-            txbMT5PathModal.Text = Properties.Settings.Default.MT5PathModal;
-            txbMT5PathXmglob.Text = Properties.Settings.Default.MT5PathXmglob;
+            ckbMT5FlagProgram.Checked = config.MT5FlagProgram;
+            txbMT5PathGenial.Text = config.MT5PathGenial;
+            txbMT5PathModal.Text = config.MT5PathModal;
+            txbMT5PathXmglob.Text = config.MT5PathXmglob;
             toolTips.SetToolTip(ckbMT5FlagProgram, "Clique para habilitar ou desabilitar a execução do MetaTrader.");
             toolTips.SetToolTip(txbMT5PathGenial, "Caminho completo do MetaTrader da corretora Genial.");
             toolTips.SetToolTip(lblMT5PathGenial, "Caminho completo do MetaTrader da corretora Genial.");
@@ -37,9 +41,10 @@ namespace Janitor
             toolTips.SetToolTip(lblMT5PathXmglob, "Caminho completo do MetaTrader da corretora XM Global.");
 
             // Aba Colethon
-            chbColetFlagProgram.Checked = Properties.Settings.Default.ColetFlagProgram;
-            txbColetPathProgram.Text = Properties.Settings.Default.ColetPathProgram;
-            txbColetLastExecute.Text = Properties.Settings.Default.ColetLastExecute;
+            chbColetFlagProgram.Checked = config.ColetFlagProgram;
+            txbColetPathProgram.Text = config.ColetPathProgram;
+            if (config.ColetLastExecute > DateTime.MinValue) 
+                txbColetLastExecute.Text = config.ColetLastExecute.ToString("dddd, dd MMMM yyyy | HH:mm:ss");
             toolTips.SetToolTip(chbColetFlagProgram, "Clique para habilitar ou desabilitar a execução do Colethon.");
             toolTips.SetToolTip(txbColetPathProgram, "Caminho completo do executável Colethon.");
             toolTips.SetToolTip(lblColetPathProgram, "Caminho completo do executável Colethon.");
@@ -48,9 +53,10 @@ namespace Janitor
             toolTips.SetToolTip(btnColetReexecutar, "Clique para executar novamente o Colethon.");
 
             // Aba Quanthon
-            chbQuantFlagProgram.Checked = Properties.Settings.Default.QuantFlagProgram;
-            txbQuantPathProgram.Text = Properties.Settings.Default.QuantPathProgram;
-            txbQuantLastExecute.Text = Properties.Settings.Default.QuantLastExecute;
+            chbQuantFlagProgram.Checked = config.QuantFlagProgram;
+            txbQuantPathProgram.Text = config.QuantPathProgram;
+            if (config.ColetLastExecute > DateTime.MinValue) 
+                txbQuantLastExecute.Text = config.QuantLastExecute.ToString("dddd, dd MMMM yyyy | HH:mm:ss");
             toolTips.SetToolTip(chbQuantFlagProgram, "Clique para habilitar ou desabilitar a execução do Quanthon.");
             toolTips.SetToolTip(txbQuantPathProgram, "Caminho completo do executável Quanthon.");
             toolTips.SetToolTip(lblQuantPathProgram, "Caminho completo do executável Quanthon.");
@@ -59,9 +65,10 @@ namespace Janitor
             toolTips.SetToolTip(btnQuantReexecutar, "Clique para executar novamente o Quanthon.");
 
             // Aba Loto365
-            ckbLotoFlagProgram.Checked = Properties.Settings.Default.LotoFlagProgram;
-            txbLotoPathProgram.Text = Properties.Settings.Default.LotoPathProgram;
-            txbLotoLastExecute.Text = Properties.Settings.Default.LotoLastExecute;
+            ckbLotoFlagProgram.Checked = config.LotoFlagProgram;
+            txbLotoPathProgram.Text = config.LotoPathProgram;
+            if (config.ColetLastExecute > DateTime.MinValue) 
+                txbLotoLastExecute.Text = config.LotoLastExecute.ToString("dddd, dd MMMM yyyy | HH:mm:ss");
             toolTips.SetToolTip(ckbLotoFlagProgram, "Clique para habilitar ou desabilitar a execução do Lothon.");
             toolTips.SetToolTip(txbLotoPathProgram, "Caminho completo do executável Lothon.");
             toolTips.SetToolTip(lblLotoPathProgram, "Caminho completo do executável Lothon.");
@@ -78,32 +85,35 @@ namespace Janitor
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
-        {  // coleta as propriedades modificadas e salva:
+        {  
+            // coleta as propriedades modificadas e salva:
+            Settings config = Properties.Settings.Default;
+
             // Aba Geral
-            Properties.Settings.Default.GeralFlagTasks = ckbGeralFlagTasks.Checked;
-            Properties.Settings.Default.GeralFlagClocker = ckbGeralFlagClocker.Checked;
-            Properties.Settings.Default.GeralFlagNotClose = ckbGeralFlagNotClose.Checked;
+            config.GeralFlagTasks = ckbGeralFlagTasks.Checked;
+            config.GeralFlagClocker = ckbGeralFlagClocker.Checked;
+            config.GeralFlagNotClose = ckbGeralFlagNotClose.Checked;
 
             // Aba MetaTrader
-            Properties.Settings.Default.MT5FlagProgram = ckbMT5FlagProgram.Checked;
-            Properties.Settings.Default.MT5PathGenial = txbMT5PathGenial.Text;
-            Properties.Settings.Default.MT5PathModal = txbMT5PathModal.Text;
-            Properties.Settings.Default.MT5PathXmglob = txbMT5PathXmglob.Text;
+            config.MT5FlagProgram = ckbMT5FlagProgram.Checked;
+            config.MT5PathGenial = txbMT5PathGenial.Text;
+            config.MT5PathModal = txbMT5PathModal.Text;
+            config.MT5PathXmglob = txbMT5PathXmglob.Text;
 
             // Aba Colethon
-            Properties.Settings.Default.ColetFlagProgram = chbColetFlagProgram.Checked;
-            Properties.Settings.Default.ColetPathProgram = txbColetPathProgram.Text;
+            config.ColetFlagProgram = chbColetFlagProgram.Checked;
+            config.ColetPathProgram = txbColetPathProgram.Text;
 
             // Aba Quanthon
-            Properties.Settings.Default.QuantFlagProgram = chbQuantFlagProgram.Checked;
-            Properties.Settings.Default.QuantPathProgram = txbQuantPathProgram.Text;
+            config.QuantFlagProgram = chbQuantFlagProgram.Checked;
+            config.QuantPathProgram = txbQuantPathProgram.Text;
 
             // Aba Loto365
-            Properties.Settings.Default.LotoFlagProgram = ckbLotoFlagProgram.Checked;
-            Properties.Settings.Default.LotoPathProgram = txbLotoPathProgram.Text;
+            config.LotoFlagProgram = ckbLotoFlagProgram.Checked;
+            config.LotoPathProgram = txbLotoPathProgram.Text;
 
             // Salva as propriedades.
-            Properties.Settings.Default.Save();
+            config.Save();
 
             // fecha o formulario:
             this.Close();
@@ -123,20 +133,15 @@ namespace Janitor
                                                         MessageBoxButtons.YesNo,
                                                         MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
-            {
-
+            {  // Comunica ao Manager para encerrar todas as tarefas em execucao:
+                Janitor.JanitorManager.ListFeriados();
             }
         }
 
         private void btn_ga_feriados_Click(object sender, EventArgs e)
         {
-            string feriados = "Feriados Nacionais (B3):\n";
-            feriados += "\t07/09\n";
-            feriados += "\nFeriados Internacionais (FOREX):\n";
-            feriados += "\t25/12\n";
-
             // exibe os feriados considerados no ano corrente:
-            MessageBox.Show(feriados,
+            MessageBox.Show(JanitorManager.ListFeriados(),
                             "Relação de Feriados 2022 (Dia/Mês)",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -169,6 +174,8 @@ namespace Janitor
 
         private void btnColetReexecutar_Click(object sender, EventArgs e)
         {
+            Settings config = Properties.Settings.Default;
+
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Colethon para coletar dados?",
                                                         "Colethon: Limpar Última Execução",
@@ -178,15 +185,17 @@ namespace Janitor
             if (dialogResult == DialogResult.Yes)
             {
                 txbColetLastExecute.Text = "";
-                Properties.Settings.Default.ColetLastExecute = null;
+                config.ColetLastExecute = DateTime.MinValue;
 
                 // Salva as propriedades.
-                Properties.Settings.Default.Save();
+                config.Save();
             }
         }
 
         private void btnQuantReexecutar_Click(object sender, EventArgs e)
         {
+            Settings config = Properties.Settings.Default;
+
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Quanthon para analisar dados?",
                                                         "Quanthon: Limpar Última Execução",
@@ -196,15 +205,17 @@ namespace Janitor
             if (dialogResult == DialogResult.Yes)
             {
                 txbQuantLastExecute.Text = "";
-                Properties.Settings.Default.QuantLastExecute = null;
+                config.QuantLastExecute = DateTime.MinValue;
 
                 // Salva as propriedades.
-                Properties.Settings.Default.Save();
+                config.Save();
             }
         }
 
         private void btnLotoReexecutar_Click(object sender, EventArgs e)
         {
+            Settings config = Properties.Settings.Default;
+
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Lothon para gerar palpites?",
                                                         "Lothon: Limpar Última Execução",
@@ -214,10 +225,10 @@ namespace Janitor
             if (dialogResult == DialogResult.Yes)
             {
                 txbLotoLastExecute.Text = "";
-                Properties.Settings.Default.LotoLastExecute = null;
+                config.LotoLastExecute = DateTime.MinValue;
 
                 // Salva as propriedades.
-                Properties.Settings.Default.Save();
+                config.Save();
             }
         }
     }
