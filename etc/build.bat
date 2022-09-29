@@ -50,6 +50,10 @@ copy src\resources\prod\*.*  dist\bin\
 copy src\scripts\*.*         dist\scripts\
 echo.
 
+echo Copiando para distribuicao as dependencias de libraries externas
+copy lib\*.* dist\lib\
+echo.
+
 echo Compactando o build e gerando pacote de distribuicao da release [ ZIP ]
 python -m zipfile -c janitor-1.0.zip dist\.
 move janitor-1.0.zip dist\.  1>nul  2>&1
