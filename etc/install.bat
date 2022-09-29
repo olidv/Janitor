@@ -1,59 +1,50 @@
 @echo off
 color F
 
-rem Executa o build...
-echo  *******************************************
-echo  **  INICIANDO  COMPILACAO  DO  JANITOR.  **
-echo  *******************************************
+echo Verificando a versao atual do Python no sistema
+python --version
+echo.
+
+echo Verificando a versao atual do pip no sistema
+pip --version
+echo.
+
+echo Atualizando o pip no sistema para evitar conflitos de versoes
+python -m pip install --upgrade pip
+echo.
+
+echo Criando pasta do projeto
+mkdir Janitor
+echo.
+
+echo Instalando ambiente virtual no projeto
+python -m venv Janitor\venv
 echo.
 
 echo Posicionando no diretorio raiz do projeto
-cd ..
+cd Janitor
 echo.
 
-echo Apagando a pasta de distribuicao para nova release [ \dist ]
-rmdir /s /q dist  1>nul  2>&1
+echo Ativando o ambiente virtual do projeto
+call venv\Scripts\activate.bat
 echo.
 
-echo Criando nova estrutura para distribuir o pacote do executavel
-mkdir dist          1>nul  2>&1
-mkdir dist\bin      1>nul  2>&1
-mkdir dist\lib      1>nul  2>&1
-mkdir dist\logs     1>nul  2>&1
-mkdir dist\scripts  1>nul  2>&1
+echo Instalando as dependencias do projeto no ambiente
+@echo on
+pip install -U setuptools
+pip install -U wheel
+pip install -U Pillow
+pip install -U requests
+pip install -U beautifulsoup4
+pip install -U Send2Trash
+pip install -U selenium
+@echo off
 echo.
 
-echo Copiando para distribuicao os arquivos de resources e executaveis
-copy bin\Release\*.*         dist\bin
-copy src\batches\*.*         dist\bin
-copy src\scripts\*.*         dist\scripts
-rem copy src\resources\prod\*.*  dist\scripts
+echo Atualizando a lista de rdependencias do projeto [ requirements ]
+python -m pip freeze > requirements.txt
 echo.
 
-echo Compactando o build e gerando pacote de distribuicao da release [ ZIP ]
-python -m zipfile -c janitor-1.0.zip dist\.
-move janitor-1.0.zip dist\.  1>nul  2>&1
+rem Pausa final...
 echo.
-
-
-rem em seguida o deploy do JANITOR:
-echo  ********************************************
-echo  **  INICIANDO  IMPLANTACAO  DO  JANITOR.  **
-echo  ********************************************
-echo.
-
-echo Posicionando no diretorio raiz da aplicacao
-cd /d C:\Apps\Infinite\Janitor
-echo.
-
-echo Limpando as pastas temporarias da aplicacao
-rem del /f /q logs\*.*  1>nul  2>&1
-echo.
-
-echo Posicionando no diretorio do projeto
-cd /d D:\Workspace\C#\Janitor
-echo.
-
-echo Copiando os arquivos do projeto
-xcopy dist\*.* C:\Apps\Infinite\Janitor  /E /C /Q /H /R /Y
-echo.
+pause
