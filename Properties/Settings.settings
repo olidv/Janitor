@@ -11,6 +11,9 @@
     <Setting Name="GeralFlagNotClose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="GeralCheckProgram" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\Infinite\Janitor\bin\check_tarefas.bat</Value>
+    </Setting>
     <Setting Name="MT5FlagProgram" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -32,15 +35,6 @@
     <Setting Name="ColetLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="QuantFlagProgram" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="QuantPathProgram" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Apps\Infinite\Quanthon\bin\startup.bat</Value>
-    </Setting>
-    <Setting Name="QuantLastExecute" Type="System.DateTime" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="LotoFlagProgram" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -48,6 +42,15 @@
       <Value Profile="(Default)">C:\Apps\Infinite\Lothon\bin\palpites.bat</Value>
     </Setting>
     <Setting Name="LotoLastExecute" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="QuantFlagProgram" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="QuantPathProgram" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\Infinite\Quanthon\bin\startup.bat</Value>
+    </Setting>
+    <Setting Name="QuantLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

@@ -29,6 +29,7 @@ echo Criando nova estrutura para distribuir o pacote do executavel
 mkdir dist          1>nul  2>&1
 mkdir dist\bin      1>nul  2>&1
 mkdir dist\lib      1>nul  2>&1
+mkdir dist\data     1>nul  2>&1
 mkdir dist\logs     1>nul  2>&1
 mkdir dist\scripts  1>nul  2>&1
 echo.

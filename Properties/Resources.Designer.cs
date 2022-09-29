@@ -93,6 +93,16 @@ namespace Janitor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_close {
+            get {
+                object obj = ResourceManager.GetObject("png_close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_configuration {
             get {
                 object obj = ResourceManager.GetObject("png_configuration", resourceCulture);
@@ -106,6 +116,26 @@ namespace Janitor.Properties {
         internal static System.Drawing.Bitmap png_exit {
             get {
                 object obj = ResourceManager.GetObject("png_exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_info {
+            get {
+                object obj = ResourceManager.GetObject("png_info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_warn {
+            get {
+                object obj = ResourceManager.GetObject("png_warn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

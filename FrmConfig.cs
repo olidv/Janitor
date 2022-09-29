@@ -25,7 +25,7 @@ namespace Janitor
             toolTips.SetToolTip(ckbGeralFlagClocker, "Clique para habilitar ou desabilitar a correção do relógio interno.");
             toolTips.SetToolTip(ckbGeralFlagNotClose, "Clique para ignorar ou não o encerramento das tarefas.");
             toolTips.SetToolTip(btnGeralEncerrarTarefas, "Clique para encerrar todas as tarefas em execução.");
-            toolTips.SetToolTip(btnGeralExibirFeriados, "Clique para exibir os feriados nacionais (B3) e internacionais (FOREX).");
+            toolTips.SetToolTip(btnMT5ExibirFeriados, "Clique para exibir os feriados nacionais (B3) e internacionais (FOREX).");
 
             // Aba MetaTrader
             ckbMT5FlagProgram.Checked = config.MT5FlagProgram;
@@ -84,8 +84,33 @@ namespace Janitor
             FrmConfig_Refresh(null, null);
         }
 
-        private void btn_ok_Click(object sender, EventArgs e)
-        {  
+        /// atualiza a aparencia da tela conforme as propriedades:
+        private void FrmConfig_Refresh(object sender, EventArgs e)
+        {
+            // Aba Geral
+            ckbGeralFlagTasks.ForeColor = ckbGeralFlagTasks.Checked ? Color.Blue : Color.DarkGray;
+            ckbGeralFlagNotClose.ForeColor = ckbGeralFlagNotClose.Checked ? Color.Red : Color.Black;
+
+            // Aba MetaTrader
+            txbMT5PathGenial.Enabled = ckbMT5FlagProgram.Checked;
+            txbMT5PathModal.Enabled = ckbMT5FlagProgram.Checked;
+            txbMT5PathXmglob.Enabled = ckbMT5FlagProgram.Checked;
+
+            // Aba Colethon
+            txbColetPathProgram.Enabled = chbColetFlagProgram.Checked;
+            btnColetReexecutar.Enabled = chbColetFlagProgram.Checked;
+
+            // Aba Quanthon
+            txbQuantPathProgram.Enabled = chbQuantFlagProgram.Checked;
+            btnQuantReexecutar.Enabled = chbQuantFlagProgram.Checked;
+
+            // Aba Loto365
+            txbLotoPathProgram.Enabled = ckbLotoFlagProgram.Checked;
+            btnLotoReexecutar.Enabled = ckbLotoFlagProgram.Checked;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
             // coleta as propriedades modificadas e salva:
             Settings config = Properties.Settings.Default;
 
@@ -119,13 +144,21 @@ namespace Janitor
             this.Close();
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             // fecha o formulario:
             this.Close();
         }
 
-        private void btn_ga_encerrar_Click(object sender, EventArgs e)
+        private void btnGeralCheckTarefas_Click(object sender, EventArgs e)
+        {
+            Settings config = Properties.Settings.Default;
+
+            // Executa o batch que verifica o logging das tarefas em busca de alertas (WARN) e erros (ERROR).
+            JanitorManager.openBatch(config.GeralCheckProgram, true);
+        }
+
+        private void btnGeralEncerrarTarefas_Click(object sender, EventArgs e)
         {
             // encerra todas as tarefas em execucao:
             DialogResult dialogResult = MessageBox.Show("Deseja encerrar todas as tarefas em execução?",
@@ -134,42 +167,17 @@ namespace Janitor
                                                         MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {  // Comunica ao Manager para encerrar todas as tarefas em execucao:
-                Janitor.JanitorManager.ListFeriados();
+                JanitorManager.ListFeriados();
             }
         }
 
-        private void btn_ga_feriados_Click(object sender, EventArgs e)
+        private void btnMT5ExibirFeriados_Click(object sender, EventArgs e)
         {
             // exibe os feriados considerados no ano corrente:
             MessageBox.Show(JanitorManager.ListFeriados(),
                             "Relação de Feriados 2022 (Dia/Mês)",
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-        }
-
-        /// atualiza a aparencia da tela conforme as propriedades:
-        private void FrmConfig_Refresh(object sender, EventArgs e)
-        {  
-            // Aba Geral
-            ckbGeralFlagTasks.ForeColor = ckbGeralFlagTasks.Checked ? Color.Blue : Color.DarkGray;
-            ckbGeralFlagNotClose.ForeColor = ckbGeralFlagNotClose.Checked ? Color.Red : Color.Black;
-
-            // Aba MetaTrader
-            txbMT5PathGenial.Enabled = ckbMT5FlagProgram.Checked;
-            txbMT5PathModal.Enabled = ckbMT5FlagProgram.Checked;
-            txbMT5PathXmglob.Enabled = ckbMT5FlagProgram.Checked;
-
-            // Aba Colethon
-            txbColetPathProgram.Enabled = chbColetFlagProgram.Checked;
-            btnColetReexecutar.Enabled = chbColetFlagProgram.Checked;
-
-            // Aba Quanthon
-            txbQuantPathProgram.Enabled = chbQuantFlagProgram.Checked;
-            btnQuantReexecutar.Enabled = chbQuantFlagProgram.Checked;
-
-            // Aba Loto365
-            txbLotoPathProgram.Enabled = ckbLotoFlagProgram.Checked;
-            btnLotoReexecutar.Enabled = ckbLotoFlagProgram.Checked;
+                            MessageBoxIcon.Exclamation);
         }
 
         private void btnColetReexecutar_Click(object sender, EventArgs e)

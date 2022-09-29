@@ -58,7 +58,19 @@ namespace Janitor.Properties {
                 this["GeralFlagNotClose"] = value;
             }
         }
-        
+                
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Janitor\\bin\\check_tarefas.bat")]
+        public string GeralCheckProgram {
+            get {
+                return ((string)(this["GeralCheckProgram"]));
+            }
+            set {
+                this["GeralCheckProgram"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -141,42 +153,7 @@ namespace Janitor.Properties {
                 this["ColetLastExecute"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool QuantFlagProgram {
-            get {
-                return ((bool)(this["QuantFlagProgram"]));
-            }
-            set {
-                this["QuantFlagProgram"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Quanthon\\bin\\startup.bat")]
-        public string QuantPathProgram {
-            get {
-                return ((string)(this["QuantPathProgram"]));
-            }
-            set {
-                this["QuantPathProgram"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime QuantLastExecute {
-            get {
-                return ((global::System.DateTime)(this["QuantLastExecute"]));
-            }
-            set {
-                this["QuantLastExecute"] = value;
-            }
-        }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -209,6 +186,41 @@ namespace Janitor.Properties {
             }
             set {
                 this["LotoLastExecute"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool QuantFlagProgram {
+            get {
+                return ((bool)(this["QuantFlagProgram"]));
+            }
+            set {
+                this["QuantFlagProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Quanthon\\bin\\startup.bat")]
+        public string QuantPathProgram {
+            get {
+                return ((string)(this["QuantPathProgram"]));
+            }
+            set {
+                this["QuantPathProgram"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime QuantLastExecute {
+            get {
+                return ((global::System.DateTime)(this["QuantLastExecute"]));
+            }
+            set {
+                this["QuantLastExecute"] = value;
             }
         }
     }

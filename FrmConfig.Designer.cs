@@ -36,13 +36,13 @@ namespace Janitor
             this.tbcPanel = new System.Windows.Forms.TabControl();
             this.tbpGeral = new System.Windows.Forms.TabPage();
             this.grbGeralAgendador = new System.Windows.Forms.GroupBox();
-            this.btnGeralExibirFeriados = new System.Windows.Forms.Button();
             this.btnGeralEncerrarTarefas = new System.Windows.Forms.Button();
             this.ckbGeralFlagClocker = new System.Windows.Forms.CheckBox();
             this.ckbGeralFlagNotClose = new System.Windows.Forms.CheckBox();
             this.ckbGeralFlagTasks = new System.Windows.Forms.CheckBox();
             this.tbpMetatrader = new System.Windows.Forms.TabPage();
             this.grpMetatraderTrading = new System.Windows.Forms.GroupBox();
+            this.btnMT5ExibirFeriados = new System.Windows.Forms.Button();
             this.lblMT5PathModal = new System.Windows.Forms.Label();
             this.txbMT5PathModal = new System.Windows.Forms.TextBox();
             this.txbMT5PathXmglob = new System.Windows.Forms.TextBox();
@@ -75,6 +75,7 @@ namespace Janitor
             this.lblLotoPathProgram = new System.Windows.Forms.Label();
             this.ckbLotoFlagProgram = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.btnGeralCheckTarefas = new System.Windows.Forms.Button();
             this.tbcPanel.SuspendLayout();
             this.tbpGeral.SuspendLayout();
             this.grbGeralAgendador.SuspendLayout();
@@ -97,7 +98,7 @@ namespace Janitor
             this.btnOk.TabIndex = 100;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btn_ok_Click);
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -108,15 +109,15 @@ namespace Janitor
             this.btnCancel.TabIndex = 101;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // tbcPanel
             // 
             this.tbcPanel.Controls.Add(this.tbpGeral);
             this.tbcPanel.Controls.Add(this.tbpMetatrader);
             this.tbcPanel.Controls.Add(this.tbpColethon);
-            this.tbcPanel.Controls.Add(this.tbpQuanthon);
             this.tbcPanel.Controls.Add(this.tbpLoto365);
+            this.tbcPanel.Controls.Add(this.tbpQuanthon);
             this.tbcPanel.Location = new System.Drawing.Point(10, 10);
             this.tbcPanel.Name = "tbcPanel";
             this.tbcPanel.SelectedIndex = 0;
@@ -136,7 +137,7 @@ namespace Janitor
             // 
             // grbGeralAgendador
             // 
-            this.grbGeralAgendador.Controls.Add(this.btnGeralExibirFeriados);
+            this.grbGeralAgendador.Controls.Add(this.btnGeralCheckTarefas);
             this.grbGeralAgendador.Controls.Add(this.btnGeralEncerrarTarefas);
             this.grbGeralAgendador.Controls.Add(this.ckbGeralFlagClocker);
             this.grbGeralAgendador.Controls.Add(this.ckbGeralFlagNotClose);
@@ -148,25 +149,18 @@ namespace Janitor
             this.grbGeralAgendador.TabStop = false;
             this.grbGeralAgendador.Text = "Agendador de Tarefas";
             // 
-            // btnGeralExibirFeriados
-            // 
-            this.btnGeralExibirFeriados.Location = new System.Drawing.Point(164, 101);
-            this.btnGeralExibirFeriados.Name = "btnGeralExibirFeriados";
-            this.btnGeralExibirFeriados.Size = new System.Drawing.Size(145, 23);
-            this.btnGeralExibirFeriados.TabIndex = 6;
-            this.btnGeralExibirFeriados.Text = "Exibir Feriados 2022...";
-            this.btnGeralExibirFeriados.UseVisualStyleBackColor = true;
-            this.btnGeralExibirFeriados.Click += new System.EventHandler(this.btn_ga_feriados_Click);
-            // 
             // btnGeralEncerrarTarefas
             // 
-            this.btnGeralEncerrarTarefas.Location = new System.Drawing.Point(10, 101);
+            this.btnGeralEncerrarTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGeralEncerrarTarefas.Image = global::Janitor.Properties.Resources.png_close;
+            this.btnGeralEncerrarTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGeralEncerrarTarefas.Location = new System.Drawing.Point(163, 101);
             this.btnGeralEncerrarTarefas.Name = "btnGeralEncerrarTarefas";
-            this.btnGeralEncerrarTarefas.Size = new System.Drawing.Size(145, 23);
+            this.btnGeralEncerrarTarefas.Size = new System.Drawing.Size(146, 23);
             this.btnGeralEncerrarTarefas.TabIndex = 5;
-            this.btnGeralEncerrarTarefas.Text = "Encerrar Todas Tarefas...";
+            this.btnGeralEncerrarTarefas.Text = "Encerrar Tarefas...";
             this.btnGeralEncerrarTarefas.UseVisualStyleBackColor = true;
-            this.btnGeralEncerrarTarefas.Click += new System.EventHandler(this.btn_ga_encerrar_Click);
+            this.btnGeralEncerrarTarefas.Click += new System.EventHandler(this.btnGeralEncerrarTarefas_Click);
             // 
             // ckbGeralFlagClocker
             // 
@@ -174,7 +168,7 @@ namespace Janitor
             this.ckbGeralFlagClocker.Location = new System.Drawing.Point(11, 48);
             this.ckbGeralFlagClocker.Name = "ckbGeralFlagClocker";
             this.ckbGeralFlagClocker.Size = new System.Drawing.Size(252, 17);
-            this.ckbGeralFlagClocker.TabIndex = 3;
+            this.ckbGeralFlagClocker.TabIndex = 2;
             this.ckbGeralFlagClocker.Text = "Acertar as horas do computador periodicamente";
             this.ckbGeralFlagClocker.UseVisualStyleBackColor = true;
             // 
@@ -184,7 +178,7 @@ namespace Janitor
             this.ckbGeralFlagNotClose.Location = new System.Drawing.Point(11, 74);
             this.ckbGeralFlagNotClose.Name = "ckbGeralFlagNotClose";
             this.ckbGeralFlagNotClose.Size = new System.Drawing.Size(240, 17);
-            this.ckbGeralFlagNotClose.TabIndex = 4;
+            this.ckbGeralFlagNotClose.TabIndex = 3;
             this.ckbGeralFlagNotClose.Text = "NÃO encerrar aplicativos ainda em execução";
             this.ckbGeralFlagNotClose.UseVisualStyleBackColor = true;
             this.ckbGeralFlagNotClose.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
@@ -196,7 +190,7 @@ namespace Janitor
             this.ckbGeralFlagTasks.Location = new System.Drawing.Point(11, 22);
             this.ckbGeralFlagTasks.Name = "ckbGeralFlagTasks";
             this.ckbGeralFlagTasks.Size = new System.Drawing.Size(249, 17);
-            this.ckbGeralFlagTasks.TabIndex = 2;
+            this.ckbGeralFlagTasks.TabIndex = 1;
             this.ckbGeralFlagTasks.Text = "Habilitar agendamento diário de tarefas";
             this.ckbGeralFlagTasks.UseVisualStyleBackColor = true;
             this.ckbGeralFlagTasks.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
@@ -214,6 +208,7 @@ namespace Janitor
             // 
             // grpMetatraderTrading
             // 
+            this.grpMetatraderTrading.Controls.Add(this.btnMT5ExibirFeriados);
             this.grpMetatraderTrading.Controls.Add(this.lblMT5PathModal);
             this.grpMetatraderTrading.Controls.Add(this.txbMT5PathModal);
             this.grpMetatraderTrading.Controls.Add(this.txbMT5PathXmglob);
@@ -227,6 +222,19 @@ namespace Janitor
             this.grpMetatraderTrading.TabIndex = 0;
             this.grpMetatraderTrading.TabStop = false;
             this.grpMetatraderTrading.Text = "Algo Trading com Robôs";
+            // 
+            // btnMT5ExibirFeriados
+            // 
+            this.btnMT5ExibirFeriados.Image = global::Janitor.Properties.Resources.png_info;
+            this.btnMT5ExibirFeriados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMT5ExibirFeriados.Location = new System.Drawing.Point(196, 18);
+            this.btnMT5ExibirFeriados.Name = "btnMT5ExibirFeriados";
+            this.btnMT5ExibirFeriados.Size = new System.Drawing.Size(112, 23);
+            this.btnMT5ExibirFeriados.TabIndex = 2;
+            this.btnMT5ExibirFeriados.Text = "Exibir Feriados...";
+            this.btnMT5ExibirFeriados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMT5ExibirFeriados.UseVisualStyleBackColor = true;
+            this.btnMT5ExibirFeriados.Click += new System.EventHandler(this.btnMT5ExibirFeriados_Click);
             // 
             // lblMT5PathModal
             // 
@@ -243,14 +251,14 @@ namespace Janitor
             this.txbMT5PathModal.Location = new System.Drawing.Point(115, 76);
             this.txbMT5PathModal.Name = "txbMT5PathModal";
             this.txbMT5PathModal.Size = new System.Drawing.Size(193, 20);
-            this.txbMT5PathModal.TabIndex = 3;
+            this.txbMT5PathModal.TabIndex = 4;
             // 
             // txbMT5PathXmglob
             // 
             this.txbMT5PathXmglob.Location = new System.Drawing.Point(115, 103);
             this.txbMT5PathXmglob.Name = "txbMT5PathXmglob";
             this.txbMT5PathXmglob.Size = new System.Drawing.Size(193, 20);
-            this.txbMT5PathXmglob.TabIndex = 4;
+            this.txbMT5PathXmglob.TabIndex = 5;
             // 
             // lblMT5PathXmglob
             // 
@@ -266,7 +274,7 @@ namespace Janitor
             this.txbMT5PathGenial.Location = new System.Drawing.Point(115, 49);
             this.txbMT5PathGenial.Name = "txbMT5PathGenial";
             this.txbMT5PathGenial.Size = new System.Drawing.Size(193, 20);
-            this.txbMT5PathGenial.TabIndex = 2;
+            this.txbMT5PathGenial.TabIndex = 3;
             // 
             // lblMT5PathGenial
             // 
@@ -283,9 +291,9 @@ namespace Janitor
             this.ckbMT5FlagProgram.AutoSize = true;
             this.ckbMT5FlagProgram.Location = new System.Drawing.Point(11, 22);
             this.ckbMT5FlagProgram.Name = "ckbMT5FlagProgram";
-            this.ckbMT5FlagProgram.Size = new System.Drawing.Size(242, 17);
+            this.ckbMT5FlagProgram.Size = new System.Drawing.Size(183, 17);
             this.ckbMT5FlagProgram.TabIndex = 1;
-            this.ckbMT5FlagProgram.Text = "Executar MetaTrader diariamente para trading";
+            this.ckbMT5FlagProgram.Text = "Executar MetaTrader diariamente";
             this.ckbMT5FlagProgram.UseVisualStyleBackColor = true;
             this.ckbMT5FlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
@@ -322,7 +330,7 @@ namespace Janitor
             this.btnColetReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnColetReexecutar.Name = "btnColetReexecutar";
             this.btnColetReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnColetReexecutar.TabIndex = 4;
+            this.btnColetReexecutar.TabIndex = 3;
             this.btnColetReexecutar.UseVisualStyleBackColor = true;
             this.btnColetReexecutar.Click += new System.EventHandler(this.btnColetReexecutar_Click);
             // 
@@ -348,7 +356,7 @@ namespace Janitor
             this.txbColetPathProgram.Location = new System.Drawing.Point(11, 70);
             this.txbColetPathProgram.Name = "txbColetPathProgram";
             this.txbColetPathProgram.Size = new System.Drawing.Size(297, 20);
-            this.txbColetPathProgram.TabIndex = 3;
+            this.txbColetPathProgram.TabIndex = 2;
             // 
             // lblColetPathProgram
             // 
@@ -366,7 +374,7 @@ namespace Janitor
             this.chbColetFlagProgram.Location = new System.Drawing.Point(11, 22);
             this.chbColetFlagProgram.Name = "chbColetFlagProgram";
             this.chbColetFlagProgram.Size = new System.Drawing.Size(263, 17);
-            this.chbColetFlagProgram.TabIndex = 2;
+            this.chbColetFlagProgram.TabIndex = 1;
             this.chbColetFlagProgram.Text = "Executar programa diariamente para coletar dados";
             this.chbColetFlagProgram.UseVisualStyleBackColor = true;
             this.chbColetFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
@@ -404,7 +412,7 @@ namespace Janitor
             this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnQuantReexecutar.Name = "btnQuantReexecutar";
             this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnQuantReexecutar.TabIndex = 4;
+            this.btnQuantReexecutar.TabIndex = 3;
             this.btnQuantReexecutar.UseVisualStyleBackColor = true;
             this.btnQuantReexecutar.Click += new System.EventHandler(this.btnQuantReexecutar_Click);
             // 
@@ -430,7 +438,7 @@ namespace Janitor
             this.txbQuantPathProgram.Location = new System.Drawing.Point(11, 70);
             this.txbQuantPathProgram.Name = "txbQuantPathProgram";
             this.txbQuantPathProgram.Size = new System.Drawing.Size(297, 20);
-            this.txbQuantPathProgram.TabIndex = 3;
+            this.txbQuantPathProgram.TabIndex = 2;
             // 
             // lblQuantPathProgram
             // 
@@ -448,7 +456,7 @@ namespace Janitor
             this.chbQuantFlagProgram.Location = new System.Drawing.Point(11, 22);
             this.chbQuantFlagProgram.Name = "chbQuantFlagProgram";
             this.chbQuantFlagProgram.Size = new System.Drawing.Size(267, 17);
-            this.chbQuantFlagProgram.TabIndex = 2;
+            this.chbQuantFlagProgram.TabIndex = 1;
             this.chbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
             this.chbQuantFlagProgram.UseVisualStyleBackColor = true;
             this.chbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
@@ -486,7 +494,7 @@ namespace Janitor
             this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnLotoReexecutar.Name = "btnLotoReexecutar";
             this.btnLotoReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnLotoReexecutar.TabIndex = 4;
+            this.btnLotoReexecutar.TabIndex = 3;
             this.btnLotoReexecutar.UseVisualStyleBackColor = true;
             this.btnLotoReexecutar.Click += new System.EventHandler(this.btnLotoReexecutar_Click);
             // 
@@ -512,7 +520,7 @@ namespace Janitor
             this.txbLotoPathProgram.Location = new System.Drawing.Point(11, 70);
             this.txbLotoPathProgram.Name = "txbLotoPathProgram";
             this.txbLotoPathProgram.Size = new System.Drawing.Size(297, 20);
-            this.txbLotoPathProgram.TabIndex = 3;
+            this.txbLotoPathProgram.TabIndex = 2;
             // 
             // lblLotoPathProgram
             // 
@@ -530,10 +538,23 @@ namespace Janitor
             this.ckbLotoFlagProgram.Location = new System.Drawing.Point(11, 22);
             this.ckbLotoFlagProgram.Name = "ckbLotoFlagProgram";
             this.ckbLotoFlagProgram.Size = new System.Drawing.Size(262, 17);
-            this.ckbLotoFlagProgram.TabIndex = 2;
+            this.ckbLotoFlagProgram.TabIndex = 1;
             this.ckbLotoFlagProgram.Text = "Executar programa diariamente para gerar palpites";
             this.ckbLotoFlagProgram.UseVisualStyleBackColor = true;
             this.ckbLotoFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
+            // 
+            // btnGeralCheckTarefas
+            // 
+            this.btnGeralCheckTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGeralCheckTarefas.Image = global::Janitor.Properties.Resources.png_warn;
+            this.btnGeralCheckTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGeralCheckTarefas.Location = new System.Drawing.Point(10, 101);
+            this.btnGeralCheckTarefas.Name = "btnGeralCheckTarefas";
+            this.btnGeralCheckTarefas.Size = new System.Drawing.Size(145, 23);
+            this.btnGeralCheckTarefas.TabIndex = 4;
+            this.btnGeralCheckTarefas.Text = "Verificar Tarefas...";
+            this.btnGeralCheckTarefas.UseVisualStyleBackColor = true;
+            this.btnGeralCheckTarefas.Click += new System.EventHandler(this.btnGeralCheckTarefas_Click);
             // 
             // FrmConfig
             // 
@@ -610,12 +631,13 @@ namespace Janitor
         private System.Windows.Forms.TextBox txbColetPathProgram;
         private System.Windows.Forms.Label lblColetPathProgram;
         private System.Windows.Forms.CheckBox chbColetFlagProgram;
-        private System.Windows.Forms.Button btnGeralExibirFeriados;
         private System.Windows.Forms.Button btnGeralEncerrarTarefas;
         private System.Windows.Forms.Button btnColetReexecutar;
         private System.Windows.Forms.Button btnQuantReexecutar;
         private System.Windows.Forms.Button btnLotoReexecutar;
         private System.Windows.Forms.ToolTip toolTips;
+        private System.Windows.Forms.Button btnMT5ExibirFeriados;
+        private System.Windows.Forms.Button btnGeralCheckTarefas;
     }
 }
 

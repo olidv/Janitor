@@ -258,7 +258,7 @@ namespace Janitor
                 config.Save();
 
                 // executa o batch do colethon:
-                openBatch(config.ColetPathProgram);
+                openBatch(config.ColetPathProgram, false);
             }
         }
 
@@ -279,7 +279,7 @@ namespace Janitor
                     config.Save();
 
                     // executa o batch do quanthon:
-                    openBatch(config.QuantPathProgram);
+                    openBatch(config.QuantPathProgram, false);
                 }
             }
         }
@@ -301,12 +301,12 @@ namespace Janitor
                     config.Save();
 
                     // executa o batch do lothon:
-                    openBatch(config.LotoPathProgram);
+                    openBatch(config.LotoPathProgram, false);
                 }
             }
         }
 
-        private static Process openProgram(String program)
+        public static Process openProgram(String program)
         {
             Process proc = null;
             try
@@ -325,7 +325,7 @@ namespace Janitor
             return proc;
         }
 
-        private static bool closeProgram(Process proc)
+        public static bool closeProgram(Process proc)
         {
             bool result = false;
             try
@@ -354,7 +354,7 @@ namespace Janitor
             return result;
         }
 
-        private static Process openBatch(String batch)
+        public static Process openBatch(String batch, bool maxTela)
         {
             Process proc = null;
             try
@@ -370,7 +370,7 @@ namespace Janitor
                 //psi.CreateNoWindow = true;
                 psi.CreateNoWindow = false;
                 psi.WorkingDirectory = path_batch;
-                psi.WindowStyle = ProcessWindowStyle.Minimized;
+                psi.WindowStyle = maxTela ? ProcessWindowStyle.Maximized : ProcessWindowStyle.Minimized;
 
                 proc = Process.Start(psi);
                 logger.Info("Programa batch {} executado com sucesso.", batch);
