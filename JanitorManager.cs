@@ -60,7 +60,7 @@ namespace Janitor
             sTimer = new System.Timers.Timer(1000);
 
             // Hook up the Elapsed event for the timer. 
-            //sTimer.Elapsed += OnTimedEvent;
+            sTimer.Elapsed += OnTimedEvent;
             sTimer.AutoReset = true;
             sTimer.Enabled = true;
         }
@@ -82,12 +82,11 @@ namespace Janitor
                     // verifica se a execucao do Colethon esta habilitada nas configuracoes:
                     if (config.ColetFlagProgram) checkColethon(now);
 
-                    // verifica se a execucao do Quanthon esta habilitada nas configuracoes:
-                    if (config.QuantFlagProgram) checkQuanthon(now);
-
                     // verifica se a execucao do Lothon esta habilitada nas configuracoes:
                     if (config.LotoFlagProgram) checkLothon(now);
 
+                    // verifica se a execucao do Quanthon esta habilitada nas configuracoes:
+                    if (config.QuantFlagProgram) checkQuanthon(now);
                 }
             }
 
