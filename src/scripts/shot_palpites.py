@@ -34,7 +34,7 @@ LOTERIAS = ["dia-de-sorte", "dupla-sena", "lotofacil", "lotomania", "mega-sena",
 
 PALPITES_URL = "https://www.loto365.com.br/palpites.html?loteria="
 
-LOG_PATH = r'C:\Apps\B3\Janitor\logs\geckodriver.log'
+LOG_PATH = r'C:\Apps\Infinite\Janitor\logs\geckodriver.log'
 
 # por enquanto nao fez diferenca...
 # PROFILE_PATH = r'C:\Users\qdev\AppData\Roaming\Mozilla\Firefox\Profiles\z4zg1uf3.default-release'

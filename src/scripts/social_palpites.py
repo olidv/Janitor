@@ -108,14 +108,14 @@ CANTORES = [
     "Coma-Media"  # como nao tem sorteio no domingo, processa como se fosse segunda-feira...
 ]
 
-REPO_DIR = r"D:\Workspace\Loto365\cdn-lothon\data\palpites"
+REPO_DIR = r"C:\Users\qdev\Loto365\cdn-lothon\data\palpites"
 DIADESORTE_CSV_FILE = os.path.join(REPO_DIR, "dia-de-sorte.csv")
 
-VIDEOS_DIR = r"D:\Workspace\Loto365\docs-templates\Videos"
-TEMPLATES_DIR = r"D:\Workspace\Loto365\docs-templates\Videos\Templates"
+VIDEOS_DIR = r"C:\Users\qdev\Loto365\docs-templates\Videos"
+TEMPLATES_DIR = r"C:\Users\qdev\Loto365\docs-templates\Videos\Templates"
 
-SOCIAL_DIR = r"D:\Workspace\Loto365\docs-templates\Social"
-SLIDES_DIR = r"D:\Workspace\Loto365\docs-templates\Social\slides"
+SOCIAL_DIR = r"C:\Users\qdev\Loto365\docs-templates\Social"
+SLIDES_DIR = r"C:\Users\qdev\Loto365\docs-templates\Social\slides"
 
 TEXTO_VIDEO_FILE = os.path.join(SOCIAL_DIR, "descricao.txt")
 BEGIN_VIDEO_FILE = os.path.join(SLIDES_DIR, "begin-video.png")
