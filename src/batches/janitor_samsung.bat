@@ -65,6 +65,22 @@ move /Y Quanthon\data\mt5\modal\*.*  D:\B3\Data\Brasil\Modal_BookTick\mql5_files
 move /Y Quanthon\data\mt5\xm\*.*     D:\B3\Data\Exterior\XM_Tick\mql5_files
 echo.
 
+echo Copiando Arquivos para publicacao dos palpites do dia...
+move /Y Social\*.* C:\Users\qdev\Loto365\docs-templates\Social
+echo.
+
+echo Recuperando ultimo commit dos arquivos PNG e PDF no repositorio GitHub...
+cd /D C:\Users\qdev\Loto365\cdn-lothon
+git pull origin main
+echo.
+
+echo Executando Firefox para verificar Loto365.com.br e atualizar Google Drive e Redes Sociais...
+cd /D C:\Users\qdev\Loto365\docs-templates\Social
+start "" "C:\Program Files (x86)\Notepad++\notepad++.exe" "C:\Users\qdev\Loto365\docs-templates\Social\descricao.txt" "C:\Users\qdev\Loto365\cdn-lothon\data\palpites\dia-de-sorte.csv"
+start "" "C:\Program Files\Mozilla Firefox\firefox.exe" -url "https://www.Loto365.com.br/#palpites" "https://drive.google.com/drive/folders/1PjOJoHbueNMiNGKJHLP5tC7UEyuRRSvD" "https://web.whatsapp.com/" "https://web.telegram.org/z/#-1488280660" "https://twitter.com/compose/tweet" "https://www.facebook.com/Loto365br" "https://www.instagram.com/loto365br/" "https://studio.youtube.com/channel/UCiiGBkWJiej2eAfwcqiI77A/videos/upload" "https://www.linkedin.com/company/loto365br/?share=true" "https://br.pinterest.com/pin-builder/"
+start .
+echo.
+
 echo Removendo arquivos flag [safeToDelete.tmp]...
 del /F /Q Lothon\data
 del /F /Q Quanthon\data

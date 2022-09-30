@@ -354,9 +354,10 @@ with open(TEXTO_VIDEO_FILE, "wt") as f:
     f.write(desc_content)
 
 # exibe o texto em editor proprio, para simples conferencia e copy/paste:
-webbrowser.open(TEXTO_VIDEO_FILE)
+# ??? Por enquanto esta postando da estacao Samsung (onde o Notepad ser aberto).
+# webbrowser.open(TEXTO_VIDEO_FILE)
 # exibe os palpites da loteria DIA DE SORTE para conferir a consulta do site:
-webbrowser.open(DIADESORTE_CSV_FILE)
+# webbrowser.open(DIADESORTE_CSV_FILE)
 
 # executa o OBS Studio para gravacao de video com slides do dia:
 cena_dir = f"Cena_{dir_dia}"
