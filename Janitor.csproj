@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Janitor_32.ico" />
+    <None Include="Resources\janitor_off_32.ico" />
     <None Include="Resources\warn_15.png" />
     <None Include="Resources\info_15.png" />
     <None Include="Resources\close_15.png" />

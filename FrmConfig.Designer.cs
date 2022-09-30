@@ -36,6 +36,7 @@ namespace Janitor
             this.tbcPanel = new System.Windows.Forms.TabControl();
             this.tbpGeral = new System.Windows.Forms.TabPage();
             this.grbGeralAgendador = new System.Windows.Forms.GroupBox();
+            this.btnGeralCheckTarefas = new System.Windows.Forms.Button();
             this.btnGeralEncerrarTarefas = new System.Windows.Forms.Button();
             this.ckbGeralFlagClocker = new System.Windows.Forms.CheckBox();
             this.ckbGeralFlagNotClose = new System.Windows.Forms.CheckBox();
@@ -58,14 +59,6 @@ namespace Janitor
             this.txbColetPathProgram = new System.Windows.Forms.TextBox();
             this.lblColetPathProgram = new System.Windows.Forms.Label();
             this.chbColetFlagProgram = new System.Windows.Forms.CheckBox();
-            this.tbpQuanthon = new System.Windows.Forms.TabPage();
-            this.grbQuanthonManutencao = new System.Windows.Forms.GroupBox();
-            this.btnQuantReexecutar = new System.Windows.Forms.Button();
-            this.txbQuantLastExecute = new System.Windows.Forms.TextBox();
-            this.lblQuantLastExecute = new System.Windows.Forms.Label();
-            this.txbQuantPathProgram = new System.Windows.Forms.TextBox();
-            this.lblQuantPathProgram = new System.Windows.Forms.Label();
-            this.chbQuantFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpLoto365 = new System.Windows.Forms.TabPage();
             this.grbLoto365Manutencao = new System.Windows.Forms.GroupBox();
             this.btnLotoReexecutar = new System.Windows.Forms.Button();
@@ -74,8 +67,15 @@ namespace Janitor
             this.txbLotoPathProgram = new System.Windows.Forms.TextBox();
             this.lblLotoPathProgram = new System.Windows.Forms.Label();
             this.ckbLotoFlagProgram = new System.Windows.Forms.CheckBox();
+            this.tbpQuanthon = new System.Windows.Forms.TabPage();
+            this.grbQuanthonManutencao = new System.Windows.Forms.GroupBox();
+            this.btnQuantReexecutar = new System.Windows.Forms.Button();
+            this.txbQuantLastExecute = new System.Windows.Forms.TextBox();
+            this.lblQuantLastExecute = new System.Windows.Forms.Label();
+            this.txbQuantPathProgram = new System.Windows.Forms.TextBox();
+            this.lblQuantPathProgram = new System.Windows.Forms.Label();
+            this.chbQuantFlagProgram = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-            this.btnGeralCheckTarefas = new System.Windows.Forms.Button();
             this.tbcPanel.SuspendLayout();
             this.tbpGeral.SuspendLayout();
             this.grbGeralAgendador.SuspendLayout();
@@ -83,10 +83,10 @@ namespace Janitor
             this.grpMetatraderTrading.SuspendLayout();
             this.tbpColethon.SuspendLayout();
             this.grbColethonManutencao.SuspendLayout();
-            this.tbpQuanthon.SuspendLayout();
-            this.grbQuanthonManutencao.SuspendLayout();
             this.tbpLoto365.SuspendLayout();
             this.grbLoto365Manutencao.SuspendLayout();
+            this.tbpQuanthon.SuspendLayout();
+            this.grbQuanthonManutencao.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOk
@@ -149,10 +149,21 @@ namespace Janitor
             this.grbGeralAgendador.TabStop = false;
             this.grbGeralAgendador.Text = "Agendador de Tarefas";
             // 
+            // btnGeralCheckTarefas
+            // 
+            this.btnGeralCheckTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGeralCheckTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGeralCheckTarefas.Location = new System.Drawing.Point(10, 101);
+            this.btnGeralCheckTarefas.Name = "btnGeralCheckTarefas";
+            this.btnGeralCheckTarefas.Size = new System.Drawing.Size(145, 23);
+            this.btnGeralCheckTarefas.TabIndex = 4;
+            this.btnGeralCheckTarefas.Text = "Verificar Tarefas...";
+            this.btnGeralCheckTarefas.UseVisualStyleBackColor = true;
+            this.btnGeralCheckTarefas.Click += new System.EventHandler(this.btnGeralCheckTarefas_Click);
+            // 
             // btnGeralEncerrarTarefas
             // 
             this.btnGeralEncerrarTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGeralEncerrarTarefas.Image = global::Janitor.Properties.Resources.png_close;
             this.btnGeralEncerrarTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGeralEncerrarTarefas.Location = new System.Drawing.Point(163, 101);
             this.btnGeralEncerrarTarefas.Name = "btnGeralEncerrarTarefas";
@@ -225,7 +236,6 @@ namespace Janitor
             // 
             // btnMT5ExibirFeriados
             // 
-            this.btnMT5ExibirFeriados.Image = global::Janitor.Properties.Resources.png_info;
             this.btnMT5ExibirFeriados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMT5ExibirFeriados.Location = new System.Drawing.Point(196, 18);
             this.btnMT5ExibirFeriados.Name = "btnMT5ExibirFeriados";
@@ -325,7 +335,6 @@ namespace Janitor
             // 
             // btnColetReexecutar
             // 
-            this.btnColetReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
             this.btnColetReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnColetReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnColetReexecutar.Name = "btnColetReexecutar";
@@ -379,88 +388,6 @@ namespace Janitor
             this.chbColetFlagProgram.UseVisualStyleBackColor = true;
             this.chbColetFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
-            // tbpQuanthon
-            // 
-            this.tbpQuanthon.Controls.Add(this.grbQuanthonManutencao);
-            this.tbpQuanthon.Location = new System.Drawing.Point(4, 22);
-            this.tbpQuanthon.Name = "tbpQuanthon";
-            this.tbpQuanthon.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpQuanthon.Size = new System.Drawing.Size(335, 157);
-            this.tbpQuanthon.TabIndex = 3;
-            this.tbpQuanthon.Text = "Quanthon";
-            this.tbpQuanthon.UseVisualStyleBackColor = true;
-            // 
-            // grbQuanthonManutencao
-            // 
-            this.grbQuanthonManutencao.Controls.Add(this.btnQuantReexecutar);
-            this.grbQuanthonManutencao.Controls.Add(this.txbQuantLastExecute);
-            this.grbQuanthonManutencao.Controls.Add(this.lblQuantLastExecute);
-            this.grbQuanthonManutencao.Controls.Add(this.txbQuantPathProgram);
-            this.grbQuanthonManutencao.Controls.Add(this.lblQuantPathProgram);
-            this.grbQuanthonManutencao.Controls.Add(this.chbQuantFlagProgram);
-            this.grbQuanthonManutencao.Location = new System.Drawing.Point(7, 9);
-            this.grbQuanthonManutencao.Name = "grbQuanthonManutencao";
-            this.grbQuanthonManutencao.Size = new System.Drawing.Size(319, 140);
-            this.grbQuanthonManutencao.TabIndex = 0;
-            this.grbQuanthonManutencao.TabStop = false;
-            this.grbQuanthonManutencao.Text = "Análise de Dados Coletados";
-            // 
-            // btnQuantReexecutar
-            // 
-            this.btnQuantReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
-            this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
-            this.btnQuantReexecutar.Name = "btnQuantReexecutar";
-            this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
-            this.btnQuantReexecutar.TabIndex = 3;
-            this.btnQuantReexecutar.UseVisualStyleBackColor = true;
-            this.btnQuantReexecutar.Click += new System.EventHandler(this.btnQuantReexecutar_Click);
-            // 
-            // txbQuantLastExecute
-            // 
-            this.txbQuantLastExecute.Enabled = false;
-            this.txbQuantLastExecute.Location = new System.Drawing.Point(128, 103);
-            this.txbQuantLastExecute.Name = "txbQuantLastExecute";
-            this.txbQuantLastExecute.Size = new System.Drawing.Size(155, 20);
-            this.txbQuantLastExecute.TabIndex = 0;
-            // 
-            // lblQuantLastExecute
-            // 
-            this.lblQuantLastExecute.AutoSize = true;
-            this.lblQuantLastExecute.Location = new System.Drawing.Point(7, 106);
-            this.lblQuantLastExecute.Name = "lblQuantLastExecute";
-            this.lblQuantLastExecute.Size = new System.Drawing.Size(90, 13);
-            this.lblQuantLastExecute.TabIndex = 0;
-            this.lblQuantLastExecute.Text = "Última Execução:";
-            // 
-            // txbQuantPathProgram
-            // 
-            this.txbQuantPathProgram.Location = new System.Drawing.Point(11, 70);
-            this.txbQuantPathProgram.Name = "txbQuantPathProgram";
-            this.txbQuantPathProgram.Size = new System.Drawing.Size(297, 20);
-            this.txbQuantPathProgram.TabIndex = 2;
-            // 
-            // lblQuantPathProgram
-            // 
-            this.lblQuantPathProgram.AutoSize = true;
-            this.lblQuantPathProgram.Location = new System.Drawing.Point(7, 52);
-            this.lblQuantPathProgram.Name = "lblQuantPathProgram";
-            this.lblQuantPathProgram.Size = new System.Drawing.Size(99, 13);
-            this.lblQuantPathProgram.TabIndex = 0;
-            this.lblQuantPathProgram.Text = "Local do Programa:";
-            this.lblQuantPathProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // chbQuantFlagProgram
-            // 
-            this.chbQuantFlagProgram.AutoSize = true;
-            this.chbQuantFlagProgram.Location = new System.Drawing.Point(11, 22);
-            this.chbQuantFlagProgram.Name = "chbQuantFlagProgram";
-            this.chbQuantFlagProgram.Size = new System.Drawing.Size(267, 17);
-            this.chbQuantFlagProgram.TabIndex = 1;
-            this.chbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
-            this.chbQuantFlagProgram.UseVisualStyleBackColor = true;
-            this.chbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
-            // 
             // tbpLoto365
             // 
             this.tbpLoto365.Controls.Add(this.grbLoto365Manutencao);
@@ -489,7 +416,6 @@ namespace Janitor
             // 
             // btnLotoReexecutar
             // 
-            this.btnLotoReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
             this.btnLotoReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnLotoReexecutar.Name = "btnLotoReexecutar";
@@ -543,18 +469,86 @@ namespace Janitor
             this.ckbLotoFlagProgram.UseVisualStyleBackColor = true;
             this.ckbLotoFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
-            // btnGeralCheckTarefas
+            // tbpQuanthon
             // 
-            this.btnGeralCheckTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnGeralCheckTarefas.Image = global::Janitor.Properties.Resources.png_warn;
-            this.btnGeralCheckTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGeralCheckTarefas.Location = new System.Drawing.Point(10, 101);
-            this.btnGeralCheckTarefas.Name = "btnGeralCheckTarefas";
-            this.btnGeralCheckTarefas.Size = new System.Drawing.Size(145, 23);
-            this.btnGeralCheckTarefas.TabIndex = 4;
-            this.btnGeralCheckTarefas.Text = "Verificar Tarefas...";
-            this.btnGeralCheckTarefas.UseVisualStyleBackColor = true;
-            this.btnGeralCheckTarefas.Click += new System.EventHandler(this.btnGeralCheckTarefas_Click);
+            this.tbpQuanthon.Controls.Add(this.grbQuanthonManutencao);
+            this.tbpQuanthon.Location = new System.Drawing.Point(4, 22);
+            this.tbpQuanthon.Name = "tbpQuanthon";
+            this.tbpQuanthon.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpQuanthon.Size = new System.Drawing.Size(335, 157);
+            this.tbpQuanthon.TabIndex = 3;
+            this.tbpQuanthon.Text = "Quanthon";
+            this.tbpQuanthon.UseVisualStyleBackColor = true;
+            // 
+            // grbQuanthonManutencao
+            // 
+            this.grbQuanthonManutencao.Controls.Add(this.btnQuantReexecutar);
+            this.grbQuanthonManutencao.Controls.Add(this.txbQuantLastExecute);
+            this.grbQuanthonManutencao.Controls.Add(this.lblQuantLastExecute);
+            this.grbQuanthonManutencao.Controls.Add(this.txbQuantPathProgram);
+            this.grbQuanthonManutencao.Controls.Add(this.lblQuantPathProgram);
+            this.grbQuanthonManutencao.Controls.Add(this.chbQuantFlagProgram);
+            this.grbQuanthonManutencao.Location = new System.Drawing.Point(7, 9);
+            this.grbQuanthonManutencao.Name = "grbQuanthonManutencao";
+            this.grbQuanthonManutencao.Size = new System.Drawing.Size(319, 140);
+            this.grbQuanthonManutencao.TabIndex = 0;
+            this.grbQuanthonManutencao.TabStop = false;
+            this.grbQuanthonManutencao.Text = "Análise de Dados Coletados";
+            // 
+            // btnQuantReexecutar
+            // 
+            this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
+            this.btnQuantReexecutar.Name = "btnQuantReexecutar";
+            this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
+            this.btnQuantReexecutar.TabIndex = 3;
+            this.btnQuantReexecutar.UseVisualStyleBackColor = true;
+            this.btnQuantReexecutar.Click += new System.EventHandler(this.btnQuantReexecutar_Click);
+            // 
+            // txbQuantLastExecute
+            // 
+            this.txbQuantLastExecute.Enabled = false;
+            this.txbQuantLastExecute.Location = new System.Drawing.Point(128, 103);
+            this.txbQuantLastExecute.Name = "txbQuantLastExecute";
+            this.txbQuantLastExecute.Size = new System.Drawing.Size(155, 20);
+            this.txbQuantLastExecute.TabIndex = 0;
+            // 
+            // lblQuantLastExecute
+            // 
+            this.lblQuantLastExecute.AutoSize = true;
+            this.lblQuantLastExecute.Location = new System.Drawing.Point(7, 106);
+            this.lblQuantLastExecute.Name = "lblQuantLastExecute";
+            this.lblQuantLastExecute.Size = new System.Drawing.Size(90, 13);
+            this.lblQuantLastExecute.TabIndex = 0;
+            this.lblQuantLastExecute.Text = "Última Execução:";
+            // 
+            // txbQuantPathProgram
+            // 
+            this.txbQuantPathProgram.Location = new System.Drawing.Point(11, 70);
+            this.txbQuantPathProgram.Name = "txbQuantPathProgram";
+            this.txbQuantPathProgram.Size = new System.Drawing.Size(297, 20);
+            this.txbQuantPathProgram.TabIndex = 2;
+            // 
+            // lblQuantPathProgram
+            // 
+            this.lblQuantPathProgram.AutoSize = true;
+            this.lblQuantPathProgram.Location = new System.Drawing.Point(7, 52);
+            this.lblQuantPathProgram.Name = "lblQuantPathProgram";
+            this.lblQuantPathProgram.Size = new System.Drawing.Size(99, 13);
+            this.lblQuantPathProgram.TabIndex = 0;
+            this.lblQuantPathProgram.Text = "Local do Programa:";
+            this.lblQuantPathProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chbQuantFlagProgram
+            // 
+            this.chbQuantFlagProgram.AutoSize = true;
+            this.chbQuantFlagProgram.Location = new System.Drawing.Point(11, 22);
+            this.chbQuantFlagProgram.Name = "chbQuantFlagProgram";
+            this.chbQuantFlagProgram.Size = new System.Drawing.Size(267, 17);
+            this.chbQuantFlagProgram.TabIndex = 1;
+            this.chbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
+            this.chbQuantFlagProgram.UseVisualStyleBackColor = true;
+            this.chbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
             // FrmConfig
             // 
@@ -581,12 +575,12 @@ namespace Janitor
             this.tbpColethon.ResumeLayout(false);
             this.grbColethonManutencao.ResumeLayout(false);
             this.grbColethonManutencao.PerformLayout();
-            this.tbpQuanthon.ResumeLayout(false);
-            this.grbQuanthonManutencao.ResumeLayout(false);
-            this.grbQuanthonManutencao.PerformLayout();
             this.tbpLoto365.ResumeLayout(false);
             this.grbLoto365Manutencao.ResumeLayout(false);
             this.grbLoto365Manutencao.PerformLayout();
+            this.tbpQuanthon.ResumeLayout(false);
+            this.grbQuanthonManutencao.ResumeLayout(false);
+            this.grbQuanthonManutencao.PerformLayout();
             this.ResumeLayout(false);
 
         }
