@@ -164,7 +164,7 @@ namespace Janitor
             DialogResult dialogResult = MessageBox.Show("Deseja encerrar todas as tarefas em execução?",
                                                         "Atenção: Encerrar Todas as Tarefas",
                                                         MessageBoxButtons.YesNo,
-                                                        MessageBoxIcon.Warning);
+                                                        MessageBoxIcon.Hand);
             if (dialogResult == DialogResult.Yes)
             {  // Comunica ao Manager para encerrar todas as tarefas em execucao:
                 JanitorManager.ListFeriados();
@@ -177,7 +177,7 @@ namespace Janitor
             MessageBox.Show(JanitorManager.ListFeriados(),
                             "Relação de Feriados 2022 (Dia/Mês)",
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Exclamation);
+                            MessageBoxIcon.Information);
         }
 
         private void btnColetReexecutar_Click(object sender, EventArgs e)

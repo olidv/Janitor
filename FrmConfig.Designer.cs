@@ -152,6 +152,7 @@ namespace Janitor
             // btnGeralCheckTarefas
             // 
             this.btnGeralCheckTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGeralCheckTarefas.Image = global::Janitor.Properties.Resources.png_warn;
             this.btnGeralCheckTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGeralCheckTarefas.Location = new System.Drawing.Point(10, 101);
             this.btnGeralCheckTarefas.Name = "btnGeralCheckTarefas";
@@ -164,6 +165,7 @@ namespace Janitor
             // btnGeralEncerrarTarefas
             // 
             this.btnGeralEncerrarTarefas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnGeralEncerrarTarefas.Image = global::Janitor.Properties.Resources.png_close;
             this.btnGeralEncerrarTarefas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGeralEncerrarTarefas.Location = new System.Drawing.Point(163, 101);
             this.btnGeralEncerrarTarefas.Name = "btnGeralEncerrarTarefas";
@@ -236,6 +238,7 @@ namespace Janitor
             // 
             // btnMT5ExibirFeriados
             // 
+            this.btnMT5ExibirFeriados.Image = global::Janitor.Properties.Resources.png_info;
             this.btnMT5ExibirFeriados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMT5ExibirFeriados.Location = new System.Drawing.Point(196, 18);
             this.btnMT5ExibirFeriados.Name = "btnMT5ExibirFeriados";
@@ -335,6 +338,7 @@ namespace Janitor
             // 
             // btnColetReexecutar
             // 
+            this.btnColetReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
             this.btnColetReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnColetReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnColetReexecutar.Name = "btnColetReexecutar";
@@ -416,6 +420,7 @@ namespace Janitor
             // 
             // btnLotoReexecutar
             // 
+            this.btnLotoReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
             this.btnLotoReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnLotoReexecutar.Name = "btnLotoReexecutar";
@@ -497,6 +502,7 @@ namespace Janitor
             // 
             // btnQuantReexecutar
             // 
+            this.btnQuantReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_clear;
             this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 102);
             this.btnQuantReexecutar.Name = "btnQuantReexecutar";
