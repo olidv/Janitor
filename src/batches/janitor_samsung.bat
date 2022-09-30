@@ -66,6 +66,7 @@ move /Y Quanthon\data\mt5\xm\*.*     D:\B3\Data\Exterior\XM_Tick\mql5_files
 echo.
 
 echo Copiando Arquivos para publicacao dos palpites do dia...
+del /F /Q C:\Users\qdev\Loto365\docs-templates\Social\*.*
 move /Y Social\*.* C:\Users\qdev\Loto365\docs-templates\Social
 echo.
 
