@@ -37,7 +37,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool GeralFlagClocker {
             get {
                 return ((bool)(this["GeralFlagClocker"]));
@@ -46,10 +46,10 @@ namespace Janitor.Properties {
                 this["GeralFlagClocker"] = value;
             }
         }
-                
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool GeralFlagBackup {
             get {
                 return ((bool)(this["GeralFlagBackup"]));
@@ -61,7 +61,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Janitor\\bin\\backup_semanal.bat")]
         public string GeralPathBackup {
             get {
                 return ((string)(this["GeralPathBackup"]));
@@ -82,10 +82,10 @@ namespace Janitor.Properties {
                 this["GeralCheckProgram"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool MT5FlagProgram {
             get {
                 return ((bool)(this["MT5FlagProgram"]));
@@ -94,7 +94,7 @@ namespace Janitor.Properties {
                 this["MT5FlagProgram"] = value;
             }
         }
-                
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -106,7 +106,7 @@ namespace Janitor.Properties {
                 this["MT5FlagNotClose"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\B3\\MetaTrader 5\\terminal64.exe")]
@@ -145,7 +145,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ColetFlagProgram {
             get {
                 return ((bool)(this["ColetFlagProgram"]));
@@ -166,7 +166,7 @@ namespace Janitor.Properties {
                 this["ColetPathProgram"] = value;
             }
         }
-                
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\\\\BLACK\\Publico\\")]
@@ -178,7 +178,7 @@ namespace Janitor.Properties {
                 this["ColetPathShared"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.DateTime ColetLastExecute {
@@ -192,7 +192,7 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool LotoFlagProgram {
             get {
                 return ((bool)(this["LotoFlagProgram"]));
@@ -213,7 +213,7 @@ namespace Janitor.Properties {
                 this["LotoPathProgram"] = value;
             }
         }
-                
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Lothon\\data\\safeToDelete.tmp")]
@@ -225,7 +225,7 @@ namespace Janitor.Properties {
                 this["LotoPathSignal"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.DateTime LotoLastExecute {
