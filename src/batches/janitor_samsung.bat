@@ -70,7 +70,7 @@ del /F /Q C:\Users\qdev\Loto365\docs-templates\Social\*.*
 move /Y Social\*.* C:\Users\qdev\Loto365\docs-templates\Social
 echo.
 
-echo Recuperando ultimo commit dos arquivos PNG e PDF no repositorio GitHub...
+echo Recuperando ultimo commit dos arquivos CSV, PNG e PDF no repositorio GitHub...
 cd /D C:\Users\qdev\Loto365\cdn-lothon
 git pull origin main
 echo.
@@ -83,6 +83,7 @@ start .
 echo.
 
 echo Removendo arquivos flag [safeToDelete.tmp]...
+cd /D D:\Publico
 del /F /Q Lothon\data
 del /F /Q Quanthon\data
 echo.
