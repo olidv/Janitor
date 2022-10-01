@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Reflection;
 using NLog;
+using Janitor.Properties;
 
 namespace Janitor
 {
@@ -13,6 +14,9 @@ namespace Janitor
     {
         // referencia ao logger do NLog para toda a classe:
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        // acesso mais agil as configuracoes da aplicacao (usuario):
+        private static readonly Settings config = Properties.Settings.Default;
 
         private readonly JanitorManager janitorManager;
         private System.ComponentModel.IContainer components;	// a list of components to dispose when the context is disposed
@@ -80,7 +84,7 @@ namespace Janitor
 
         private void notifyIcon_Refresh()
         {  // atualiza o icone da sys-tray:
-            if (Properties.Settings.Default.GeralFlagTasks)
+            if (config.GeralFlagTasks)
             {  // se estiver habilitado o agendamento de tarefas:
                 notifyIcon.Icon = Properties.Resources.ico_janitor;
                 notifyIcon.Text = "OK: AGENDAMENTO DE TAREFAS HABILITADO.";

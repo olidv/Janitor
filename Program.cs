@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using NLog;
+using Janitor.Properties;
 
 namespace Janitor
 {
@@ -10,7 +11,10 @@ namespace Janitor
     {
         // referencia ao logger do NLog para toda a classe:
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        
+
+        // acesso mais agil as configuracoes da aplicacao (usuario):
+        private static readonly Settings config = Properties.Settings.Default;
+
         // utilitario para atualizacao do horario do windows:
         private static readonly String W32TM = @"C:\Windows\System32\w32tm.exe";
 

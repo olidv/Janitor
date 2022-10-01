@@ -15,6 +15,9 @@ namespace Janitor
         // referencia ao logger do NLog para toda a classe:
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
+        // acesso mais agil as configuracoes da aplicacao (usuario):
+        private static readonly Settings config = Properties.Settings.Default;
+
         // objeto timer para disparo de eventos e execucao de tarefas:
         private static System.Timers.Timer sTimer;
 
@@ -68,7 +71,6 @@ namespace Janitor
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             DateTime now = DateTime.Now;
-            Settings config = Properties.Settings.Default;
 
             // verifica se o agendamento esta habilitado nas configuracoes:
             if (config.GeralFlagTasks)
@@ -105,8 +107,6 @@ namespace Janitor
 
         public void checkMetaTrader(DateTime now)
         {
-            Settings config = Properties.Settings.Default;
-
             // identifica informacoes sobre a data/dia corrente:
             var agora = (dia: now.Day,
                          mes: now.Month,
@@ -249,8 +249,6 @@ namespace Janitor
         /// o programa de coleta diario eh executado diariamente, mas apenas uma vez por dia:
         public void checkColethon(DateTime now)
         {
-            Settings config = Properties.Settings.Default;
-
             // se a ultima execucao foi anterior a ontem, entao executa hoje:
             if (config.ColetLastExecute == null || config.ColetLastExecute.Date < now.Date)
             {
@@ -266,8 +264,6 @@ namespace Janitor
         /// o programa de geracao de palpites eh executado diariamente, mas apenas uma vez por dia:
         public void checkLothon(DateTime now)
         {
-            Settings config = Properties.Settings.Default;
-
             // se a ultima execucao foi anterior a ontem, entao executa hoje:
             if (config.LotoLastExecute == null || config.LotoLastExecute.Date < now.Date)
             {
@@ -287,8 +283,6 @@ namespace Janitor
         /// o programa de analise de dados eh executado diariamente, mas apenas uma vez por dia:
         public void checkQuanthon(DateTime now)
         {
-            Settings config = Properties.Settings.Default;
-
             // se a ultima execucao foi anterior a ontem, entao executa hoje:
             if (config.QuantLastExecute == null || config.QuantLastExecute.Date < now.Date)
             {

@@ -2,12 +2,19 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using NLog;
 using Janitor.Properties;
 
 namespace Janitor
 {
     public partial class FrmConfig : Form
     {
+        // referencia ao logger do NLog para toda a classe:
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        // acesso mais agil as configuracoes da aplicacao (usuario):
+        private static readonly Settings config = Properties.Settings.Default;
+
         // Filtros utilizados ao abrir o dialogo para procurar programas ou arquivos:
         private static readonly String DIALOG_INITIAL_DIR = @"C:\Apps\Infinite\";
         private static readonly String DIALOG_FILTER_PROGRAMAS = "Batches (*.bat;*.cmd)|*.bat;*.cmd|Programas (*.exe;*.com)|*.exe;*.com|Todos os arquivos (*.*)|*.*";
@@ -19,9 +26,7 @@ namespace Janitor
         }
 
         private void frm_config_Load(object sender, EventArgs e)
-        { 
-            // coleta as propriedades atuais para exibir na janela:
-            Settings config = Properties.Settings.Default;
+        { // coleta as propriedades atuais para exibir na janela:
 
             // Aba Geral
             ckbGeralFlagTasks.Checked = config.GeralFlagTasks;
@@ -64,7 +69,7 @@ namespace Janitor
             chbColetFlagProgram.Checked = config.ColetFlagProgram;
             txbColetPathProgram.Text = config.ColetPathProgram;
             txbColetPathShared.Text = config.ColetPathShared;
-            if (config.ColetLastExecute > DateTime.MinValue) 
+            if (config.ColetLastExecute > DateTime.MinValue)
                 txbColetLastExecute.Text = config.ColetLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
             toolTips.SetToolTip(chbColetFlagProgram, "Clique para habilitar ou desabilitar a execução do Colethon.");
             toolTips.SetToolTip(lblColetPathProgram, "Caminho completo do executável Colethon.");
@@ -84,7 +89,7 @@ namespace Janitor
             ckbLotoFlagProgram.Checked = config.LotoFlagProgram;
             txbLotoPathProgram.Text = config.LotoPathProgram;
             txbLotoPathSignal.Text = config.LotoPathSignal;
-            if (config.LotoLastExecute > DateTime.MinValue) 
+            if (config.LotoLastExecute > DateTime.MinValue)
                 txbLotoLastExecute.Text = config.LotoLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
             toolTips.SetToolTip(ckbLotoFlagProgram, "Clique para habilitar ou desabilitar a execução do Lothon.");
             toolTips.SetToolTip(lblLotoPathProgram, "Caminho completo do executável Lothon.");
@@ -175,14 +180,12 @@ namespace Janitor
         }
 
         private void btnOk_Click(object sender, EventArgs e)
-        {
-            // coleta as propriedades modificadas e salva:
-            Settings config = Properties.Settings.Default;
-
+        { // coleta as propriedades modificadas e salva:
             // Aba Geral
             config.GeralFlagTasks = ckbGeralFlagTasks.Checked;
             config.GeralFlagClocker = ckbGeralFlagClocker.Checked;
             config.GeralFlagBackup = ckbGeralFlagBackup.Checked;
+            config.GeralPathBackup = txbGeralPathBackup.Text;
 
             // Aba MetaTrader
             config.MT5FlagProgram = ckbMT5FlagProgram.Checked;
@@ -221,8 +224,6 @@ namespace Janitor
 
         private void btnGeralCheckTarefas_Click(object sender, EventArgs e)
         {
-            Settings config = Properties.Settings.Default;
-
             // Executa o batch que verifica o logging das tarefas em busca de alertas (WARN) e erros (ERROR).
             JanitorManager.runBatch(config.GeralCheckProgram, true);
         }
@@ -251,8 +252,6 @@ namespace Janitor
 
         private void btnColetReexecutar_Click(object sender, EventArgs e)
         {
-            Settings config = Properties.Settings.Default;
-
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Colethon para coletar dados?",
                                                         "Colethon: Limpar Última Execução",
@@ -271,8 +270,6 @@ namespace Janitor
 
         private void btnLotoReexecutar_Click(object sender, EventArgs e)
         {
-            Settings config = Properties.Settings.Default;
-
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Lothon para gerar palpites?",
                                                         "Lothon: Limpar Última Execução",
@@ -291,8 +288,6 @@ namespace Janitor
 
         private void btnQuantReexecutar_Click(object sender, EventArgs e)
         {
-            Settings config = Properties.Settings.Default;
-
             // limpa a ultima execucao para executar novamente o programa de manutencao:
             DialogResult dialogResult = MessageBox.Show("Deseja executar novamente o programa Quanthon para analisar dados?",
                                                         "Quanthon: Limpar Última Execução",
@@ -426,7 +421,7 @@ namespace Janitor
         private static bool OpenFolderTextBox(TextBox textBox)
         {
             // vai abrir o dialogo ja apontando pro diretorio atual:
-            string selectedPath = String.IsNullOrWhiteSpace(textBox.Text) ? DIALOG_INITIAL_DIR 
+            string selectedPath = String.IsNullOrWhiteSpace(textBox.Text) ? DIALOG_INITIAL_DIR
                                                                           : Path.GetDirectoryName(textBox.Text);
 
             FolderBrowserDialog openFolderDialog = new FolderBrowserDialog();
@@ -445,50 +440,71 @@ namespace Janitor
         private void btnGeralRunBackup_Click(object sender, EventArgs e)
         {
             // executa a rotina de backup semanal, se estiver definida:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.GeralPathBackup))
-                JanitorManager.startProcess(Properties.Settings.Default.GeralPathBackup, true);
+            if (!String.IsNullOrWhiteSpace(config.GeralPathBackup))
+                JanitorManager.startProcess(config.GeralPathBackup, true);
         }
 
         private void btnMT5RunGenial_Click(object sender, EventArgs e)
         {
             // executa o MetaTrader da corretora Genial, se estiver definido:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.MT5PathGenial))
-                JanitorManager.startProcess(Properties.Settings.Default.MT5PathGenial, true);
+            if (!String.IsNullOrWhiteSpace(config.MT5PathGenial))
+                JanitorManager.startProcess(config.MT5PathGenial, true);
         }
 
         private void btnMT5RunModal_Click(object sender, EventArgs e)
         {
             // executa o MetaTrader da corretora ModalMais, se estiver definido:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.MT5PathModal))
-                JanitorManager.startProcess(Properties.Settings.Default.MT5PathModal, true);
+            if (!String.IsNullOrWhiteSpace(config.MT5PathModal))
+                JanitorManager.startProcess(config.MT5PathModal, true);
         }
 
         private void btnMT5RunXmglob_Click(object sender, EventArgs e)
         {
             // executa o MetaTrader da corretora XM Global, se estiver definido:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.MT5PathXmglob))
-                JanitorManager.startProcess(Properties.Settings.Default.MT5PathXmglob, true);
+            if (!String.IsNullOrWhiteSpace(config.MT5PathXmglob))
+                JanitorManager.startProcess(config.MT5PathXmglob, true);
         }
 
         private void btnColetRunProgram_Click(object sender, EventArgs e)
         {
             // executa o programa do colethon, se estiver definido:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.ColetPathProgram))
-                JanitorManager.startProcess(Properties.Settings.Default.ColetPathProgram, true);
+            if (!String.IsNullOrWhiteSpace(config.ColetPathProgram))
+            {
+                JanitorManager.startProcess(config.ColetPathProgram, true);
+
+                // Salva este momento como a ultima data de execucao:
+                config.ColetLastExecute = DateTime.Now;
+                config.Save();
+                txbColetLastExecute.Text = config.ColetLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
+            }
         }
 
         private void btnLotoRunProgram_Click(object sender, EventArgs e)
         {
             // executa o programa do lothon, se estiver definido:
-            if (!String.IsNullOrWhiteSpace(Properties.Settings.Default.LotoPathProgram))
-                JanitorManager.startProcess(Properties.Settings.Default.LotoPathProgram, true);
+            if (!String.IsNullOrWhiteSpace(config.LotoPathProgram))
+            {
+                JanitorManager.startProcess(config.LotoPathProgram, true);
+
+                // Salva este momento como a ultima data de execucao:
+                config.LotoLastExecute = DateTime.Now;
+                config.Save();
+                txbLotoLastExecute.Text = config.LotoLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
+            }
         }
 
         private void btnQuantRunProgram_Click(object sender, EventArgs e)
         {
             // executa o programa do quanthon, se estiver definido:
-            if(!String.IsNullOrWhiteSpace(Properties.Settings.Default.QuantPathProgram))
-                JanitorManager.startProcess(Properties.Settings.Default.QuantPathProgram, true);
+            if (!String.IsNullOrWhiteSpace(config.QuantPathProgram))
+            {
+                JanitorManager.startProcess(config.QuantPathProgram, true);
+
+                // Salva este momento como a ultima data de execucao:
+                config.QuantLastExecute = DateTime.Now;
+                config.Save();
+                txbQuantLastExecute.Text = config.QuantLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
+            }
         }
     }
 }
