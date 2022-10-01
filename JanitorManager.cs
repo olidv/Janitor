@@ -105,6 +105,8 @@ namespace Janitor
 
         public void checkMetaTrader(DateTime now)
         {
+            Settings config = Properties.Settings.Default;
+
             // identifica informacoes sobre a data/dia corrente:
             var agora = (dia: now.Day,
                          mes: now.Month,
@@ -208,22 +210,22 @@ namespace Janitor
             { // Bolsa do brasil B3 aberta, executar MT5 se nao estiverem em execucao:
                 if (!isMT5GenialOn)
                 {
-                    procMT5Genial = openProgram(Properties.Settings.Default.MT5PathGenial);
+                    procMT5Genial = startProcess(config.MT5PathGenial, true);
                 }
                 if (!isMT5ModalOn)
                 {
-                    procMT5Modal = openProgram(Properties.Settings.Default.MT5PathModal);
+                    procMT5Modal = startProcess(config.MT5PathModal, true);
                 }
             }
             else
             { // Bolsa do brasil fechada, encerrar MT5 se estiverem em execucao (e not-close desabilitado):
-                if (isMT5GenialOn && ! Properties.Settings.Default.GeralFlagNotClose)
+                if (isMT5GenialOn && !config.MT5FlagNotClose)
                 {
-                    closeProgram(procMT5Genial);
+                    stopProcess(procMT5Genial);
                 }
-                if (isMT5ModalOn && ! Properties.Settings.Default.GeralFlagNotClose)
+                if (isMT5ModalOn && !config.MT5FlagNotClose)
                 {
-                    closeProgram(procMT5Modal);
+                    stopProcess(procMT5Modal);
                 }
             }
 
@@ -232,14 +234,14 @@ namespace Janitor
             { // Mercado Forex aberto, executar MT5 se nao estiver em execucao (e check-close ativo):
                 if (!isMT5XmOn)
                 {
-                    procMT5Xm = openProgram(Properties.Settings.Default.MT5PathXmglob);
+                    procMT5Xm = startProcess(config.MT5PathXmglob, true);
                 }
             }
             else
             { // Mercado Forex fechado, encerrar MT5 se estiver em execucao:
-                if (isMT5XmOn && ! Properties.Settings.Default.GeralFlagNotClose)
+                if (isMT5XmOn && !config.MT5FlagNotClose)
                 {
-                    closeProgram(procMT5Xm);
+                    stopProcess(procMT5Xm);
                 }
             }
         }
@@ -257,29 +259,7 @@ namespace Janitor
                 config.Save();
 
                 // executa o batch do colethon:
-                openBatch(config.ColetPathProgram, false);
-            }
-        }
-
-        /// o programa de analise de dados eh executado diariamente, mas apenas uma vez por dia:
-        public void checkQuanthon(DateTime now)
-        {
-            Settings config = Properties.Settings.Default;
-
-            // se a ultima execucao foi anterior a ontem, entao executa hoje:
-            if (config.QuantLastExecute == null || config.QuantLastExecute.Date < now.Date)
-            {
-                // para executar o quanthon, eh preciso verificar se o colethon ja foi executado:
-                string flagFile = @"C:\Apps\Infinite\Quanthon\data\safeToDelete.tmp";
-                if (File.Exists(flagFile))
-                {
-                    // salva a ultima data de execucao como agora:
-                    config.QuantLastExecute = now;
-                    config.Save();
-
-                    // executa o batch do quanthon:
-                    openBatch(config.QuantPathProgram, false);
-                }
+                startProcess(config.ColetPathProgram, false);
             }
         }
 
@@ -291,28 +271,59 @@ namespace Janitor
             // se a ultima execucao foi anterior a ontem, entao executa hoje:
             if (config.LotoLastExecute == null || config.LotoLastExecute.Date < now.Date)
             {
-                // para executar o lothon, eh preciso verificar se o colethon ja foi executado:
-                string flagFile = @"C:\Apps\Infinite\Lothon\data\safeToDelete.tmp";
-                if (File.Exists(flagFile))
+                // para executar o lothon, eh preciso verificar se o arquivo de sinalizacao existe:
+                if (String.IsNullOrWhiteSpace(config.LotoPathSignal) || File.Exists(config.LotoPathSignal))
                 {
                     // salva a ultima data de execucao como agora:
                     config.LotoLastExecute = now;
                     config.Save();
 
                     // executa o batch do lothon:
-                    openBatch(config.LotoPathProgram, false);
+                    startProcess(config.LotoPathProgram, false);
                 }
             }
         }
 
-        public static Process openProgram(String program)
+        /// o programa de analise de dados eh executado diariamente, mas apenas uma vez por dia:
+        public void checkQuanthon(DateTime now)
+        {
+            Settings config = Properties.Settings.Default;
+
+            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            if (config.QuantLastExecute == null || config.QuantLastExecute.Date < now.Date)
+            {
+                // para executar o quanthon, eh preciso verificar se o arquivo de sinalizacao existe:
+                if (String.IsNullOrWhiteSpace(config.QuantPathSignal) || File.Exists(config.QuantPathSignal))
+                {
+                    // salva a ultima data de execucao como agora:
+                    config.QuantLastExecute = now;
+                    config.Save();
+
+                    // executa o batch do quanthon:
+                    startProcess(config.QuantPathProgram, false);
+                }
+            }
+        }
+
+        public static Process startProcess(String program, bool maxTela)
+        {
+            // verifica se eh um programa executavel ou batch:
+            string extension = Path.GetExtension(program).ToLower();
+
+            if (extension == ".exe" || extension == ".com")
+                return runProgram(program, maxTela);
+            else
+                return runBatch(program, maxTela);
+        }
+
+        public static Process runProgram(String program, bool maxTela)
         {
             Process proc = null;
             try
             {
                 logger.Debug("Vai executar o programa {}", program);
                 ProcessStartInfo startInfo = new ProcessStartInfo(program);
-                startInfo.WindowStyle = ProcessWindowStyle.Maximized;
+                startInfo.WindowStyle = maxTela ? ProcessWindowStyle.Maximized : ProcessWindowStyle.Minimized;
 
                 proc = Process.Start(startInfo);
             }
@@ -324,36 +335,7 @@ namespace Janitor
             return proc;
         }
 
-        public static bool closeProgram(Process proc)
-        {
-            bool result = false;
-            try
-            {
-                logger.Debug("Vai encerrar processo {} | Flag HasExited={}", proc.ProcessName, proc.HasExited);
-                if (proc.HasExited)
-                {
-                    result = true; // indica que o programa foi encerrado (nao importa se foi antes).
-                }
-                else
-                {
-                    // inicialmente apenas fecha a janela principal do programa para encerrar seu processo...
-                    result = proc.CloseMainWindow();
-                    if (!result)  // mas se isso nao encerrar o processo, entao envia Kill() diretamente.
-                    {
-                        logger.Debug("Processo {} nao encerrou com CloseMainWindow(). Vai executar Kill()...", proc.ProcessName);
-                        proc.Kill();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                logger.Error("Erro ao tentar encerrar processo {} | Erro: {}", proc.ProcessName, e.Message);
-            }
-
-            return result;
-        }
-
-        public static Process openBatch(String batch, bool maxTela)
+        public static Process runBatch(String batch, bool maxTela)
         {
             Process proc = null;
             try
@@ -380,6 +362,35 @@ namespace Janitor
             }
 
             return proc;
+        }
+
+        public static bool stopProcess(Process proc)
+        {
+            bool result = false;
+            try
+            {
+                logger.Debug("Vai encerrar processo {} | Flag HasExited={}", proc.ProcessName, proc.HasExited);
+                if (proc.HasExited)
+                {
+                    result = true; // indica que o programa foi encerrado (nao importa se foi antes).
+                }
+                else
+                {
+                    // inicialmente apenas fecha a janela principal do programa para encerrar seu processo...
+                    result = proc.CloseMainWindow();
+                    if (!result)  // mas se isso nao encerrar o processo, entao envia Kill() diretamente.
+                    {
+                        logger.Debug("Processo {} nao encerrou com CloseMainWindow(). Vai executar Kill()...", proc.ProcessName);
+                        proc.Kill();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error("Erro ao tentar encerrar processo {} | Erro: {}", proc.ProcessName, e.Message);
+            }
+
+            return result;
         }
 
         public static string ListFeriados()
@@ -412,7 +423,7 @@ namespace Janitor
                 // Alterado para verificar pelo full-path pois o titulo as vezes vem em branco ""...
                 string fullPath = proc.MainModule.FileName;
                 logger.Debug("Vai finalizar task em execucao: {}", fullPath);
-                closeProgram(proc);
+                stopProcess(proc);
             }
         }
     }

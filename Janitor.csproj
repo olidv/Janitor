@@ -141,7 +141,11 @@
     <None Include="Resources\exit_32.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\run_32.png" />
+    <None Include="docs\clear_32.png" />
     <Content Include="Janitor_32.ico" />
+    <None Include="Resources\redo_32.png" />
+    <None Include="Resources\find_32.png" />
     <None Include="Resources\janitor_off_32.ico" />
     <None Include="Resources\warn_15.png" />
     <None Include="Resources\info_15.png" />

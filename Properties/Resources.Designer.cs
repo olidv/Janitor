@@ -83,16 +83,6 @@ namespace Janitor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap png_clear {
-            get {
-                object obj = ResourceManager.GetObject("png_clear", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap png_close {
             get {
                 object obj = ResourceManager.GetObject("png_close", resourceCulture);
@@ -123,9 +113,39 @@ namespace Janitor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_find {
+            get {
+                object obj = ResourceManager.GetObject("png_find", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_info {
             get {
                 object obj = ResourceManager.GetObject("png_info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_redo {
+            get {
+                object obj = ResourceManager.GetObject("png_redo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_run {
+            get {
+                object obj = ResourceManager.GetObject("png_run", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

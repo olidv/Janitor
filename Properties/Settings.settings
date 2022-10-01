@@ -3,19 +3,25 @@
   <Profiles />
   <Settings>
     <Setting Name="GeralFlagTasks" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="GeralFlagClocker" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="GeralFlagNotClose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GeralFlagBackup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GeralPathBackup" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GeralCheckProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Janitor\bin\check_tarefas.bat</Value>
     </Setting>
     <Setting Name="MT5FlagProgram" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MT5FlagNotClose" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MT5PathGenial" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\B3\MetaTrader 5\terminal64.exe</Value>
@@ -27,19 +33,25 @@
       <Value Profile="(Default)">C:\Apps\B3\XM Global MT5\terminal64.exe</Value>
     </Setting>
     <Setting Name="ColetFlagProgram" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ColetPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Colethon\bin\startup.bat</Value>
+    </Setting>
+    <Setting Name="ColetPathShared" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\BLACK\Publico\</Value>
     </Setting>
     <Setting Name="ColetLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LotoFlagProgram" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LotoPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Lothon\bin\palpites.bat</Value>
+    </Setting>
+    <Setting Name="LotoPathSignal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\Infinite\Lothon\data\safeToDelete.tmp</Value>
     </Setting>
     <Setting Name="LotoLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
@@ -49,6 +61,9 @@
     </Setting>
     <Setting Name="QuantPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Quanthon\bin\startup.bat</Value>
+    </Setting>
+    <Setting Name="QuantPathSignal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\Infinite\Quanthon\data\safeToDelete.tmp</Value>
     </Setting>
     <Setting Name="QuantLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
