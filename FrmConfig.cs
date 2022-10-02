@@ -412,9 +412,14 @@ namespace Janitor
                 CheckPathExists = true
             };
 
-            // abre o dialogo e retorna o arquivo escolhido, ou "" se cancelou.
-            openFileDialog.ShowDialog();
-            return openFileDialog.FileName;
+            // abre o dialogo e retorna o arquivo escolhido, ou null se cancelou.
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            } else
+            {
+                return null;
+            }
         }
 
         // rotina utilitaria para exibir uma janela de dialogo e atualizar um text-box associado:

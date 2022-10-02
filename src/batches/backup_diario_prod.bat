@@ -16,7 +16,7 @@ echo.
 echo.
 
 rem Obtem a data/hora atuais no formato AAAA-MM-DD:
-set HOJE=%datC:~-4%-%datC:~3,2%-%datC:~0,2%
+set HOJE=%date:~-4%-%date:~3,2%-%date:~0,2%
 echo Data de referencia para as movimentacoes:  %HOJE%
 echo.
 
