@@ -12,7 +12,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="GeralPathBackup" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Apps\Infinite\Janitor\bin\backup_semanal.bat</Value>
+      <Value Profile="(Default)">C:\Apps\Infinite\Janitor\bin\backup_diario.bat</Value>
+    </Setting>
+    <Setting Name="GeralLastBackup" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GeralCheckProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Janitor\bin\check_tarefas.bat</Value>

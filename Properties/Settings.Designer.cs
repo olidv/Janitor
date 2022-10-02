@@ -61,13 +61,24 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Janitor\\bin\\backup_semanal.bat")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Apps\\Infinite\\Janitor\\bin\\backup_diario.bat")]
         public string GeralPathBackup {
             get {
                 return ((string)(this["GeralPathBackup"]));
             }
             set {
                 this["GeralPathBackup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime GeralLastBackup {
+            get {
+                return ((global::System.DateTime)(this["GeralLastBackup"]));
+            }
+            set {
+                this["GeralLastBackup"] = value;
             }
         }
         

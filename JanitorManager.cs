@@ -68,6 +68,8 @@ namespace Janitor
             sTimer.Enabled = true;
         }
 
+        /*** PROCEDIMENTO PARA MONITORAMENTO DOS APLICATIVOS ***/
+
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             DateTime now = DateTime.Now;
@@ -78,6 +80,9 @@ namespace Janitor
                 // a cada minuto, executa o check-scheduler para todas as tarefas:
                 if (now.Second == 0)
                 {
+                    // verifica se a execucao da rotina de backup esta habilitada nas configuracoes:
+                    if (config.GeralFlagBackup) checkBackup(now);
+
                     // verifica se a execucao do MetaTrader esta habilitada nas configuracoes:
                     if (config.MT5FlagProgram) checkMetaTrader(now);
 
@@ -95,15 +100,28 @@ namespace Janitor
             // verifica se o acerto das horas esta habilitado nas configuracoes:
             if (config.GeralFlagClocker)
             {
-                // se for 12:00:00, acerta o relogio (ao menos 1x por dia):
-                if (now.Second == 0 && now.Minute == 0 && now.Hour == 12)
+                // ativa de 6 em 6 horas: acerta o relogio (ao menos 4x por dia):
+                if (now.Second == 0 && now.Minute == 0 && (now.Hour % 6 == 0))
                 {
                     Program.ResyncSystemTime();
                 }
             }
         }
 
-        /*** SERVICO DE MONITORAMENTO DOS APLICATIVOS ***/
+        /// a rotina de backup eh executada diariamente, mas apenas uma vez por dia:
+        public void checkBackup(DateTime now)
+        {
+            // se a ultima execucao foi anterior / ontem, entao executa hoje:
+            if (config.GeralLastBackup == null || config.GeralLastBackup.Date < now.Date)
+            {
+                // salva a ultima data de execucao como agora:
+                config.GeralLastBackup = now;
+                config.Save();
+
+                // executa a rotina de backup:
+                startProcess(config.GeralPathBackup, false);
+            }
+        }
 
         public void checkMetaTrader(DateTime now)
         {
@@ -249,7 +267,7 @@ namespace Janitor
         /// o programa de coleta diario eh executado diariamente, mas apenas uma vez por dia:
         public void checkColethon(DateTime now)
         {
-            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            // se a ultima execucao foi anterior / ontem, entao executa hoje:
             if (config.ColetLastExecute == null || config.ColetLastExecute.Date < now.Date)
             {
                 // salva a ultima data de execucao como agora:
@@ -264,7 +282,7 @@ namespace Janitor
         /// o programa de geracao de palpites eh executado diariamente, mas apenas uma vez por dia:
         public void checkLothon(DateTime now)
         {
-            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            // se a ultima execucao foi anterior / ontem, entao executa hoje:
             if (config.LotoLastExecute == null || config.LotoLastExecute.Date < now.Date)
             {
                 // para executar o lothon, eh preciso verificar se o arquivo de sinalizacao existe:
@@ -283,7 +301,7 @@ namespace Janitor
         /// o programa de analise de dados eh executado diariamente, mas apenas uma vez por dia:
         public void checkQuanthon(DateTime now)
         {
-            // se a ultima execucao foi anterior a ontem, entao executa hoje:
+            // se a ultima execucao foi anterior / ontem, entao executa hoje:
             if (config.QuantLastExecute == null || config.QuantLastExecute.Date < now.Date)
             {
                 // para executar o quanthon, eh preciso verificar se o arquivo de sinalizacao existe:

@@ -47,6 +47,9 @@ namespace Janitor
             this.ckbGeralFlagTasks = new System.Windows.Forms.CheckBox();
             this.tbpMetatrader = new System.Windows.Forms.TabPage();
             this.grpMetatraderTrading = new System.Windows.Forms.GroupBox();
+            this.btnMT5RunXmglob = new System.Windows.Forms.Button();
+            this.btnMT5RunModal = new System.Windows.Forms.Button();
+            this.btnMT5RunGenial = new System.Windows.Forms.Button();
             this.btnMT5OpenXmglob = new System.Windows.Forms.Button();
             this.btnMT5OpenModal = new System.Windows.Forms.Button();
             this.btnMT5OpenGenial = new System.Windows.Forms.Button();
@@ -61,6 +64,7 @@ namespace Janitor
             this.ckbMT5FlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpColethon = new System.Windows.Forms.TabPage();
             this.grbColethonManutencao = new System.Windows.Forms.GroupBox();
+            this.btnColetRunProgram = new System.Windows.Forms.Button();
             this.btnColetOpenProgram = new System.Windows.Forms.Button();
             this.btnColetOpenShared = new System.Windows.Forms.Button();
             this.txbColetPathShared = new System.Windows.Forms.TextBox();
@@ -73,6 +77,7 @@ namespace Janitor
             this.chbColetFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpLoto365 = new System.Windows.Forms.TabPage();
             this.grbLoto365Manutencao = new System.Windows.Forms.GroupBox();
+            this.btnLotoRunProgram = new System.Windows.Forms.Button();
             this.btnLotoOpenSignal = new System.Windows.Forms.Button();
             this.btnLotoOpenProgram = new System.Windows.Forms.Button();
             this.txbLotoPathSignal = new System.Windows.Forms.TextBox();
@@ -85,6 +90,7 @@ namespace Janitor
             this.ckbLotoFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpQuanthon = new System.Windows.Forms.TabPage();
             this.grbQuanthonManutencao = new System.Windows.Forms.GroupBox();
+            this.btnQuantRunProgram = new System.Windows.Forms.Button();
             this.btnQuantOpenProgram = new System.Windows.Forms.Button();
             this.btnQuantOpenSignal = new System.Windows.Forms.Button();
             this.txbQuantPathSignal = new System.Windows.Forms.TextBox();
@@ -96,12 +102,6 @@ namespace Janitor
             this.lblQuantPathProgram = new System.Windows.Forms.Label();
             this.chbQuantFlagProgram = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
-            this.btnMT5RunGenial = new System.Windows.Forms.Button();
-            this.btnMT5RunModal = new System.Windows.Forms.Button();
-            this.btnMT5RunXmglob = new System.Windows.Forms.Button();
-            this.btnColetRunProgram = new System.Windows.Forms.Button();
-            this.btnLotoRunProgram = new System.Windows.Forms.Button();
-            this.btnQuantRunProgram = new System.Windows.Forms.Button();
             this.tbcPanel.SuspendLayout();
             this.tbpGeral.SuspendLayout();
             this.grbGeralAgendador.SuspendLayout();
@@ -223,9 +223,9 @@ namespace Janitor
             this.ckbGeralFlagBackup.AutoSize = true;
             this.ckbGeralFlagBackup.Location = new System.Drawing.Point(11, 70);
             this.ckbGeralFlagBackup.Name = "ckbGeralFlagBackup";
-            this.ckbGeralFlagBackup.Size = new System.Drawing.Size(261, 17);
+            this.ckbGeralFlagBackup.Size = new System.Drawing.Size(208, 17);
             this.ckbGeralFlagBackup.TabIndex = 3;
-            this.ckbGeralFlagBackup.Text = "Executar rotina de backup semanal aos domingos";
+            this.ckbGeralFlagBackup.Text = "Executar rotina de backup diariamente";
             this.ckbGeralFlagBackup.UseVisualStyleBackColor = true;
             this.ckbGeralFlagBackup.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
@@ -312,6 +312,39 @@ namespace Janitor
             this.grpMetatraderTrading.TabIndex = 0;
             this.grpMetatraderTrading.TabStop = false;
             this.grpMetatraderTrading.Text = "Algo Trading com Robôs";
+            // 
+            // btnMT5RunXmglob
+            // 
+            this.btnMT5RunXmglob.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnMT5RunXmglob.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMT5RunXmglob.Location = new System.Drawing.Point(287, 122);
+            this.btnMT5RunXmglob.Name = "btnMT5RunXmglob";
+            this.btnMT5RunXmglob.Size = new System.Drawing.Size(22, 22);
+            this.btnMT5RunXmglob.TabIndex = 12;
+            this.btnMT5RunXmglob.UseVisualStyleBackColor = true;
+            this.btnMT5RunXmglob.Click += new System.EventHandler(this.btnMT5RunXmglob_Click);
+            // 
+            // btnMT5RunModal
+            // 
+            this.btnMT5RunModal.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnMT5RunModal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMT5RunModal.Location = new System.Drawing.Point(287, 95);
+            this.btnMT5RunModal.Name = "btnMT5RunModal";
+            this.btnMT5RunModal.Size = new System.Drawing.Size(22, 22);
+            this.btnMT5RunModal.TabIndex = 11;
+            this.btnMT5RunModal.UseVisualStyleBackColor = true;
+            this.btnMT5RunModal.Click += new System.EventHandler(this.btnMT5RunModal_Click);
+            // 
+            // btnMT5RunGenial
+            // 
+            this.btnMT5RunGenial.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnMT5RunGenial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMT5RunGenial.Location = new System.Drawing.Point(287, 68);
+            this.btnMT5RunGenial.Name = "btnMT5RunGenial";
+            this.btnMT5RunGenial.Size = new System.Drawing.Size(22, 22);
+            this.btnMT5RunGenial.TabIndex = 10;
+            this.btnMT5RunGenial.UseVisualStyleBackColor = true;
+            this.btnMT5RunGenial.Click += new System.EventHandler(this.btnMT5RunGenial_Click);
             // 
             // btnMT5OpenXmglob
             // 
@@ -461,6 +494,17 @@ namespace Janitor
             this.grbColethonManutencao.TabStop = false;
             this.grbColethonManutencao.Text = "Coleta Diária de Dados";
             // 
+            // btnColetRunProgram
+            // 
+            this.btnColetRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnColetRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnColetRunProgram.Location = new System.Drawing.Point(287, 68);
+            this.btnColetRunProgram.Name = "btnColetRunProgram";
+            this.btnColetRunProgram.Size = new System.Drawing.Size(22, 22);
+            this.btnColetRunProgram.TabIndex = 10;
+            this.btnColetRunProgram.UseVisualStyleBackColor = true;
+            this.btnColetRunProgram.Click += new System.EventHandler(this.btnColetRunProgram_Click);
+            // 
             // btnColetOpenProgram
             // 
             this.btnColetOpenProgram.BackgroundImage = global::Janitor.Properties.Resources.png_find;
@@ -586,6 +630,17 @@ namespace Janitor
             this.grbLoto365Manutencao.TabIndex = 0;
             this.grbLoto365Manutencao.TabStop = false;
             this.grbLoto365Manutencao.Text = "Publicação de Palpites";
+            // 
+            // btnLotoRunProgram
+            // 
+            this.btnLotoRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnLotoRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLotoRunProgram.Location = new System.Drawing.Point(287, 68);
+            this.btnLotoRunProgram.Name = "btnLotoRunProgram";
+            this.btnLotoRunProgram.Size = new System.Drawing.Size(22, 22);
+            this.btnLotoRunProgram.TabIndex = 10;
+            this.btnLotoRunProgram.UseVisualStyleBackColor = true;
+            this.btnLotoRunProgram.Click += new System.EventHandler(this.btnLotoRunProgram_Click);
             // 
             // btnLotoOpenSignal
             // 
@@ -713,6 +768,17 @@ namespace Janitor
             this.grbQuanthonManutencao.TabStop = false;
             this.grbQuanthonManutencao.Text = "Análise de Dados Coletados";
             // 
+            // btnQuantRunProgram
+            // 
+            this.btnQuantRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
+            this.btnQuantRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantRunProgram.Location = new System.Drawing.Point(287, 68);
+            this.btnQuantRunProgram.Name = "btnQuantRunProgram";
+            this.btnQuantRunProgram.Size = new System.Drawing.Size(22, 22);
+            this.btnQuantRunProgram.TabIndex = 10;
+            this.btnQuantRunProgram.UseVisualStyleBackColor = true;
+            this.btnQuantRunProgram.Click += new System.EventHandler(this.btnQuantRunProgram_Click);
+            // 
             // btnQuantOpenProgram
             // 
             this.btnQuantOpenProgram.BackgroundImage = global::Janitor.Properties.Resources.png_find;
@@ -807,72 +873,6 @@ namespace Janitor
             this.chbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
             this.chbQuantFlagProgram.UseVisualStyleBackColor = true;
             this.chbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
-            // 
-            // btnMT5RunGenial
-            // 
-            this.btnMT5RunGenial.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnMT5RunGenial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMT5RunGenial.Location = new System.Drawing.Point(287, 68);
-            this.btnMT5RunGenial.Name = "btnMT5RunGenial";
-            this.btnMT5RunGenial.Size = new System.Drawing.Size(22, 22);
-            this.btnMT5RunGenial.TabIndex = 10;
-            this.btnMT5RunGenial.UseVisualStyleBackColor = true;
-            this.btnMT5RunGenial.Click += new System.EventHandler(this.btnMT5RunGenial_Click);
-            // 
-            // btnMT5RunModal
-            // 
-            this.btnMT5RunModal.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnMT5RunModal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMT5RunModal.Location = new System.Drawing.Point(287, 95);
-            this.btnMT5RunModal.Name = "btnMT5RunModal";
-            this.btnMT5RunModal.Size = new System.Drawing.Size(22, 22);
-            this.btnMT5RunModal.TabIndex = 11;
-            this.btnMT5RunModal.UseVisualStyleBackColor = true;
-            this.btnMT5RunModal.Click += new System.EventHandler(this.btnMT5RunModal_Click);
-            // 
-            // btnMT5RunXmglob
-            // 
-            this.btnMT5RunXmglob.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnMT5RunXmglob.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMT5RunXmglob.Location = new System.Drawing.Point(287, 122);
-            this.btnMT5RunXmglob.Name = "btnMT5RunXmglob";
-            this.btnMT5RunXmglob.Size = new System.Drawing.Size(22, 22);
-            this.btnMT5RunXmglob.TabIndex = 12;
-            this.btnMT5RunXmglob.UseVisualStyleBackColor = true;
-            this.btnMT5RunXmglob.Click += new System.EventHandler(this.btnMT5RunXmglob_Click);
-            // 
-            // btnColetRunProgram
-            // 
-            this.btnColetRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnColetRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnColetRunProgram.Location = new System.Drawing.Point(287, 68);
-            this.btnColetRunProgram.Name = "btnColetRunProgram";
-            this.btnColetRunProgram.Size = new System.Drawing.Size(22, 22);
-            this.btnColetRunProgram.TabIndex = 10;
-            this.btnColetRunProgram.UseVisualStyleBackColor = true;
-            this.btnColetRunProgram.Click += new System.EventHandler(this.btnColetRunProgram_Click);
-            // 
-            // btnLotoRunProgram
-            // 
-            this.btnLotoRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnLotoRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLotoRunProgram.Location = new System.Drawing.Point(287, 68);
-            this.btnLotoRunProgram.Name = "btnLotoRunProgram";
-            this.btnLotoRunProgram.Size = new System.Drawing.Size(22, 22);
-            this.btnLotoRunProgram.TabIndex = 10;
-            this.btnLotoRunProgram.UseVisualStyleBackColor = true;
-            this.btnLotoRunProgram.Click += new System.EventHandler(this.btnLotoRunProgram_Click);
-            // 
-            // btnQuantRunProgram
-            // 
-            this.btnQuantRunProgram.BackgroundImage = global::Janitor.Properties.Resources.png_run;
-            this.btnQuantRunProgram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantRunProgram.Location = new System.Drawing.Point(287, 68);
-            this.btnQuantRunProgram.Name = "btnQuantRunProgram";
-            this.btnQuantRunProgram.Size = new System.Drawing.Size(22, 22);
-            this.btnQuantRunProgram.TabIndex = 10;
-            this.btnQuantRunProgram.UseVisualStyleBackColor = true;
-            this.btnQuantRunProgram.Click += new System.EventHandler(this.btnQuantRunProgram_Click);
             // 
             // FrmConfig
             // 

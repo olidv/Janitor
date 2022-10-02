@@ -1,9 +1,9 @@
 @echo off
 color F
 
-rem Printa as instrucoes de Backup Semanal.
+rem Printa as instrucoes de Backup Diario.
 echo.
-echo BACKUP SEMANAL  [ C:\APPS\B3\JANITOR\BIN\BACKUP_SEMANAL.BAT ]
+echo BACKUP DIARIO  [ C:\APPS\INFINITE\JANITOR\BIN\BACKUP_DIARIO.BAT ]
 echo.
 echo.
 
