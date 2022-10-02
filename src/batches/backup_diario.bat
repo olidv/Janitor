@@ -8,24 +8,16 @@ echo.
 echo.
 
 echo  *********************************************
-echo  **  ATENCAO:  LIMPAR  DESTINO  \DOWNLOADS  **
+echo  **  ATENCAO:  SALVAR NA PASTA  \DOCUMENTS  **
 echo  *********************************************
 echo.
 echo     PRINT DESKTOP  [ PRINTSCREEN ]  C/  POST-IT
 echo.
 echo     FAVORITOS  CHROME,  BRAVE,   EDGE,  FIREFOX
 echo.
-echo     EXPORTAR SETTINGS DAS IDEs JETBRAINS EM ZIP
+echo     SETTINGS DAS IDEs PYHARM E INTELLIJ  EM ZIP
 echo.
-echo     COMPACTAR  NOTAS DO  JOPLIN EM  ARQUIVOS 7Z
-echo.
-echo     EXPORTAR SETTINGS DAS FERRAMENTAS JETBRAINS
-echo.
-echo     FECHAR: OUTLOOK NOTEPAD++ JOPLIN ENCRYPTPAD
-echo.
-echo.
-
-pause
+echo     FECHAR OUTLOOKk, JOPLIN, ENCRYPTPAD, KINDLE
 echo.
 echo.
 

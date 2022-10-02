@@ -142,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\run_32.png" />
-    <None Include="docs\clear_32.png" />
     <Content Include="Janitor_32.ico" />
     <None Include="Resources\redo_32.png" />
     <None Include="Resources\find_32.png" />
@@ -150,8 +149,6 @@
     <None Include="Resources\warn_15.png" />
     <None Include="Resources\info_15.png" />
     <None Include="Resources\close_15.png" />
-    <None Include="Resources\janitor_off.ico" />
-    <None Include="Resources\clear_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
