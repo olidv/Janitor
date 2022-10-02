@@ -66,9 +66,9 @@ namespace Janitor
             this.grbColethonManutencao = new System.Windows.Forms.GroupBox();
             this.btnColetRunProgram = new System.Windows.Forms.Button();
             this.btnColetOpenProgram = new System.Windows.Forms.Button();
-            this.btnColetOpenShared = new System.Windows.Forms.Button();
-            this.txbColetPathShared = new System.Windows.Forms.TextBox();
-            this.lblColetPathShared = new System.Windows.Forms.Label();
+            this.btnColetOpenSignal = new System.Windows.Forms.Button();
+            this.txbColetPathSignal = new System.Windows.Forms.TextBox();
+            this.lblColetPathSignal = new System.Windows.Forms.Label();
             this.btnColetReexecutar = new System.Windows.Forms.Button();
             this.txbColetLastExecute = new System.Windows.Forms.TextBox();
             this.lblColetLastExecute = new System.Windows.Forms.Label();
@@ -478,9 +478,9 @@ namespace Janitor
             // 
             this.grbColethonManutencao.Controls.Add(this.btnColetRunProgram);
             this.grbColethonManutencao.Controls.Add(this.btnColetOpenProgram);
-            this.grbColethonManutencao.Controls.Add(this.btnColetOpenShared);
-            this.grbColethonManutencao.Controls.Add(this.txbColetPathShared);
-            this.grbColethonManutencao.Controls.Add(this.lblColetPathShared);
+            this.grbColethonManutencao.Controls.Add(this.btnColetOpenSignal);
+            this.grbColethonManutencao.Controls.Add(this.txbColetPathSignal);
+            this.grbColethonManutencao.Controls.Add(this.lblColetPathSignal);
             this.grbColethonManutencao.Controls.Add(this.btnColetReexecutar);
             this.grbColethonManutencao.Controls.Add(this.txbColetLastExecute);
             this.grbColethonManutencao.Controls.Add(this.lblColetLastExecute);
@@ -516,33 +516,33 @@ namespace Janitor
             this.btnColetOpenProgram.UseVisualStyleBackColor = true;
             this.btnColetOpenProgram.Click += new System.EventHandler(this.btnColetOpenProgram_Click);
             // 
-            // btnColetOpenShared
+            // btnColetOpenSignal
             // 
-            this.btnColetOpenShared.BackgroundImage = global::Janitor.Properties.Resources.png_find;
-            this.btnColetOpenShared.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnColetOpenShared.Location = new System.Drawing.Point(287, 116);
-            this.btnColetOpenShared.Name = "btnColetOpenShared";
-            this.btnColetOpenShared.Size = new System.Drawing.Size(22, 22);
-            this.btnColetOpenShared.TabIndex = 5;
-            this.btnColetOpenShared.UseVisualStyleBackColor = true;
-            this.btnColetOpenShared.Click += new System.EventHandler(this.btnColetOpenShared_Click);
+            this.btnColetOpenSignal.BackgroundImage = global::Janitor.Properties.Resources.png_find;
+            this.btnColetOpenSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnColetOpenSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnColetOpenSignal.Name = "btnColetOpenSignal";
+            this.btnColetOpenSignal.Size = new System.Drawing.Size(22, 22);
+            this.btnColetOpenSignal.TabIndex = 5;
+            this.btnColetOpenSignal.UseVisualStyleBackColor = true;
+            this.btnColetOpenSignal.Click += new System.EventHandler(this.btnColetOpenSignal_Click);
             // 
-            // txbColetPathShared
+            // txbColetPathSignal
             // 
-            this.txbColetPathShared.Location = new System.Drawing.Point(11, 117);
-            this.txbColetPathShared.Name = "txbColetPathShared";
-            this.txbColetPathShared.Size = new System.Drawing.Size(272, 20);
-            this.txbColetPathShared.TabIndex = 4;
+            this.txbColetPathSignal.Location = new System.Drawing.Point(11, 117);
+            this.txbColetPathSignal.Name = "txbColetPathSignal";
+            this.txbColetPathSignal.Size = new System.Drawing.Size(272, 20);
+            this.txbColetPathSignal.TabIndex = 4;
             // 
-            // lblColetPathShared
+            // lblColetPathSignal
             // 
-            this.lblColetPathShared.AutoSize = true;
-            this.lblColetPathShared.Location = new System.Drawing.Point(7, 99);
-            this.lblColetPathShared.Name = "lblColetPathShared";
-            this.lblColetPathShared.Size = new System.Drawing.Size(107, 13);
-            this.lblColetPathShared.TabIndex = 4;
-            this.lblColetPathShared.Text = "Pasta Compartilhada:";
-            this.lblColetPathShared.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblColetPathSignal.AutoSize = true;
+            this.lblColetPathSignal.Location = new System.Drawing.Point(7, 99);
+            this.lblColetPathSignal.Name = "lblColetPathSignal";
+            this.lblColetPathSignal.Size = new System.Drawing.Size(115, 13);
+            this.lblColetPathSignal.TabIndex = 4;
+            this.lblColetPathSignal.Text = "Aquivo de Sinalização:";
+            this.lblColetPathSignal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnColetReexecutar
             // 
@@ -956,8 +956,8 @@ namespace Janitor
         private System.Windows.Forms.Button btnMT5ExibirFeriados;
         private System.Windows.Forms.Button btnGeralCheckTarefas;
         private System.Windows.Forms.CheckBox ckbMT5FlagNotClose;
-        private System.Windows.Forms.TextBox txbColetPathShared;
-        private System.Windows.Forms.Label lblColetPathShared;
+        private System.Windows.Forms.TextBox txbColetPathSignal;
+        private System.Windows.Forms.Label lblColetPathSignal;
         private System.Windows.Forms.TextBox txbLotoPathSignal;
         private System.Windows.Forms.Label lblLotoPathSignal;
         private System.Windows.Forms.TextBox txbQuantPathSignal;
@@ -969,7 +969,7 @@ namespace Janitor
         private System.Windows.Forms.Button btnMT5OpenModal;
         private System.Windows.Forms.Button btnMT5OpenGenial;
         private System.Windows.Forms.Button btnColetOpenProgram;
-        private System.Windows.Forms.Button btnColetOpenShared;
+        private System.Windows.Forms.Button btnColetOpenSignal;
         private System.Windows.Forms.Button btnLotoOpenSignal;
         private System.Windows.Forms.Button btnLotoOpenProgram;
         private System.Windows.Forms.Button btnQuantOpenProgram;

@@ -270,12 +270,16 @@ namespace Janitor
             // se a ultima execucao foi anterior / ontem, entao executa hoje:
             if (config.ColetLastExecute == null || config.ColetLastExecute.Date < now.Date)
             {
-                // salva a ultima data de execucao como agora:
-                config.ColetLastExecute = now;
-                config.Save();
+                // para executar o colethon, eh preciso verificar se o arquivo de sinalizacao existe:
+                if (String.IsNullOrWhiteSpace(config.ColetPathSignal) || File.Exists(config.ColetPathSignal))
+                {
+                    // salva a ultima data de execucao como agora:
+                    config.ColetLastExecute = now;
+                    config.Save();
 
-                // executa o batch do colethon:
-                startProcess(config.ColetPathProgram, false);
+                    // executa o batch do colethon:
+                    startProcess(config.ColetPathProgram, false);
+                }
             }
         }
 

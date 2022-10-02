@@ -68,7 +68,7 @@ namespace Janitor
             // Aba Colethon
             chbColetFlagProgram.Checked = config.ColetFlagProgram;
             txbColetPathProgram.Text = config.ColetPathProgram;
-            txbColetPathShared.Text = config.ColetPathShared;
+            txbColetPathSignal.Text = config.ColetPathSignal;
             if (config.ColetLastExecute > DateTime.MinValue)
                 txbColetLastExecute.Text = config.ColetLastExecute.ToString("dddd, dd MMMM yyyy, HH:mm");
             toolTips.SetToolTip(chbColetFlagProgram, "Clique para habilitar ou desabilitar a execução do Colethon.");
@@ -77,9 +77,9 @@ namespace Janitor
             toolTips.SetToolTip(btnColetOpenProgram, "Clique para localizar o executável Colethon.");
             toolTips.SetToolTip(btnColetRunProgram, "Clique para executar o programa Colethon.");
 
-            toolTips.SetToolTip(lblColetPathShared, "Caminho completo da pasta compartilhada entre notebooks.");
-            toolTips.SetToolTip(txbColetPathShared, "Caminho completo da pasta compartilhada entre notebooks.");
-            toolTips.SetToolTip(btnColetOpenShared, "Clique para selecionar a pasta compartilhada entre notebooks.");
+            toolTips.SetToolTip(lblColetPathSignal, "Caminho completo da pasta compartilhada entre notebooks.");
+            toolTips.SetToolTip(txbColetPathSignal, "Caminho completo da pasta compartilhada entre notebooks.");
+            toolTips.SetToolTip(btnColetOpenSignal, "Clique para selecionar a pasta compartilhada entre notebooks.");
 
             toolTips.SetToolTip(lblColetLastExecute, "Última data/hora de execução do Colethon.");
             toolTips.SetToolTip(txbColetLastExecute, "Última data/hora de execução do Colethon.");
@@ -158,8 +158,8 @@ namespace Janitor
             txbColetPathProgram.Enabled = chbColetFlagProgram.Checked;
             btnColetOpenProgram.Enabled = chbColetFlagProgram.Checked;
             btnColetRunProgram.Enabled = !String.IsNullOrWhiteSpace(txbColetPathProgram.Text);
-            txbColetPathShared.Enabled = chbColetFlagProgram.Checked;
-            btnColetOpenShared.Enabled = chbColetFlagProgram.Checked;
+            txbColetPathSignal.Enabled = chbColetFlagProgram.Checked;
+            btnColetOpenSignal.Enabled = chbColetFlagProgram.Checked;
             btnColetReexecutar.Enabled = chbColetFlagProgram.Checked;
 
             // Aba Loto365
@@ -197,7 +197,7 @@ namespace Janitor
             // Aba Colethon
             config.ColetFlagProgram = chbColetFlagProgram.Checked;
             config.ColetPathProgram = txbColetPathProgram.Text;
-            config.ColetPathShared = txbColetPathShared.Text;
+            config.ColetPathSignal = txbColetPathSignal.Text;
 
             // Aba Quanthon
             config.QuantFlagProgram = chbQuantFlagProgram.Checked;
@@ -334,10 +334,10 @@ namespace Janitor
             OpenFileTextBox("Procurar Programa Colethon", txbColetPathProgram, DIALOG_FILTER_PROGRAMAS);
         }
 
-        private void btnColetOpenShared_Click(object sender, EventArgs e)
+        private void btnColetOpenSignal_Click(object sender, EventArgs e)
         {
-            // vai abrir o dialogo ja apontando pro diretorio atual:
-            OpenFolderTextBox(txbColetPathShared);
+            // vai abrir o dialogo ja apontando pro arquivo atual:
+            OpenFileTextBox("Procurar Arquivo de Sinalização", txbColetPathSignal, DIALOG_FILTER_ARQUIVOS);
         }
 
         private void btnLotoOpenProgram_Click(object sender, EventArgs e)
@@ -441,7 +441,14 @@ namespace Janitor
         {
             // executa a rotina de backup semanal, se estiver definida:
             if (!String.IsNullOrWhiteSpace(config.GeralPathBackup))
-                JanitorManager.startProcess(config.GeralPathBackup, true);
+            {
+                // executa a rotina de backup minimizada porque vai tirar um print-screen da tela.
+                JanitorManager.startProcess(config.GeralPathBackup, false);
+
+                // Salva este momento como a ultima data de execucao:
+                config.GeralLastBackup = DateTime.Now;
+                config.Save();
+            }
         }
 
         private void btnMT5RunGenial_Click(object sender, EventArgs e)

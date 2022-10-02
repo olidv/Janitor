@@ -28,6 +28,7 @@ echo.
 
 echo Copiando os arquivos do projeto
 xcopy dist\*.* C:\Apps\Infinite\Janitor  /E /C /Q /H /R /Y
+copy /y D:\Workspace\C#\Janitor\src\resources\dev\*.* C:\Apps\Infinite\Janitor\bin
 echo.
 
 rem Pausa final...

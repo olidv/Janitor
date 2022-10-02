@@ -180,13 +180,13 @@ namespace Janitor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\\\BLACK\\Publico\\")]
-        public string ColetPathShared {
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Publico\\Colethon\\safeToDelete.tmp")]
+        public string ColetPathSignal {
             get {
-                return ((string)(this["ColetPathShared"]));
+                return ((string)(this["ColetPathSignal"]));
             }
             set {
-                this["ColetPathShared"] = value;
+                this["ColetPathSignal"] = value;
             }
         }
         

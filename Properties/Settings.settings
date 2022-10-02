@@ -41,8 +41,8 @@
     <Setting Name="ColetPathProgram" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\Infinite\Colethon\bin\startup.bat</Value>
     </Setting>
-    <Setting Name="ColetPathShared" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\\BLACK\Publico\</Value>
+    <Setting Name="ColetPathSignal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\Publico\Colethon\safeToDelete.tmp</Value>
     </Setting>
     <Setting Name="ColetLastExecute" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
