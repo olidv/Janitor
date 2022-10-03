@@ -1,5 +1,5 @@
 @echo off
-color F
+color 4F
 
 rem Printa as instrucoes do Backup Diario da estacao de producao.
 echo.

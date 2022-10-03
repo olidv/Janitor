@@ -1,5 +1,5 @@
 @echo off
-color F
+color 4F
 
 rem Printa as instrucoes de Backup Mensal.
 echo.

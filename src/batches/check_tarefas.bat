@@ -1,4 +1,5 @@
 @echo off
+color 4F
 
 rem Verifica os logs das tarefas do Janitor.
 echo.

@@ -1,4 +1,5 @@
 @echo off
+color 4F
 
 rem Excluindo arquivos de diretorios temporarios...
 rem DEL /F /S /Q %HOMEPATH%\Config~1\Temp\*.*

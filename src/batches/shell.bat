@@ -1,4 +1,5 @@
 @echo off
+color 4F
 
 rem Posiciona no diretorio raiz da aplicacao:
 cd ..
