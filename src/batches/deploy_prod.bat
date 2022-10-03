@@ -7,9 +7,9 @@ echo DEPLOY PROD  [ C:\APPS\INFINITE\JANITOR\BIN\DEPLOY_PROD.BAT ]
 echo.
 echo.
 
-echo  *************************************************
-echo  **  ATENCAO: FECHAR APLICATIVO JANITOR ANTES!  **
-echo  *************************************************
+echo  ******************************************************
+echo  **  ATENCAO: FECHAR APLICATIVOS  CLOCKER,  JANITOR  **
+echo  ******************************************************
 echo.
 
 pause
