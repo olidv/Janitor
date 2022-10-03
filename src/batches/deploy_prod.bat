@@ -1,6 +1,21 @@
 @echo off
 color 4F
 
+rem Printa as instrucoes da rotina de deploy na estacao de producao:
+echo.
+echo DEPLOY PROD  [ C:\APPS\INFINITE\JANITOR\BIN\DEPLOY_PROD.BAT ]
+echo.
+echo.
+
+echo  *************************************************
+echo  **  ATENCAO: FECHAR APLICATIVO JANITOR ANTES!  **
+echo  *************************************************
+echo.
+
+pause
+echo.
+echo.
+
 rem verifica se os releases estao disponiveis para deploy:
 :clocker
 if not exist \\BLACK\Publico\clocker-1.0.zip goto janitor
