@@ -888,6 +888,7 @@ namespace Janitor
             this.Name = "FrmConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Janitor  •  Configurações";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frm_config_Load);
             this.tbcPanel.ResumeLayout(false);
             this.tbpGeral.ResumeLayout(false);
