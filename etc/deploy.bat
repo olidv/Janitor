@@ -31,6 +31,10 @@ xcopy dist\*.* C:\Apps\Infinite\Janitor  /E /C /Q /H /R /Y
 copy /y D:\Workspace\C#\Janitor\src\resources\dev\*.* C:\Apps\Infinite\Janitor\bin
 echo.
 
+echo Disponibilizando release da aplicacao para producao
+copy /y dist\*.zip D:\Publico
+echo.
+
 rem Pausa final...
 echo.
 pause
