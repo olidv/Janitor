@@ -11,7 +11,7 @@
 
 # User-specific files
 *.suo
-*.user
+#*.user
 *.sln.docstates
 
 # Build results
@@ -361,14 +361,18 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Visual Studio Code
+.vscode/
+.history/
+prettierignore.txt
+*.code-workspace
+
 # ---------------------------------------------------------
 
 #####
-# End of core ignore list, below put you custom 'per project' settings (patterns or path)
+# End of core ignore list, 
+# below put you custom 'per project' settings,
+# patterns or path.
 #####
-
-# Several
-data/
 logs/
 tmp/
-www/
