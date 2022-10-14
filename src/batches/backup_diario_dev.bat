@@ -32,6 +32,10 @@ mkdir E:\%BKDEV%\
 mkdir E:\%BKPRD%\
 echo.
 
+echo Minimiza todas as janelas correntes, para captura da area de trabalho...
+powershell -command "(new-object -com shell.application).minimizeall()"
+echo.
+
 echo Capturando copia da area de trabalho em imagem (print-screen)...
 nircmd savescreenshotfull E:\%BKDEV%\Screenshot_%HOJE%.png
 echo.
