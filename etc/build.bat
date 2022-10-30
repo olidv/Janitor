@@ -3,7 +3,7 @@ color E
 
 rem Printa a apresentacao do build.
 echo.
-echo  BUILD DO JANITOR   [ D:\WORKSPACE\C#\JANITOR\ETC\BUILD.BAT ]
+echo  BUILD DO JANITOR   [ D:\WORKSPACE\INFINITE\JANITOR\ETC\BUILD.BAT ]
 echo.
 echo.
 

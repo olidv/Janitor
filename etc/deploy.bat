@@ -3,7 +3,7 @@ color E
 
 rem Printa a apresentacao do deploy:
 echo.
-echo  DEPLOY DO JANITOR   [ D:\WORKSPACE\C#\JANITOR\ETC\DEPLOY.BAT ]
+echo  DEPLOY DO JANITOR   [ D:\WORKSPACE\INFINITE\JANITOR\ETC\DEPLOY.BAT ]
 echo.
 echo.
 
@@ -23,12 +23,12 @@ rem del /f /q logs\*.*  1>nul  2>&1
 echo.
 
 echo Posicionando no diretorio do projeto
-cd /d D:\Workspace\C#\Janitor
+cd /d D:\Workspace\Infinite\Janitor
 echo.
 
 echo Copiando os arquivos do projeto
 xcopy dist\*.* C:\Apps\Infinite\Janitor  /E /C /Q /H /R /Y
-copy /y D:\Workspace\C#\Janitor\src\resources\dev\*.* C:\Apps\Infinite\Janitor\bin
+copy /y D:\Workspace\Infinite\Janitor\src\resources\dev\*.* C:\Apps\Infinite\Janitor\bin
 echo.
 
 echo Disponibilizando release da aplicacao para producao
