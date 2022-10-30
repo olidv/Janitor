@@ -79,6 +79,11 @@ move /y \\BLUE\Publico\BK_PRD\*.* E:\%BKPRD%\
 rem rmdir /s /q \\BLUE\Publico\BK_PRD
 echo.
 
+rem ao final, executa as aplicacoes que foram fechadas para o backup:
+start "" "C:\Users\qdev\AppData\Local\Programs\Joplin\Joplin.exe"
+start "" "C:\Program Files (x86)\3M\PSNLite\PsnLite.exe" -RegRun
+start "" "E:\Cloud\Documentos\Nosso Lar.xls"
+
 :endbat
 rem Pausa final...
 echo.
