@@ -34,7 +34,9 @@ LOTERIAS = ["dia-de-sorte", "dupla-sena", "lotofacil", "lotomania", "mega-sena",
 
 PALPITES_URL = "https://www.loto365.com.br/palpites.html?loteria="
 
-LOG_PATH = r'C:\Apps\Infinite\Janitor\logs\geckodriver.log'
+LOG_PATH = r"C:\Apps\Infinite\Janitor\logs\geckodriver.log"
+
+FIREFOX_PATH = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 
 # por enquanto nao fez diferenca...
 # PROFILE_PATH = r'C:\Users\qdev\AppData\Roaming\Mozilla\Firefox\Profiles\z4zg1uf3.default-release'
@@ -56,7 +58,7 @@ def open_webdriver_firefox() -> webdriver.Firefox:
     driver_firefox = None
     try:
         print(f"Iniciando WebDriver do Firefox com FirefoxOptions: {options.arguments}...")
-        driver_firefox = Firefox(service=service, options=options)
+        driver_firefox = Firefox(executable_path=FIREFOX_PATH, service=service, options=options)
         print("WebDriver do Firefox inicializado com sucesso.")
 
     except WebDriverException as ex:
