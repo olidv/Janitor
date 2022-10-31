@@ -18,8 +18,8 @@ import time
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver import Firefox
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.common.exceptions import WebDriverException
 
 
@@ -34,9 +34,9 @@ LOTERIAS = ["dia-de-sorte", "dupla-sena", "lotofacil", "lotomania", "mega-sena",
 
 PALPITES_URL = "https://www.loto365.com.br/palpites.html?loteria="
 
-LOG_PATH = r"C:\Apps\Infinite\Janitor\logs\geckodriver.log"
-
 FIREFOX_PATH = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+GECKODRIVER_PATH = r"C:\Apps\Command\geckodriver.exe"
+LOG_PATH = r"C:\Apps\Infinite\Janitor\logs\geckodriver.log"
 
 # por enquanto nao fez diferenca...
 # PROFILE_PATH = r'C:\Users\qdev\AppData\Roaming\Mozilla\Firefox\Profiles\z4zg1uf3.default-release'
@@ -49,16 +49,19 @@ FIREFOX_PATH = r"C:\Program Files\Mozilla Firefox\firefox.exe"
 # abre o navegador Firefox e configura as opcoes para download automatico e direto:
 def open_webdriver_firefox() -> webdriver.Firefox:
     # utiliza as preferencias especificas do Firefox para abrir a Web Console:
-    service = Service(log_path=LOG_PATH)
-    options = Options()
-    options.log.level = "trace"
+    firefox_service = FirefoxService(executable_path=GECKODRIVER_PATH, log_path=LOG_PATH)
+    firefox_options = FirefoxOptions()
+    firefox_options.binary_location = FIREFOX_PATH
+    firefox_options.log.level = "trace"
+
+    # por enquanto nao fez diferenca...
     # options.set_preference('profile', PROFILE_PATH)  # vai usar o profile default do Firefox
 
     # vai abrir o navegador do Firefox escondido do usuario:
     driver_firefox = None
     try:
-        print(f"Iniciando WebDriver do Firefox com FirefoxOptions: {options.arguments}...")
-        driver_firefox = Firefox(executable_path=FIREFOX_PATH, service=service, options=options)
+        print(f"Iniciando WebDriver do Firefox com FirefoxOptions: {firefox_options.arguments}...")
+        driver_firefox = Firefox(service=firefox_service, options=firefox_options)
         print("WebDriver do Firefox inicializado com sucesso.")
 
     except WebDriverException as ex:
@@ -87,6 +90,9 @@ if len(sys.argv) > 1:
 
 # abre o Firefox pelo selenium web driver:
 browser = open_webdriver_firefox()
+if browser is None:
+    print("*** ATENCAO: Nao foi possivel inicializar o WebDriver para o Firefox.")
+    sys.exit(-1)
 
 # salva as telas de todas as loterias:
 for loteria in LOTERIAS:
