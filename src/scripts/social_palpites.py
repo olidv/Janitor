@@ -359,13 +359,13 @@ with open(TEXTO_VIDEO_FILE, "wt") as f:
 # exibe os palpites da loteria DIA DE SORTE para conferir a consulta do site:
 # webbrowser.open(DIADESORTE_CSV_FILE)
 
-# executa o OBS Studio para gravacao de video com slides do dia:
-cena_dir = f"Cena_{dir_dia}"
-obs_exe = OBS_STUDIO + OBS_PARMS.format(cena=cena_dir)
-print(f"{OBS_HOME}: Executando o programa do OBS Studio: {obs_exe}")
-obs_proc = subprocess.Popen(obs_exe, cwd=OBS_HOME, shell=True)
-
-# aguarda um tempo para que o OBS grave o video e encerra o programa:
-print(f"{OBS_STUDIO}: Aguardando {OBS_WAIT_SECS} segundos para cancelar o OBS STUDIO...")
-time.sleep(OBS_WAIT_SECS)
-subprocess.call(OBS_KILL_EXE, shell=True)
+# # executa o OBS Studio para gravacao de video com slides do dia:
+# cena_dir = f"Cena_{dir_dia}"
+# obs_exe = OBS_STUDIO + OBS_PARMS.format(cena=cena_dir)
+# print(f"{OBS_HOME}: Executando o programa do OBS Studio: {obs_exe}")
+# obs_proc = subprocess.Popen(obs_exe, cwd=OBS_HOME, shell=True)
+#
+# # aguarda um tempo para que o OBS grave o video e encerra o programa:
+# print(f"{OBS_STUDIO}: Aguardando {OBS_WAIT_SECS} segundos para cancelar o OBS STUDIO...")
+# time.sleep(OBS_WAIT_SECS)
+# subprocess.call(OBS_KILL_EXE, shell=True)
