@@ -32,6 +32,17 @@ mkdir E:\%BKDEV%\
 mkdir E:\%BKPRD%\
 echo.
 
+echo Encerra aplicacoes para evitar erro de conflitos durante o backup...
+taskkill /im Code.exe /t /f        1>nul  2>&1
+taskkill /im encryptpad.exe /t /f  1>nul  2>&1
+taskkill /im EXCEL.EXE /t /f       1>nul  2>&1
+taskkill /im OUTLOOK.EXE /t /f     1>nul  2>&1
+taskkill /im WINWORD.EXE /t /f     1>nul  2>&1
+taskkill /im PsnLite.exe /t /f     1>nul  2>&1
+taskkill /im Joplin.exe /t /f      1>nul  2>&1
+taskkill /im terminal64.exe /t /f  1>nul  2>&1
+echo.
+
 echo Minimiza todas as janelas correntes, para captura da area de trabalho...
 powershell -command "(new-object -com shell.application).minimizeall()"
 echo.
@@ -79,10 +90,14 @@ move /y \\BLUE\Publico\BK_PRD\*.* E:\%BKPRD%\
 rem rmdir /s /q \\BLUE\Publico\BK_PRD
 echo.
 
-rem ao final, executa as aplicacoes que foram fechadas para o backup:
-start "" "C:\Users\qdev\AppData\Local\Programs\Joplin\Joplin.exe"
-start "" "C:\Program Files (x86)\3M\PSNLite\PsnLite.exe" -RegRun
-start "" "E:\Cloud\Documentos\Nosso Lar.xls"
+echo Restaura todas as janelas que foram minimizadas...
+powershell -command "(new-object -com shell.application).UndoMinimizeALL()"
+echo.
+
+echo Executa as aplicacoes que foram fechadas para o backup...
+start "" /d "C:\Users\qdev\AppData\Local\Programs\Joplin" /min "C:\Users\qdev\AppData\Local\Programs\Joplin\Joplin.exe"
+start "" /min "C:\Program Files (x86)\3M\PSNLite\PsnLite.exe" -RegRun
+start "" /max "E:\Cloud\Documentos\Nosso Lar.xls"
 
 :endbat
 rem Pausa final...
