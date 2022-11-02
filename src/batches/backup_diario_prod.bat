@@ -57,6 +57,10 @@ echo Compactando e copiando configuracao do OBS Studio: \AppData\Roaming\obs-stu
 7z a -t7z C:\%BKPRD%\OBSStudio_%HOJE%.7z C:\Users\qdev\AppData\Roaming\obs-studio\basic
 echo.
 
+echo Restaura todas as janelas que foram minimizadas...
+powershell -command "(new-object -com shell.application).UndoMinimizeALL()"
+echo.
+
 rem Pausa final...
 echo.
 pause

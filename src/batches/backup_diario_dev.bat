@@ -7,15 +7,15 @@ echo BACKUP DIARIO DEV  [ C:\APPS\INFINITE\JANITOR\BIN\BACKUP_DIARIO_DEV.BAT ]
 echo.
 echo.
 
-echo  *********************************************
-echo  **  ATENCAO:  SALVAR NA PASTA  \DOCUMENTS  **
-echo  *********************************************
+echo  **********************************************
+echo  **  ATENCAO:  SALVAR  NA PASTA  \DOCUMENTS  **
+echo  **********************************************
 echo.
-echo     FAVORITOS:  CHROME,  BRAVE,  EDGE, FIREFOX
+echo     FAVORITOS:  CHROME,  BRAVE,  EDGE,  FIREFOX
 echo.
-echo     SETTINGS DAS IDEs PYHARM E INTELLIJ EM ZIP
+echo     SETTINGS DAS IDEs PYHARM E  INTELLIJ EM ZIP
 echo.
-echo     FECHAR OUTLOOK, JOPLIN, ENCRYPTPAD, KINDLE
+echo     FECHAR OUTLOOK, JOPLIN, ENCRYPTPAD, VS CODE
 echo.
 echo.
 
