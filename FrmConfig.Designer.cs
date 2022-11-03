@@ -36,6 +36,7 @@ namespace Janitor
             this.tbcPanel = new System.Windows.Forms.TabControl();
             this.tbpGeral = new System.Windows.Forms.TabPage();
             this.grbGeralAgendador = new System.Windows.Forms.GroupBox();
+            this.btnGeralRerunBackup = new System.Windows.Forms.Button();
             this.btnGeralRunBackup = new System.Windows.Forms.Button();
             this.lblGeralPathBackup = new System.Windows.Forms.Label();
             this.btnGeralOpenBackup = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@ namespace Janitor
             this.ckbGeralFlagTasks = new System.Windows.Forms.CheckBox();
             this.tbpMetatrader = new System.Windows.Forms.TabPage();
             this.grpMetatraderTrading = new System.Windows.Forms.GroupBox();
+            this.btnMT5ExibirLogs = new System.Windows.Forms.Button();
             this.btnMT5RunXmglob = new System.Windows.Forms.Button();
             this.btnMT5RunModal = new System.Windows.Forms.Button();
             this.btnMT5RunGenial = new System.Windows.Forms.Button();
@@ -64,6 +66,8 @@ namespace Janitor
             this.ckbMT5FlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpColethon = new System.Windows.Forms.TabPage();
             this.grbColethonManutencao = new System.Windows.Forms.GroupBox();
+            this.btnColetShowLog = new System.Windows.Forms.Button();
+            this.btnColetDelSignal = new System.Windows.Forms.Button();
             this.btnColetRunProgram = new System.Windows.Forms.Button();
             this.btnColetOpenProgram = new System.Windows.Forms.Button();
             this.btnColetOpenSignal = new System.Windows.Forms.Button();
@@ -74,7 +78,7 @@ namespace Janitor
             this.lblColetLastExecute = new System.Windows.Forms.Label();
             this.txbColetPathProgram = new System.Windows.Forms.TextBox();
             this.lblColetPathProgram = new System.Windows.Forms.Label();
-            this.chbColetFlagProgram = new System.Windows.Forms.CheckBox();
+            this.ckbColetFlagProgram = new System.Windows.Forms.CheckBox();
             this.tbpLoto365 = new System.Windows.Forms.TabPage();
             this.grbLoto365Manutencao = new System.Windows.Forms.GroupBox();
             this.btnLotoRunProgram = new System.Windows.Forms.Button();
@@ -100,8 +104,12 @@ namespace Janitor
             this.lblQuantLastExecute = new System.Windows.Forms.Label();
             this.txbQuantPathProgram = new System.Windows.Forms.TextBox();
             this.lblQuantPathProgram = new System.Windows.Forms.Label();
-            this.chbQuantFlagProgram = new System.Windows.Forms.CheckBox();
+            this.ckbQuantFlagProgram = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
+            this.btnLotoShowLog = new System.Windows.Forms.Button();
+            this.btnLotoDelSignal = new System.Windows.Forms.Button();
+            this.btnQuantShowLog = new System.Windows.Forms.Button();
+            this.btnQuantDelSignal = new System.Windows.Forms.Button();
             this.tbcPanel.SuspendLayout();
             this.tbpGeral.SuspendLayout();
             this.grbGeralAgendador.SuspendLayout();
@@ -163,6 +171,7 @@ namespace Janitor
             // 
             // grbGeralAgendador
             // 
+            this.grbGeralAgendador.Controls.Add(this.btnGeralRerunBackup);
             this.grbGeralAgendador.Controls.Add(this.btnGeralRunBackup);
             this.grbGeralAgendador.Controls.Add(this.lblGeralPathBackup);
             this.grbGeralAgendador.Controls.Add(this.btnGeralOpenBackup);
@@ -179,11 +188,22 @@ namespace Janitor
             this.grbGeralAgendador.TabStop = false;
             this.grbGeralAgendador.Text = "Agendador de Tarefas";
             // 
+            // btnGeralRerunBackup
+            // 
+            this.btnGeralRerunBackup.BackgroundImage = global::Janitor.Properties.Resources.png_redo;
+            this.btnGeralRerunBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGeralRerunBackup.Location = new System.Drawing.Point(287, 115);
+            this.btnGeralRerunBackup.Name = "btnGeralRerunBackup";
+            this.btnGeralRerunBackup.Size = new System.Drawing.Size(22, 22);
+            this.btnGeralRerunBackup.TabIndex = 10;
+            this.btnGeralRerunBackup.UseVisualStyleBackColor = true;
+            this.btnGeralRerunBackup.Click += new System.EventHandler(this.btnGeralRerunBackup_Click);
+            // 
             // btnGeralRunBackup
             // 
             this.btnGeralRunBackup.BackgroundImage = global::Janitor.Properties.Resources.png_run;
             this.btnGeralRunBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeralRunBackup.Location = new System.Drawing.Point(287, 115);
+            this.btnGeralRunBackup.Location = new System.Drawing.Point(262, 115);
             this.btnGeralRunBackup.Name = "btnGeralRunBackup";
             this.btnGeralRunBackup.Size = new System.Drawing.Size(22, 22);
             this.btnGeralRunBackup.TabIndex = 9;
@@ -204,7 +224,7 @@ namespace Janitor
             // 
             this.btnGeralOpenBackup.BackgroundImage = global::Janitor.Properties.Resources.png_find;
             this.btnGeralOpenBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeralOpenBackup.Location = new System.Drawing.Point(262, 115);
+            this.btnGeralOpenBackup.Location = new System.Drawing.Point(237, 115);
             this.btnGeralOpenBackup.Name = "btnGeralOpenBackup";
             this.btnGeralOpenBackup.Size = new System.Drawing.Size(22, 22);
             this.btnGeralOpenBackup.TabIndex = 5;
@@ -215,7 +235,7 @@ namespace Janitor
             // 
             this.txbGeralPathBackup.Location = new System.Drawing.Point(11, 116);
             this.txbGeralPathBackup.Name = "txbGeralPathBackup";
-            this.txbGeralPathBackup.Size = new System.Drawing.Size(247, 20);
+            this.txbGeralPathBackup.Size = new System.Drawing.Size(222, 20);
             this.txbGeralPathBackup.TabIndex = 4;
             // 
             // ckbGeralFlagBackup
@@ -291,6 +311,7 @@ namespace Janitor
             // 
             // grpMetatraderTrading
             // 
+            this.grpMetatraderTrading.Controls.Add(this.btnMT5ExibirLogs);
             this.grpMetatraderTrading.Controls.Add(this.btnMT5RunXmglob);
             this.grpMetatraderTrading.Controls.Add(this.btnMT5RunModal);
             this.grpMetatraderTrading.Controls.Add(this.btnMT5RunGenial);
@@ -312,6 +333,18 @@ namespace Janitor
             this.grpMetatraderTrading.TabIndex = 0;
             this.grpMetatraderTrading.TabStop = false;
             this.grpMetatraderTrading.Text = "Algo Trading com Robôs";
+            // 
+            // btnMT5ExibirLogs
+            // 
+            this.btnMT5ExibirLogs.Image = global::Janitor.Properties.Resources.png_view;
+            this.btnMT5ExibirLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMT5ExibirLogs.Location = new System.Drawing.Point(10, 151);
+            this.btnMT5ExibirLogs.Name = "btnMT5ExibirLogs";
+            this.btnMT5ExibirLogs.Size = new System.Drawing.Size(145, 23);
+            this.btnMT5ExibirLogs.TabIndex = 13;
+            this.btnMT5ExibirLogs.Text = "     Exibir Logs do MT5...";
+            this.btnMT5ExibirLogs.UseVisualStyleBackColor = true;
+            this.btnMT5ExibirLogs.Click += new System.EventHandler(this.btnMT5ExibirLogs_Click);
             // 
             // btnMT5RunXmglob
             // 
@@ -476,6 +509,8 @@ namespace Janitor
             // 
             // grbColethonManutencao
             // 
+            this.grbColethonManutencao.Controls.Add(this.btnColetShowLog);
+            this.grbColethonManutencao.Controls.Add(this.btnColetDelSignal);
             this.grbColethonManutencao.Controls.Add(this.btnColetRunProgram);
             this.grbColethonManutencao.Controls.Add(this.btnColetOpenProgram);
             this.grbColethonManutencao.Controls.Add(this.btnColetOpenSignal);
@@ -486,13 +521,35 @@ namespace Janitor
             this.grbColethonManutencao.Controls.Add(this.lblColetLastExecute);
             this.grbColethonManutencao.Controls.Add(this.txbColetPathProgram);
             this.grbColethonManutencao.Controls.Add(this.lblColetPathProgram);
-            this.grbColethonManutencao.Controls.Add(this.chbColetFlagProgram);
+            this.grbColethonManutencao.Controls.Add(this.ckbColetFlagProgram);
             this.grbColethonManutencao.Location = new System.Drawing.Point(7, 9);
             this.grbColethonManutencao.Name = "grbColethonManutencao";
             this.grbColethonManutencao.Size = new System.Drawing.Size(319, 190);
             this.grbColethonManutencao.TabIndex = 1;
             this.grbColethonManutencao.TabStop = false;
             this.grbColethonManutencao.Text = "Coleta Diária de Dados";
+            // 
+            // btnColetShowLog
+            // 
+            this.btnColetShowLog.BackgroundImage = global::Janitor.Properties.Resources.png_log;
+            this.btnColetShowLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnColetShowLog.Location = new System.Drawing.Point(287, 152);
+            this.btnColetShowLog.Name = "btnColetShowLog";
+            this.btnColetShowLog.Size = new System.Drawing.Size(22, 22);
+            this.btnColetShowLog.TabIndex = 12;
+            this.btnColetShowLog.UseVisualStyleBackColor = true;
+            this.btnColetShowLog.Click += new System.EventHandler(this.btnColetShowLog_Click);
+            // 
+            // btnColetDelSignal
+            // 
+            this.btnColetDelSignal.BackgroundImage = global::Janitor.Properties.Resources.png_del;
+            this.btnColetDelSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnColetDelSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnColetDelSignal.Name = "btnColetDelSignal";
+            this.btnColetDelSignal.Size = new System.Drawing.Size(22, 22);
+            this.btnColetDelSignal.TabIndex = 11;
+            this.btnColetDelSignal.UseVisualStyleBackColor = true;
+            this.btnColetDelSignal.Click += new System.EventHandler(this.btnColetDelSignal_Click);
             // 
             // btnColetRunProgram
             // 
@@ -520,7 +577,7 @@ namespace Janitor
             // 
             this.btnColetOpenSignal.BackgroundImage = global::Janitor.Properties.Resources.png_find;
             this.btnColetOpenSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnColetOpenSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnColetOpenSignal.Location = new System.Drawing.Point(262, 116);
             this.btnColetOpenSignal.Name = "btnColetOpenSignal";
             this.btnColetOpenSignal.Size = new System.Drawing.Size(22, 22);
             this.btnColetOpenSignal.TabIndex = 5;
@@ -531,7 +588,7 @@ namespace Janitor
             // 
             this.txbColetPathSignal.Location = new System.Drawing.Point(11, 117);
             this.txbColetPathSignal.Name = "txbColetPathSignal";
-            this.txbColetPathSignal.Size = new System.Drawing.Size(272, 20);
+            this.txbColetPathSignal.Size = new System.Drawing.Size(247, 20);
             this.txbColetPathSignal.TabIndex = 4;
             // 
             // lblColetPathSignal
@@ -548,7 +605,7 @@ namespace Janitor
             // 
             this.btnColetReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_redo;
             this.btnColetReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnColetReexecutar.Location = new System.Drawing.Point(287, 152);
+            this.btnColetReexecutar.Location = new System.Drawing.Point(262, 152);
             this.btnColetReexecutar.Name = "btnColetReexecutar";
             this.btnColetReexecutar.Size = new System.Drawing.Size(22, 22);
             this.btnColetReexecutar.TabIndex = 6;
@@ -560,7 +617,7 @@ namespace Janitor
             this.txbColetLastExecute.Enabled = false;
             this.txbColetLastExecute.Location = new System.Drawing.Point(95, 153);
             this.txbColetLastExecute.Name = "txbColetLastExecute";
-            this.txbColetLastExecute.Size = new System.Drawing.Size(188, 20);
+            this.txbColetLastExecute.Size = new System.Drawing.Size(163, 20);
             this.txbColetLastExecute.TabIndex = 0;
             // 
             // lblColetLastExecute
@@ -589,16 +646,16 @@ namespace Janitor
             this.lblColetPathProgram.Text = "Local do Programa:";
             this.lblColetPathProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chbColetFlagProgram
+            // ckbColetFlagProgram
             // 
-            this.chbColetFlagProgram.AutoSize = true;
-            this.chbColetFlagProgram.Location = new System.Drawing.Point(11, 22);
-            this.chbColetFlagProgram.Name = "chbColetFlagProgram";
-            this.chbColetFlagProgram.Size = new System.Drawing.Size(263, 17);
-            this.chbColetFlagProgram.TabIndex = 1;
-            this.chbColetFlagProgram.Text = "Executar programa diariamente para coletar dados";
-            this.chbColetFlagProgram.UseVisualStyleBackColor = true;
-            this.chbColetFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
+            this.ckbColetFlagProgram.AutoSize = true;
+            this.ckbColetFlagProgram.Location = new System.Drawing.Point(11, 22);
+            this.ckbColetFlagProgram.Name = "ckbColetFlagProgram";
+            this.ckbColetFlagProgram.Size = new System.Drawing.Size(263, 17);
+            this.ckbColetFlagProgram.TabIndex = 1;
+            this.ckbColetFlagProgram.Text = "Executar programa diariamente para coletar dados";
+            this.ckbColetFlagProgram.UseVisualStyleBackColor = true;
+            this.ckbColetFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
             // 
             // tbpLoto365
             // 
@@ -613,6 +670,8 @@ namespace Janitor
             // 
             // grbLoto365Manutencao
             // 
+            this.grbLoto365Manutencao.Controls.Add(this.btnLotoShowLog);
+            this.grbLoto365Manutencao.Controls.Add(this.btnLotoDelSignal);
             this.grbLoto365Manutencao.Controls.Add(this.btnLotoRunProgram);
             this.grbLoto365Manutencao.Controls.Add(this.btnLotoOpenSignal);
             this.grbLoto365Manutencao.Controls.Add(this.btnLotoOpenProgram);
@@ -646,7 +705,7 @@ namespace Janitor
             // 
             this.btnLotoOpenSignal.BackgroundImage = global::Janitor.Properties.Resources.png_find;
             this.btnLotoOpenSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLotoOpenSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnLotoOpenSignal.Location = new System.Drawing.Point(262, 116);
             this.btnLotoOpenSignal.Name = "btnLotoOpenSignal";
             this.btnLotoOpenSignal.Size = new System.Drawing.Size(22, 22);
             this.btnLotoOpenSignal.TabIndex = 5;
@@ -668,7 +727,7 @@ namespace Janitor
             // 
             this.txbLotoPathSignal.Location = new System.Drawing.Point(11, 117);
             this.txbLotoPathSignal.Name = "txbLotoPathSignal";
-            this.txbLotoPathSignal.Size = new System.Drawing.Size(272, 20);
+            this.txbLotoPathSignal.Size = new System.Drawing.Size(247, 20);
             this.txbLotoPathSignal.TabIndex = 4;
             // 
             // lblLotoPathSignal
@@ -685,7 +744,7 @@ namespace Janitor
             // 
             this.btnLotoReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_redo;
             this.btnLotoReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLotoReexecutar.Location = new System.Drawing.Point(287, 152);
+            this.btnLotoReexecutar.Location = new System.Drawing.Point(262, 152);
             this.btnLotoReexecutar.Name = "btnLotoReexecutar";
             this.btnLotoReexecutar.Size = new System.Drawing.Size(22, 22);
             this.btnLotoReexecutar.TabIndex = 6;
@@ -697,7 +756,7 @@ namespace Janitor
             this.txbLotoLastExecute.Enabled = false;
             this.txbLotoLastExecute.Location = new System.Drawing.Point(95, 153);
             this.txbLotoLastExecute.Name = "txbLotoLastExecute";
-            this.txbLotoLastExecute.Size = new System.Drawing.Size(188, 20);
+            this.txbLotoLastExecute.Size = new System.Drawing.Size(163, 20);
             this.txbLotoLastExecute.TabIndex = 0;
             // 
             // lblLotoLastExecute
@@ -750,6 +809,8 @@ namespace Janitor
             // 
             // grbQuanthonManutencao
             // 
+            this.grbQuanthonManutencao.Controls.Add(this.btnQuantShowLog);
+            this.grbQuanthonManutencao.Controls.Add(this.btnQuantDelSignal);
             this.grbQuanthonManutencao.Controls.Add(this.btnQuantRunProgram);
             this.grbQuanthonManutencao.Controls.Add(this.btnQuantOpenProgram);
             this.grbQuanthonManutencao.Controls.Add(this.btnQuantOpenSignal);
@@ -760,7 +821,7 @@ namespace Janitor
             this.grbQuanthonManutencao.Controls.Add(this.lblQuantLastExecute);
             this.grbQuanthonManutencao.Controls.Add(this.txbQuantPathProgram);
             this.grbQuanthonManutencao.Controls.Add(this.lblQuantPathProgram);
-            this.grbQuanthonManutencao.Controls.Add(this.chbQuantFlagProgram);
+            this.grbQuanthonManutencao.Controls.Add(this.ckbQuantFlagProgram);
             this.grbQuanthonManutencao.Location = new System.Drawing.Point(7, 9);
             this.grbQuanthonManutencao.Name = "grbQuanthonManutencao";
             this.grbQuanthonManutencao.Size = new System.Drawing.Size(319, 190);
@@ -794,7 +855,7 @@ namespace Janitor
             // 
             this.btnQuantOpenSignal.BackgroundImage = global::Janitor.Properties.Resources.png_find;
             this.btnQuantOpenSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantOpenSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnQuantOpenSignal.Location = new System.Drawing.Point(262, 116);
             this.btnQuantOpenSignal.Name = "btnQuantOpenSignal";
             this.btnQuantOpenSignal.Size = new System.Drawing.Size(22, 22);
             this.btnQuantOpenSignal.TabIndex = 5;
@@ -805,7 +866,7 @@ namespace Janitor
             // 
             this.txbQuantPathSignal.Location = new System.Drawing.Point(11, 117);
             this.txbQuantPathSignal.Name = "txbQuantPathSignal";
-            this.txbQuantPathSignal.Size = new System.Drawing.Size(272, 20);
+            this.txbQuantPathSignal.Size = new System.Drawing.Size(247, 20);
             this.txbQuantPathSignal.TabIndex = 4;
             // 
             // lblQuantPathSignal
@@ -822,7 +883,7 @@ namespace Janitor
             // 
             this.btnQuantReexecutar.BackgroundImage = global::Janitor.Properties.Resources.png_redo;
             this.btnQuantReexecutar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuantReexecutar.Location = new System.Drawing.Point(287, 152);
+            this.btnQuantReexecutar.Location = new System.Drawing.Point(262, 152);
             this.btnQuantReexecutar.Name = "btnQuantReexecutar";
             this.btnQuantReexecutar.Size = new System.Drawing.Size(22, 22);
             this.btnQuantReexecutar.TabIndex = 6;
@@ -834,7 +895,7 @@ namespace Janitor
             this.txbQuantLastExecute.Enabled = false;
             this.txbQuantLastExecute.Location = new System.Drawing.Point(95, 153);
             this.txbQuantLastExecute.Name = "txbQuantLastExecute";
-            this.txbQuantLastExecute.Size = new System.Drawing.Size(188, 20);
+            this.txbQuantLastExecute.Size = new System.Drawing.Size(163, 20);
             this.txbQuantLastExecute.TabIndex = 0;
             // 
             // lblQuantLastExecute
@@ -863,16 +924,60 @@ namespace Janitor
             this.lblQuantPathProgram.Text = "Local do Programa:";
             this.lblQuantPathProgram.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chbQuantFlagProgram
+            // ckbQuantFlagProgram
             // 
-            this.chbQuantFlagProgram.AutoSize = true;
-            this.chbQuantFlagProgram.Location = new System.Drawing.Point(11, 22);
-            this.chbQuantFlagProgram.Name = "chbQuantFlagProgram";
-            this.chbQuantFlagProgram.Size = new System.Drawing.Size(267, 17);
-            this.chbQuantFlagProgram.TabIndex = 1;
-            this.chbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
-            this.chbQuantFlagProgram.UseVisualStyleBackColor = true;
-            this.chbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
+            this.ckbQuantFlagProgram.AutoSize = true;
+            this.ckbQuantFlagProgram.Location = new System.Drawing.Point(11, 22);
+            this.ckbQuantFlagProgram.Name = "ckbQuantFlagProgram";
+            this.ckbQuantFlagProgram.Size = new System.Drawing.Size(267, 17);
+            this.ckbQuantFlagProgram.TabIndex = 1;
+            this.ckbQuantFlagProgram.Text = "Executar programa diariamente para analisar dados";
+            this.ckbQuantFlagProgram.UseVisualStyleBackColor = true;
+            this.ckbQuantFlagProgram.CheckedChanged += new System.EventHandler(this.FrmConfig_Refresh);
+            // 
+            // btnLotoShowLog
+            // 
+            this.btnLotoShowLog.BackgroundImage = global::Janitor.Properties.Resources.png_log;
+            this.btnLotoShowLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLotoShowLog.Location = new System.Drawing.Point(287, 152);
+            this.btnLotoShowLog.Name = "btnLotoShowLog";
+            this.btnLotoShowLog.Size = new System.Drawing.Size(22, 22);
+            this.btnLotoShowLog.TabIndex = 14;
+            this.btnLotoShowLog.UseVisualStyleBackColor = true;
+            this.btnLotoShowLog.Click += new System.EventHandler(this.btnLotoShowLog_Click);
+            // 
+            // btnLotoDelSignal
+            // 
+            this.btnLotoDelSignal.BackgroundImage = global::Janitor.Properties.Resources.png_del;
+            this.btnLotoDelSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLotoDelSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnLotoDelSignal.Name = "btnLotoDelSignal";
+            this.btnLotoDelSignal.Size = new System.Drawing.Size(22, 22);
+            this.btnLotoDelSignal.TabIndex = 13;
+            this.btnLotoDelSignal.UseVisualStyleBackColor = true;
+            this.btnLotoDelSignal.Click += new System.EventHandler(this.btnLotoDelSignal_Click);
+            // 
+            // btnQuantShowLog
+            // 
+            this.btnQuantShowLog.BackgroundImage = global::Janitor.Properties.Resources.png_log;
+            this.btnQuantShowLog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantShowLog.Location = new System.Drawing.Point(287, 152);
+            this.btnQuantShowLog.Name = "btnQuantShowLog";
+            this.btnQuantShowLog.Size = new System.Drawing.Size(22, 22);
+            this.btnQuantShowLog.TabIndex = 14;
+            this.btnQuantShowLog.UseVisualStyleBackColor = true;
+            this.btnQuantShowLog.Click += new System.EventHandler(this.btnQuantShowLog_Click);
+            // 
+            // btnQuantDelSignal
+            // 
+            this.btnQuantDelSignal.BackgroundImage = global::Janitor.Properties.Resources.png_del;
+            this.btnQuantDelSignal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuantDelSignal.Location = new System.Drawing.Point(287, 116);
+            this.btnQuantDelSignal.Name = "btnQuantDelSignal";
+            this.btnQuantDelSignal.Size = new System.Drawing.Size(22, 22);
+            this.btnQuantDelSignal.TabIndex = 13;
+            this.btnQuantDelSignal.UseVisualStyleBackColor = true;
+            this.btnQuantDelSignal.Click += new System.EventHandler(this.btnQuantDelSignal_Click);
             // 
             // FrmConfig
             // 
@@ -938,7 +1043,7 @@ namespace Janitor
         private System.Windows.Forms.Label lblQuantLastExecute;
         private System.Windows.Forms.TextBox txbQuantPathProgram;
         private System.Windows.Forms.Label lblQuantPathProgram;
-        private System.Windows.Forms.CheckBox chbQuantFlagProgram;
+        private System.Windows.Forms.CheckBox ckbQuantFlagProgram;
         private System.Windows.Forms.CheckBox ckbGeralFlagClocker;
         private System.Windows.Forms.Label lblMT5PathModal;
         private System.Windows.Forms.TextBox txbMT5PathModal;
@@ -948,7 +1053,7 @@ namespace Janitor
         private System.Windows.Forms.Label lblColetLastExecute;
         private System.Windows.Forms.TextBox txbColetPathProgram;
         private System.Windows.Forms.Label lblColetPathProgram;
-        private System.Windows.Forms.CheckBox chbColetFlagProgram;
+        private System.Windows.Forms.CheckBox ckbColetFlagProgram;
         private System.Windows.Forms.Button btnGeralEncerrarTarefas;
         private System.Windows.Forms.Button btnColetReexecutar;
         private System.Windows.Forms.Button btnQuantReexecutar;
@@ -983,6 +1088,14 @@ namespace Janitor
         private System.Windows.Forms.Button btnColetRunProgram;
         private System.Windows.Forms.Button btnLotoRunProgram;
         private System.Windows.Forms.Button btnQuantRunProgram;
+        private System.Windows.Forms.Button btnGeralRerunBackup;
+        private System.Windows.Forms.Button btnMT5ExibirLogs;
+        private System.Windows.Forms.Button btnColetShowLog;
+        private System.Windows.Forms.Button btnColetDelSignal;
+        private System.Windows.Forms.Button btnLotoShowLog;
+        private System.Windows.Forms.Button btnLotoDelSignal;
+        private System.Windows.Forms.Button btnQuantShowLog;
+        private System.Windows.Forms.Button btnQuantDelSignal;
     }
 }
 

@@ -103,6 +103,16 @@ namespace Janitor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_del {
+            get {
+                object obj = ResourceManager.GetObject("png_del", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_exit {
             get {
                 object obj = ResourceManager.GetObject("png_exit", resourceCulture);
@@ -133,6 +143,16 @@ namespace Janitor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_log {
+            get {
+                object obj = ResourceManager.GetObject("png_log", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap png_redo {
             get {
                 object obj = ResourceManager.GetObject("png_redo", resourceCulture);
@@ -146,6 +166,16 @@ namespace Janitor.Properties {
         internal static System.Drawing.Bitmap png_run {
             get {
                 object obj = ResourceManager.GetObject("png_run", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_view {
+            get {
+                object obj = ResourceManager.GetObject("png_view", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

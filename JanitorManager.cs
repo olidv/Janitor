@@ -77,8 +77,9 @@ namespace Janitor
             // verifica se o agendamento esta habilitado nas configuracoes:
             if (config.GeralFlagTasks)
             {
-                // a cada minuto, executa o check-scheduler para todas as tarefas:
-                if (now.Second == 0)
+                // a cada minuto, executa o check-scheduler para todas as tarefas,
+                // mas apenas apos 04h da manha, pois pode estar trabalhando alem da meia-noite:
+                if (now.Second == 0 && now.Hour >= 4)
                 {
                     // verifica se a execucao da rotina de backup esta habilitada nas configuracoes:
                     if (config.GeralFlagBackup) checkBackup(now);
