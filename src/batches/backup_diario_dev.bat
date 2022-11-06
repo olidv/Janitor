@@ -97,7 +97,6 @@ echo.
 echo Executa as aplicacoes que foram fechadas para o backup...
 start "" /min "C:\Program Files (x86)\3M\PSNLite\PsnLite.exe" -RegRun
 start "" /max "E:\Cloud\Documentos\Nosso Lar.xls"
-start "" /d "C:\Users\qdev\AppData\Local\Programs\Joplin" /max "C:\Users\qdev\AppData\Local\Programs\Joplin\Joplin.exe"
 echo.
 
 :endbat

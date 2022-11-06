@@ -37,8 +37,8 @@ move /Y \\BLACK\Publico\colethon-1.0.zip C:\Apps\Infinite\Colethon
 
 :lothon
 if not exist \\BLACK\Publico\lothon-1.0.zip goto quanthon
-cd /D C:\Apps\Loto365\Lothon
-move /Y \\BLACK\Publico\lothon-1.0.zip C:\Apps\Loto365\Lothon
+cd /D C:\Apps\Infinite\Lothon
+move /Y \\BLACK\Publico\lothon-1.0.zip C:\Apps\Infinite\Lothon
 7z x -y lothon-1.0.zip
 
 :quanthon

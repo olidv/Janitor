@@ -22,7 +22,7 @@ find /N "FATAL" C:\Apps\Infinite\Janitor\logs\janitor.log           >> findWarnE
 find /N "FATAL" C:\Apps\Infinite\Janitor\logs\janitor-internal.log  >> findWarnError.tmp 2>&1
 find /N "FATAL" C:\Apps\Infinite\Colethon\logs\colethon.log         >> findWarnError.tmp 2>&1
 find /N "FATAL" C:\Apps\Infinite\Quanthon\logs\quanthon.log         >> findWarnError.tmp 2>&1
-find /N "FATAL" C:\Apps\Loto365\Lothon\logs\lothon.log             >> findWarnError.tmp 2>&1
+find /N "FATAL" C:\Apps\Infinite\Lothon\logs\lothon.log             >> findWarnError.tmp 2>&1
 echo.
 
 echo *********************  E R R O  **********************         >> findWarnError.tmp 2>&1
@@ -33,7 +33,7 @@ find /N "ERROR" C:\Apps\Infinite\Janitor\logs\janitor.log           >> findWarnE
 find /N "ERROR" C:\Apps\Infinite\Janitor\logs\janitor-internal.log  >> findWarnError.tmp 2>&1
 find /N "ERROR" C:\Apps\Infinite\Colethon\logs\colethon.log         >> findWarnError.tmp 2>&1
 find /N "ERROR" C:\Apps\Infinite\Quanthon\logs\quanthon.log         >> findWarnError.tmp 2>&1
-find /N "ERROR" C:\Apps\Loto365\Lothon\logs\lothon.log             >> findWarnError.tmp 2>&1
+find /N "ERROR" C:\Apps\Infinite\Lothon\logs\lothon.log             >> findWarnError.tmp 2>&1
 echo.
 
 echo ********************  W A R N  ***********************         >> findWarnError.tmp 2>&1
@@ -44,7 +44,7 @@ find /N "WARN" C:\Apps\Infinite\Janitor\logs\janitor.log            >> findWarnE
 find /N "WARN" C:\Apps\Infinite\Janitor\logs\janitor-internal.log   >> findWarnError.tmp 2>&1
 find /N "WARN" C:\Apps\Infinite\Colethon\logs\colethon.log          >> findWarnError.tmp 2>&1
 find /N "WARN" C:\Apps\Infinite\Quanthon\logs\quanthon.log          >> findWarnError.tmp 2>&1
-find /N "WARN" C:\Apps\Loto365\Lothon\logs\lothon.log              >> findWarnError.tmp 2>&1
+find /N "WARN" C:\Apps\Infinite\Lothon\logs\lothon.log              >> findWarnError.tmp 2>&1
 echo.                                                               >> findWarnError.tmp 2>&1
 
 @echo on

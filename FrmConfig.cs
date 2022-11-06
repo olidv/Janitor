@@ -17,7 +17,7 @@ namespace Janitor
 
         // arquivos de logging dos programas Infinite e Lothon:
         private static readonly String LOG_FILE_COLETHON = @"C:\Apps\Infinite\Colethon\logs\colethon.log";
-        private static readonly String LOG_FILE_LOTHON = @"C:\Apps\Loto365\Lothon\logs\lothon.log";
+        private static readonly String LOG_FILE_LOTHON = @"C:\Apps\Infinite\Lothon\logs\lothon.log";
         private static readonly String LOG_FILE_QUANTHON = @"C:\Apps\Infinite\Quanthon\logs\quanthon.log";
 
         // rotinas batch executadas:
