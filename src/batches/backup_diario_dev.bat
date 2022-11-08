@@ -15,7 +15,7 @@ echo     FAVORITOS:  CHROME,  BRAVE,  EDGE,  FIREFOX
 echo.
 echo     SETTINGS DAS IDEs PYHARM E  INTELLIJ EM ZIP
 echo.
-echo     FECHAR OUTLOOK, JOPLIN, ENCRYPTPAD, VS CODE
+echo     THUNDERBIRD,  JOPLIN,  ENCRYPTPAD,  VS CODE
 echo.
 echo.
 
@@ -33,14 +33,15 @@ mkdir E:\%BKPRD%\
 echo.
 
 echo Encerra aplicacoes para evitar erro de conflitos durante o backup...
-taskkill /im Code.exe /t /f        1>nul  2>&1
-taskkill /im encryptpad.exe /t /f  1>nul  2>&1
-taskkill /im EXCEL.EXE /t /f       1>nul  2>&1
-taskkill /im OUTLOOK.EXE /t /f     1>nul  2>&1
-taskkill /im WINWORD.EXE /t /f     1>nul  2>&1
-taskkill /im PsnLite.exe /t /f     1>nul  2>&1
-taskkill /im Joplin.exe /t /f      1>nul  2>&1
-taskkill /im terminal64.exe /t /f  1>nul  2>&1
+taskkill /im Code.exe /t /f         1>nul  2>&1
+taskkill /im encryptpad.exe /t /f   1>nul  2>&1
+taskkill /im EXCEL.EXE /t /f        1>nul  2>&1
+taskkill /im OUTLOOK.EXE /t /f      1>nul  2>&1
+taskkill /im WINWORD.EXE /t /f      1>nul  2>&1
+taskkill /im PsnLite.exe /t /f      1>nul  2>&1
+taskkill /im Joplin.exe /t /f       1>nul  2>&1
+taskkill /im terminal64.exe /t /f   1>nul  2>&1
+taskkill /im thunderbird.exe /t /f  1>nul  2>&1
 echo.
 
 echo Minimiza todas as janelas correntes, para captura da area de trabalho...
@@ -96,6 +97,7 @@ echo.
 
 echo Executa as aplicacoes que foram fechadas para o backup...
 start "" /min "C:\Program Files (x86)\3M\PSNLite\PsnLite.exe" -RegRun
+start "" /min "C:\Program Files\Mozilla Thunderbird\thunderbird.exe"
 start "" /max "E:\Cloud\Documentos\Nosso Lar.xls"
 echo.
 
