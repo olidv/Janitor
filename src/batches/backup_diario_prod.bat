@@ -62,5 +62,5 @@ powershell -command "(new-object -com shell.application).UndoMinimizeALL()"
 echo.
 
 rem Pausa final...
-echo.
-pause
+rem echo.
+rem pause

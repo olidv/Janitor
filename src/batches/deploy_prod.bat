@@ -49,5 +49,5 @@ move /Y \\BLACK\Publico\quanthon-1.0.zip C:\Apps\Infinite\Quanthon
 
 :endbat
 rem Pausa final...
-echo.
-pause
+rem echo.
+rem pause
