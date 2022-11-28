@@ -374,5 +374,6 @@ prettierignore.txt
 # below put you custom 'per project' settings,
 # patterns or path.
 #####
+data/
 logs/
 tmp/
